@@ -6,7 +6,6 @@ package Agent;
 import java.util.Random;
 
 import Agent.WumpusAction.ACTION;
-import Agent.WumpusAction.DIRECTION;
 import Environment.Percept;
 import Environment.WumpusPercept;
 
@@ -17,55 +16,39 @@ import Environment.WumpusPercept;
  */
 public class WumpusAction implements Action{
 	
-	public enum DIRECTION{
-		DIRUP, DIRDOWN, DIRLEFT, DIRRIGHT
-	}
-	
 	public enum ACTION{
-		SHOOT, MOVE, GRAB, CLIMB
+		SHOOT, MOVE, TURNLEFT, TURNRIGHT, GRAB, CLIMB
 	}
 
 	private ACTION _nAction;
-	private DIRECTION _nDirxn;
 	
-	public WumpusAction(final ACTION action, final DIRECTION direction) throws Exception {
-		if( action != ACTION.MOVE && action != ACTION.SHOOT && action != ACTION.GRAB && action != ACTION.CLIMB ) {
+	public WumpusAction(final ACTION action) throws Exception {
+		if( action != ACTION.MOVE && action != ACTION.SHOOT && action != ACTION.GRAB && action != ACTION.CLIMB && action != ACTION.TURNLEFT && action != ACTION.TURNRIGHT ) {
 			throw new Exception("Invalid action");
 		}
 		
 		_nAction = action;
-		
-		if( action == ACTION.MOVE || action == ACTION.SHOOT ) {
-			if( direction != DIRECTION.DIRUP && direction != DIRECTION.DIRDOWN 
-					&& direction != DIRECTION.DIRLEFT && direction != DIRECTION.DIRRIGHT ) {
-				throw new Exception("Incorrect direction");
-			}
-		}
-		
-		_nDirxn = direction;
-		
 	}
 
 	/**
 	 * @return
 	 */
-	public boolean IsMoveUp() {
-		return _nAction == ACTION.MOVE && _nDirxn == DIRECTION.DIRUP;
+	public boolean IsMove() {
+		return _nAction == ACTION.MOVE;
 	}
 
 	/**
 	 * @return
 	 */
-	public boolean IsMoveDown() {
-		return _nAction == ACTION.MOVE && _nDirxn == DIRECTION.DIRDOWN;
+	public boolean IsTurnLeft() {
+		return _nAction == ACTION.TURNLEFT;
 	}
 	
-	public boolean IsMoveLeft() {
-		return _nAction == ACTION.MOVE && _nDirxn == DIRECTION.DIRLEFT;
-	}
-	
-	public boolean IsMoveRight() {
-		return _nAction == ACTION.MOVE && _nDirxn == DIRECTION.DIRRIGHT;
+	/**
+	 * @return
+	 */
+	public boolean IsTurnRight() {
+		return _nAction == ACTION.TURNRIGHT;
 	}
 
 	/**
@@ -73,13 +56,6 @@ public class WumpusAction implements Action{
 	 */
 	public boolean IsShoot() {
 		return _nAction == ACTION.SHOOT;
-	}
-
-	/**
-	 * @return
-	 */
-	public DIRECTION getDirxn() {
-		return _nDirxn;
 	}
 
 	/**
@@ -102,17 +78,33 @@ public class WumpusAction implements Action{
 	public static WumpusAction getRandomAction() {
 		
 		
-		ACTION[] acts = {ACTION.MOVE, ACTION.SHOOT, ACTION.GRAB, ACTION.CLIMB};
-		DIRECTION[] dirxns = {DIRECTION.DIRUP, DIRECTION.DIRDOWN, DIRECTION.DIRLEFT, DIRECTION.DIRRIGHT};
+		ACTION[] acts = {ACTION.MOVE, ACTION.TURNLEFT, ACTION.TURNRIGHT, ACTION.SHOOT, ACTION.GRAB, ACTION.CLIMB};
 		
 		try
 		{
 			ACTION act = acts[(int)(Math.random()*acts.length)];
-			DIRECTION dirxn = dirxns[(int)(Math.random()*dirxns.length)];
 			
-			WumpusAction wa = new WumpusAction(
-					act, 
-					dirxn);
+			WumpusAction wa = new WumpusAction(act);
+			return wa;
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+
+	public static WumpusAction getRandomMoveAction() {
+		
+		
+		ACTION[] acts = {ACTION.MOVE, ACTION.TURNLEFT, ACTION.TURNRIGHT};
+		
+		try
+		{
+			ACTION act = acts[(int)(Math.random()*acts.length)];
+			
+			WumpusAction wa = new WumpusAction(act);
 			return wa;
 		} catch (Exception e)
 		{
@@ -124,7 +116,6 @@ public class WumpusAction implements Action{
 
 	@Override
 	public String toString() {
-		return "WumpusAction [_nAction=" + this._nAction + ", _nDirxn="
-				+ this._nDirxn + "]";
+		return "WumpusAction [_nAction=" + this._nAction + "]";
 	}
 }

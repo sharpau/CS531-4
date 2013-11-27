@@ -10,7 +10,6 @@ import java.util.TreeSet;
 import util.Pair;
 import Agent.Action;
 import Agent.WumpusAction;
-import Agent.WumpusAction.DIRECTION;
 import Agent.WumpusSimpleAgent;
 
 /**
@@ -35,6 +34,12 @@ public class WumpusEnvironment implements Environment{
 	private boolean	_bTrialOver;
 	private int	_nHasGold;
 	
+	private enum DIRECTION{
+		DIRUP, DIRDOWN, DIRLEFT, DIRRIGHT
+	}
+	private DIRECTION _nFacing;
+
+	
 	public static WumpusEnvironment getNewWumpusEnvironment(
 			final int n, final int nWumpus, final int nGold, final int nArrows,
 			double pitProb, long seed) {
@@ -51,6 +56,7 @@ public class WumpusEnvironment implements Environment{
 		we._bWumpusDied = false;
 		we._bTrialOver = false;
 		we._nHasGold = 0;
+		we._nFacing = DIRECTION.DIRUP;
 		
 		while( true ) {
 			int x = we._rand.nextInt(n);
@@ -222,22 +228,22 @@ public class WumpusEnvironment implements Environment{
 			throw new Exception("Trial over");
 		}
 		//move, shoot, grab, climb
-		if( wa.IsMoveUp() ) {
+		if( wa.IsMove() ) {
+			if(_nFacing == DIRECTION.DIRUP) {
 			currentLoc = topGuy(currentLoc);
-		}else if( wa.IsMoveDown() ) {
-			currentLoc = bottomGuy(currentLoc);
-		}else if( wa.IsMoveLeft() ) {
-			currentLoc = leftGuy(currentLoc);
-		}else if( wa.IsMoveRight() ) {
-			currentLoc = rightGuy(currentLoc);
+			}else if(_nFacing == DIRECTION.DIRDOWN) {
+				currentLoc = bottomGuy(currentLoc);
+			}else if(_nFacing == DIRECTION.DIRLEFT) {
+				currentLoc = leftGuy(currentLoc);
+			}else if(_nFacing == DIRECTION.DIRRIGHT) {
+				currentLoc = rightGuy(currentLoc);
+			}
 		}else if( wa.IsShoot() && _nArrow > 0 ) {
 			--_nArrow;
 			Pair<Integer,Integer> current 
 			= new Pair<Integer, Integer>(currentLoc._o1, currentLoc._o2);
 			
-			DIRECTION dirxn = wa.getDirxn();
-			
-			switch(  dirxn ) {
+			switch( _nFacing) {
 				case DIRUP :
 					
 					while( current._o2 != _nSize-1 ) {
@@ -304,6 +310,10 @@ public class WumpusEnvironment implements Environment{
 		sb.append(currentLoc);
 		sb.append("\n");
 		
+		sb.append("Agent Direction: ");
+		sb.append(_nFacing);
+		sb.append("\n");
+		
 		sb.append("Wumpus Locations: ");
 		sb.append(_tsWumpusMap);
 		sb.append("\n");
@@ -350,7 +360,7 @@ public class WumpusEnvironment implements Environment{
 					break;
 				}
 //				WumpusAction wa = WumpusAction.getRandomAction();
-				WumpusAction act = (WumpusAction) wa.getAction(p); 
+				WumpusAction act = WumpusAction.getRandomMoveAction(); 
 				System.out.println("Action : " + act );
 				we.takeAction((Action)act);
 				System.out.println("-------");

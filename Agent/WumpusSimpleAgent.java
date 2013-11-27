@@ -4,7 +4,6 @@
 package Agent;
 
 import Agent.WumpusAction.ACTION;
-import Agent.WumpusAction.DIRECTION;
 import Environment.Percept;
 import Environment.WumpusPercept;
 
@@ -30,7 +29,7 @@ public class WumpusSimpleAgent implements Agent{
 				try
 				{
 					havegold = true;
-					return new WumpusAction(ACTION.GRAB, DIRECTION.DIRUP);
+					return new WumpusAction(ACTION.GRAB);
 				} catch (Exception e)
 				{
 					// TODO Auto-generated catch block
@@ -39,31 +38,26 @@ public class WumpusSimpleAgent implements Agent{
 			}else if(  havegold && wp.getCurrentLoc()._o1 == 0 && wp.getCurrentLoc()._o2 == 0  ) {
 					try
 					{
-						return new WumpusAction(ACTION.CLIMB, DIRECTION.DIRUP);
+						return new WumpusAction(ACTION.CLIMB);
 					} catch (Exception e)
 					{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-			}else if( wp.isbSmelly() && havearrow ) {
-				DIRECTION[] dirxns = DIRECTION.values();
-				
+			}else if( wp.isbSmelly() && havearrow ) {				
 				try
 				{
 					havearrow = false;
-					return new WumpusAction(ACTION.SHOOT, 
-							dirxns[(int)(Math.random()*dirxns.length)]);
+					return new WumpusAction(ACTION.SHOOT);
 				} catch (Exception e)
 				{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}else {
-				DIRECTION[] dirxns = DIRECTION.values();
 				try
 				{
-					return new WumpusAction(ACTION.MOVE, 
-							dirxns[(int)(Math.random()*dirxns.length)]);
+					return new WumpusAction(ACTION.MOVE);
 				} catch (Exception e)
 				{
 					// TODO Auto-generated catch block

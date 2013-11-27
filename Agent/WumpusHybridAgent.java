@@ -3,7 +3,6 @@ package Agent;
 import java.util.ArrayList;
 
 import Agent.WumpusAction.ACTION;
-import Agent.WumpusAction.DIRECTION;
 import Environment.Percept;
 import Environment.WumpusPercept;
 
