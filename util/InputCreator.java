@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class InputCreator {
 	private String fileName;
 	private Boolean bAppend = false;;
-	private final String sAssumptionsHeader = "formulas(assumptions).";
-	private final String sGoalsHeader = "formulas(goals).";
-	private final String sFooter = "end_of_list.";
+	private static final String sAssumptionsHeader = "formulas(assumptions).";
+	private static final String sGoalsHeader = "formulas(goals).";
+	private static final String sFooter = "end_of_list.";
 	
 	// Constructor
 	public InputCreator(String sQueryDirectory, String fName)
@@ -24,8 +24,7 @@ public class InputCreator {
 		fileName = sQueryDirectory + "Query.in";
 	}
 	
-	// Public Methods
-	
+	// Public Methods	
 	// Formats the First Order Logic Assumptions and Goals
 	// Writes into the input (.in) file
 	public void WriteAssumptionsGoalsToInputFile(BufferedWriter bw, ArrayList<String> kp, String sGoal)
@@ -55,6 +54,7 @@ public class InputCreator {
 		catch (IOException ex)
 		{
 			// Do something
+			System.out.println(ex.getMessage());
 		}
 	}
 	
@@ -78,6 +78,7 @@ public class InputCreator {
 		catch (IOException ex)
 		{
 			// Do something
+			System.out.println(ex.getMessage());
 		}
 		finally
 		{
@@ -90,6 +91,7 @@ public class InputCreator {
 				catch (IOException ex)
 				{
 					// Do something
+					System.out.println(ex.getMessage());
 				}
 			}
 		}
