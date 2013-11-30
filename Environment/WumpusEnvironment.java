@@ -11,6 +11,7 @@ import util.Pair;
 import Agent.Action;
 import Agent.WumpusAction;
 import Agent.WumpusSimpleAgent;
+import KnowledgeBase.KnowledgeBase;
 
 /**
  * @author NR
@@ -349,6 +350,14 @@ public class WumpusEnvironment implements Environment{
 	public static void main(String[] args) {
 		WumpusEnvironment we = WumpusEnvironment.getNewWumpusEnvironment(5, 1, 1, 1, 0.2, System.currentTimeMillis());
 		WumpusSimpleAgent wa = new WumpusSimpleAgent();
+				
+		// Test
+		KnowledgeBase kb = new KnowledgeBase();
+		// Assumption
+		kb.Tell("a11 -> b");
+		
+		// Goal (to prove)
+		Boolean bVal = kb.Ask("-a11 | b");
 		
 		while( true ) {
 			try {
