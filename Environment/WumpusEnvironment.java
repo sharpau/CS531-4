@@ -10,6 +10,7 @@ import java.util.TreeSet;
 import util.Pair;
 import Agent.Action;
 import Agent.WumpusAction;
+import Agent.WumpusHybridAgent;
 import Agent.WumpusSimpleAgent;
 import KnowledgeBase.KnowledgeBase;
 
@@ -350,6 +351,14 @@ public class WumpusEnvironment implements Environment{
 	public static void main(String[] args) {
 		WumpusEnvironment we = WumpusEnvironment.getNewWumpusEnvironment(5, 1, 1, 1, 0.2, System.currentTimeMillis());
 		WumpusSimpleAgent wa = new WumpusSimpleAgent();
+		
+		WumpusHybridAgent wha = new WumpusHybridAgent();
+		try {
+			wha.getAction(we.getPercept());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 				
 		// Test
 		KnowledgeBase kb = new KnowledgeBase();
@@ -368,7 +377,7 @@ public class WumpusEnvironment implements Environment{
 				if( p.isbDead() ) {
 					break;
 				}
-//				WumpusAction wa = WumpusAction.getRandomAction();
+				//WumpusAction wa = WumpusAction.getRandomAction();
 				WumpusAction act = WumpusAction.getRandomMoveAction(); 
 				System.out.println("Action : " + act );
 				we.takeAction((Action)act);
