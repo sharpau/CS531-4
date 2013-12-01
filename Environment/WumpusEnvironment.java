@@ -35,8 +35,8 @@ public class WumpusEnvironment implements Environment{
 	private boolean	_bTrialOver;
 	private int	_nHasGold;
 	
-	private enum DIRECTION{
-		DIRUP, DIRDOWN, DIRLEFT, DIRRIGHT
+	public enum DIRECTION{
+		DIRUP, DIRRIGHT, DIRDOWN, DIRLEFT
 	}
 	private DIRECTION _nFacing;
 
