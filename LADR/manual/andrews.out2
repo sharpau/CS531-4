@@ -1,0 +1,1711 @@
+============================== Prover9 ===============================
+Prover9 (32) version Oct-2007, Oct 2007.
+Process 16595 was started by mccune on cleo,
+Tue Oct  9 04:23:02 2007
+The command was "/home/mccune/bin/prover9 -f andrews.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file andrews.in
+
+
+formulas(goals).
+((exists x all y (p(x) <-> p(y))) <-> ((exists u q(u)) <-> (all v p(v)))) <-> ((exists w all z (q(z) <-> q(w))) <-> ((exists x1 p(x1)) <-> (all x2 q(x2)))).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 ((exists x all y (p(x) <-> p(y))) <-> ((exists u q(u)) <-> (all v p(v)))) <-> ((exists w all z (q(z) <-> q(w))) <-> ((exists x1 p(x1)) <-> (all x2 q(x2)))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f1(x)) | -q(y) | p(z) | q(f2(u)) | q(u) | -p(w) | q(v5).  [deny(1)].
+p(x) | p(f1(x)) | -q(y) | p(z) | q(f2(u)) | q(u) | p(c6) | -q(c7).  [deny(1)].
+p(x) | p(f1(x)) | -q(y) | p(z) | -q(f2(u)) | -q(u) | -p(w) | q(v5).  [deny(1)].
+p(x) | p(f1(x)) | -q(y) | p(z) | -q(f2(u)) | -q(u) | p(c6) | -q(c7).  [deny(1)].
+p(x) | p(f1(x)) | -q(y) | p(z) | -q(u) | q(c8) | p(c9) | q(w).  [deny(1)].
+p(x) | p(f1(x)) | -q(y) | p(z) | -q(u) | q(c8) | -p(w) | -q(c10).  [deny(1)].
+p(x) | p(f1(x)) | -q(y) | p(z) | q(u) | -q(c8) | p(c9) | q(w).  [deny(1)].
+p(x) | p(f1(x)) | -q(y) | p(z) | q(u) | -q(c8) | -p(w) | -q(c10).  [deny(1)].
+p(x) | p(f1(x)) | q(c1) | -p(c2) | q(f2(y)) | q(y) | -p(z) | q(u).  [deny(1)].
+p(x) | p(f1(x)) | q(c1) | -p(c2) | q(f2(y)) | q(y) | p(c6) | -q(c7).  [deny(1)].
+p(x) | p(f1(x)) | q(c1) | -p(c2) | -q(f2(y)) | -q(y) | -p(z) | q(u).  [deny(1)].
+p(x) | p(f1(x)) | q(c1) | -p(c2) | -q(f2(y)) | -q(y) | p(c6) | -q(c7).  [deny(1)].
+p(x) | p(f1(x)) | q(c1) | -p(c2) | -q(y) | q(c8) | p(c9) | q(z).  [deny(1)].
+p(x) | p(f1(x)) | q(c1) | -p(c2) | -q(y) | q(c8) | -p(z) | -q(c10).  [deny(1)].
+p(x) | p(f1(x)) | q(c1) | -p(c2) | q(y) | -q(c8) | p(c9) | q(z).  [deny(1)].
+p(x) | p(f1(x)) | q(c1) | -p(c2) | q(y) | -q(c8) | -p(z) | -q(c10).  [deny(1)].
+-p(x) | -p(f1(x)) | -q(y) | p(z) | q(f2(u)) | q(u) | -p(w) | q(v5).  [deny(1)].
+-p(x) | -p(f1(x)) | -q(y) | p(z) | q(f2(u)) | q(u) | p(c6) | -q(c7).  [deny(1)].
+-p(x) | -p(f1(x)) | -q(y) | p(z) | -q(f2(u)) | -q(u) | -p(w) | q(v5).  [deny(1)].
+-p(x) | -p(f1(x)) | -q(y) | p(z) | -q(f2(u)) | -q(u) | p(c6) | -q(c7).  [deny(1)].
+-p(x) | -p(f1(x)) | -q(y) | p(z) | -q(u) | q(c8) | p(c9) | q(w).  [deny(1)].
+-p(x) | -p(f1(x)) | -q(y) | p(z) | -q(u) | q(c8) | -p(w) | -q(c10).  [deny(1)].
+-p(x) | -p(f1(x)) | -q(y) | p(z) | q(u) | -q(c8) | p(c9) | q(w).  [deny(1)].
+-p(x) | -p(f1(x)) | -q(y) | p(z) | q(u) | -q(c8) | -p(w) | -q(c10).  [deny(1)].
+-p(x) | -p(f1(x)) | q(c1) | -p(c2) | q(f2(y)) | q(y) | -p(z) | q(u).  [deny(1)].
+-p(x) | -p(f1(x)) | q(c1) | -p(c2) | q(f2(y)) | q(y) | p(c6) | -q(c7).  [deny(1)].
+-p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(f2(y)) | -q(y) | -p(z) | q(u).  [deny(1)].
+-p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(f2(y)) | -q(y) | p(c6) | -q(c7).  [deny(1)].
+-p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(y) | q(c8) | p(c9) | q(z).  [deny(1)].
+-p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(y) | q(c8) | -p(z) | -q(c10).  [deny(1)].
+-p(x) | -p(f1(x)) | q(c1) | -p(c2) | q(y) | -q(c8) | p(c9) | q(z).  [deny(1)].
+-p(x) | -p(f1(x)) | q(c1) | -p(c2) | q(y) | -q(c8) | -p(z) | -q(c10).  [deny(1)].
+-p(c3) | p(x) | q(c4) | p(y) | q(f2(z)) | q(z) | -p(u) | q(w).  [deny(1)].
+-p(c3) | p(x) | q(c4) | p(y) | q(f2(z)) | q(z) | p(c6) | -q(c7).  [deny(1)].
+-p(c3) | p(x) | q(c4) | p(y) | -q(f2(z)) | -q(z) | -p(u) | q(w).  [deny(1)].
+-p(c3) | p(x) | q(c4) | p(y) | -q(f2(z)) | -q(z) | p(c6) | -q(c7).  [deny(1)].
+-p(c3) | p(x) | q(c4) | p(y) | -q(z) | q(c8) | p(c9) | q(u).  [deny(1)].
+-p(c3) | p(x) | q(c4) | p(y) | -q(z) | q(c8) | -p(u) | -q(c10).  [deny(1)].
+-p(c3) | p(x) | q(c4) | p(y) | q(z) | -q(c8) | p(c9) | q(u).  [deny(1)].
+-p(c3) | p(x) | q(c4) | p(y) | q(z) | -q(c8) | -p(u) | -q(c10).  [deny(1)].
+-p(c3) | p(x) | -q(y) | -p(c5) | q(f2(z)) | q(z) | -p(u) | q(w).  [deny(1)].
+-p(c3) | p(x) | -q(y) | -p(c5) | q(f2(z)) | q(z) | p(c6) | -q(c7).  [deny(1)].
+-p(c3) | p(x) | -q(y) | -p(c5) | -q(f2(z)) | -q(z) | -p(u) | q(w).  [deny(1)].
+-p(c3) | p(x) | -q(y) | -p(c5) | -q(f2(z)) | -q(z) | p(c6) | -q(c7).  [deny(1)].
+-p(c3) | p(x) | -q(y) | -p(c5) | -q(z) | q(c8) | p(c9) | q(u).  [deny(1)].
+-p(c3) | p(x) | -q(y) | -p(c5) | -q(z) | q(c8) | -p(u) | -q(c10).  [deny(1)].
+-p(c3) | p(x) | -q(y) | -p(c5) | q(z) | -q(c8) | p(c9) | q(u).  [deny(1)].
+-p(c3) | p(x) | -q(y) | -p(c5) | q(z) | -q(c8) | -p(u) | -q(c10).  [deny(1)].
+p(c3) | -p(x) | q(c4) | p(y) | q(f2(z)) | q(z) | -p(u) | q(w).  [deny(1)].
+p(c3) | -p(x) | q(c4) | p(y) | q(f2(z)) | q(z) | p(c6) | -q(c7).  [deny(1)].
+p(c3) | -p(x) | q(c4) | p(y) | -q(f2(z)) | -q(z) | -p(u) | q(w).  [deny(1)].
+p(c3) | -p(x) | q(c4) | p(y) | -q(f2(z)) | -q(z) | p(c6) | -q(c7).  [deny(1)].
+p(c3) | -p(x) | q(c4) | p(y) | -q(z) | q(c8) | p(c9) | q(u).  [deny(1)].
+p(c3) | -p(x) | q(c4) | p(y) | -q(z) | q(c8) | -p(u) | -q(c10).  [deny(1)].
+p(c3) | -p(x) | q(c4) | p(y) | q(z) | -q(c8) | p(c9) | q(u).  [deny(1)].
+p(c3) | -p(x) | q(c4) | p(y) | q(z) | -q(c8) | -p(u) | -q(c10).  [deny(1)].
+p(c3) | -p(x) | -q(y) | -p(c5) | q(f2(z)) | q(z) | -p(u) | q(w).  [deny(1)].
+p(c3) | -p(x) | -q(y) | -p(c5) | q(f2(z)) | q(z) | p(c6) | -q(c7).  [deny(1)].
+p(c3) | -p(x) | -q(y) | -p(c5) | -q(f2(z)) | -q(z) | -p(u) | q(w).  [deny(1)].
+p(c3) | -p(x) | -q(y) | -p(c5) | -q(f2(z)) | -q(z) | p(c6) | -q(c7).  [deny(1)].
+p(c3) | -p(x) | -q(y) | -p(c5) | -q(z) | q(c8) | p(c9) | q(u).  [deny(1)].
+p(c3) | -p(x) | -q(y) | -p(c5) | -q(z) | q(c8) | -p(u) | -q(c10).  [deny(1)].
+p(c3) | -p(x) | -q(y) | -p(c5) | q(z) | -q(c8) | p(c9) | q(u).  [deny(1)].
+p(c3) | -p(x) | -q(y) | -p(c5) | q(z) | -q(c8) | -p(u) | -q(c10).  [deny(1)].
+-p(c11) | p(x) | -q(y) | p(z) | -q(u) | q(c16) | -p(w) | q(v5).  [deny(1)].
+-p(c11) | p(x) | -q(y) | p(z) | -q(u) | q(c16) | p(c17) | -q(c18).  [deny(1)].
+-p(c11) | p(x) | -q(y) | p(z) | q(u) | -q(c16) | -p(w) | q(v5).  [deny(1)].
+-p(c11) | p(x) | -q(y) | p(z) | q(u) | -q(c16) | p(c17) | -q(c18).  [deny(1)].
+-p(c11) | p(x) | -q(y) | p(z) | q(f4(u)) | q(u) | p(c19) | q(w).  [deny(1)].
+-p(c11) | p(x) | -q(y) | p(z) | q(f4(u)) | q(u) | -p(w) | -q(c20).  [deny(1)].
+-p(c11) | p(x) | -q(y) | p(z) | -q(f4(u)) | -q(u) | p(c19) | q(w).  [deny(1)].
+-p(c11) | p(x) | -q(y) | p(z) | -q(f4(u)) | -q(u) | -p(w) | -q(c20).  [deny(1)].
+-p(c11) | p(x) | q(c12) | -p(c13) | -q(y) | q(c16) | -p(z) | q(u).  [deny(1)].
+-p(c11) | p(x) | q(c12) | -p(c13) | -q(y) | q(c16) | p(c17) | -q(c18).  [deny(1)].
+-p(c11) | p(x) | q(c12) | -p(c13) | q(y) | -q(c16) | -p(z) | q(u).  [deny(1)].
+-p(c11) | p(x) | q(c12) | -p(c13) | q(y) | -q(c16) | p(c17) | -q(c18).  [deny(1)].
+-p(c11) | p(x) | q(c12) | -p(c13) | q(f4(y)) | q(y) | p(c19) | q(z).  [deny(1)].
+-p(c11) | p(x) | q(c12) | -p(c13) | q(f4(y)) | q(y) | -p(z) | -q(c20).  [deny(1)].
+-p(c11) | p(x) | q(c12) | -p(c13) | -q(f4(y)) | -q(y) | p(c19) | q(z).  [deny(1)].
+-p(c11) | p(x) | q(c12) | -p(c13) | -q(f4(y)) | -q(y) | -p(z) | -q(c20).  [deny(1)].
+p(c11) | -p(x) | -q(y) | p(z) | -q(u) | q(c16) | -p(w) | q(v5).  [deny(1)].
+p(c11) | -p(x) | -q(y) | p(z) | -q(u) | q(c16) | p(c17) | -q(c18).  [deny(1)].
+p(c11) | -p(x) | -q(y) | p(z) | q(u) | -q(c16) | -p(w) | q(v5).  [deny(1)].
+p(c11) | -p(x) | -q(y) | p(z) | q(u) | -q(c16) | p(c17) | -q(c18).  [deny(1)].
+p(c11) | -p(x) | -q(y) | p(z) | q(f4(u)) | q(u) | p(c19) | q(w).  [deny(1)].
+p(c11) | -p(x) | -q(y) | p(z) | q(f4(u)) | q(u) | -p(w) | -q(c20).  [deny(1)].
+p(c11) | -p(x) | -q(y) | p(z) | -q(f4(u)) | -q(u) | p(c19) | q(w).  [deny(1)].
+p(c11) | -p(x) | -q(y) | p(z) | -q(f4(u)) | -q(u) | -p(w) | -q(c20).  [deny(1)].
+p(c11) | -p(x) | q(c12) | -p(c13) | -q(y) | q(c16) | -p(z) | q(u).  [deny(1)].
+p(c11) | -p(x) | q(c12) | -p(c13) | -q(y) | q(c16) | p(c17) | -q(c18).  [deny(1)].
+p(c11) | -p(x) | q(c12) | -p(c13) | q(y) | -q(c16) | -p(z) | q(u).  [deny(1)].
+p(c11) | -p(x) | q(c12) | -p(c13) | q(y) | -q(c16) | p(c17) | -q(c18).  [deny(1)].
+p(c11) | -p(x) | q(c12) | -p(c13) | q(f4(y)) | q(y) | p(c19) | q(z).  [deny(1)].
+p(c11) | -p(x) | q(c12) | -p(c13) | q(f4(y)) | q(y) | -p(z) | -q(c20).  [deny(1)].
+p(c11) | -p(x) | q(c12) | -p(c13) | -q(f4(y)) | -q(y) | p(c19) | q(z).  [deny(1)].
+p(c11) | -p(x) | q(c12) | -p(c13) | -q(f4(y)) | -q(y) | -p(z) | -q(c20).  [deny(1)].
+p(x) | p(f3(x)) | q(c14) | p(y) | -q(z) | q(c16) | -p(u) | q(w).  [deny(1)].
+p(x) | p(f3(x)) | q(c14) | p(y) | -q(z) | q(c16) | p(c17) | -q(c18).  [deny(1)].
+p(x) | p(f3(x)) | q(c14) | p(y) | q(z) | -q(c16) | -p(u) | q(w).  [deny(1)].
+p(x) | p(f3(x)) | q(c14) | p(y) | q(z) | -q(c16) | p(c17) | -q(c18).  [deny(1)].
+p(x) | p(f3(x)) | q(c14) | p(y) | q(f4(z)) | q(z) | p(c19) | q(u).  [deny(1)].
+p(x) | p(f3(x)) | q(c14) | p(y) | q(f4(z)) | q(z) | -p(u) | -q(c20).  [deny(1)].
+p(x) | p(f3(x)) | q(c14) | p(y) | -q(f4(z)) | -q(z) | p(c19) | q(u).  [deny(1)].
+p(x) | p(f3(x)) | q(c14) | p(y) | -q(f4(z)) | -q(z) | -p(u) | -q(c20).  [deny(1)].
+p(x) | p(f3(x)) | -q(y) | -p(c15) | -q(z) | q(c16) | -p(u) | q(w).  [deny(1)].
+p(x) | p(f3(x)) | -q(y) | -p(c15) | -q(z) | q(c16) | p(c17) | -q(c18).  [deny(1)].
+p(x) | p(f3(x)) | -q(y) | -p(c15) | q(z) | -q(c16) | -p(u) | q(w).  [deny(1)].
+p(x) | p(f3(x)) | -q(y) | -p(c15) | q(z) | -q(c16) | p(c17) | -q(c18).  [deny(1)].
+p(x) | p(f3(x)) | -q(y) | -p(c15) | q(f4(z)) | q(z) | p(c19) | q(u).  [deny(1)].
+p(x) | p(f3(x)) | -q(y) | -p(c15) | q(f4(z)) | q(z) | -p(u) | -q(c20).  [deny(1)].
+p(x) | p(f3(x)) | -q(y) | -p(c15) | -q(f4(z)) | -q(z) | p(c19) | q(u).  [deny(1)].
+p(x) | p(f3(x)) | -q(y) | -p(c15) | -q(f4(z)) | -q(z) | -p(u) | -q(c20).  [deny(1)].
+-p(x) | -p(f3(x)) | q(c14) | p(y) | -q(z) | q(c16) | -p(u) | q(w).  [deny(1)].
+-p(x) | -p(f3(x)) | q(c14) | p(y) | -q(z) | q(c16) | p(c17) | -q(c18).  [deny(1)].
+-p(x) | -p(f3(x)) | q(c14) | p(y) | q(z) | -q(c16) | -p(u) | q(w).  [deny(1)].
+-p(x) | -p(f3(x)) | q(c14) | p(y) | q(z) | -q(c16) | p(c17) | -q(c18).  [deny(1)].
+-p(x) | -p(f3(x)) | q(c14) | p(y) | q(f4(z)) | q(z) | p(c19) | q(u).  [deny(1)].
+-p(x) | -p(f3(x)) | q(c14) | p(y) | q(f4(z)) | q(z) | -p(u) | -q(c20).  [deny(1)].
+-p(x) | -p(f3(x)) | q(c14) | p(y) | -q(f4(z)) | -q(z) | p(c19) | q(u).  [deny(1)].
+-p(x) | -p(f3(x)) | q(c14) | p(y) | -q(f4(z)) | -q(z) | -p(u) | -q(c20).  [deny(1)].
+-p(x) | -p(f3(x)) | -q(y) | -p(c15) | -q(z) | q(c16) | -p(u) | q(w).  [deny(1)].
+-p(x) | -p(f3(x)) | -q(y) | -p(c15) | -q(z) | q(c16) | p(c17) | -q(c18).  [deny(1)].
+-p(x) | -p(f3(x)) | -q(y) | -p(c15) | q(z) | -q(c16) | -p(u) | q(w).  [deny(1)].
+-p(x) | -p(f3(x)) | -q(y) | -p(c15) | q(z) | -q(c16) | p(c17) | -q(c18).  [deny(1)].
+-p(x) | -p(f3(x)) | -q(y) | -p(c15) | q(f4(z)) | q(z) | p(c19) | q(u).  [deny(1)].
+-p(x) | -p(f3(x)) | -q(y) | -p(c15) | q(f4(z)) | q(z) | -p(u) | -q(c20).  [deny(1)].
+-p(x) | -p(f3(x)) | -q(y) | -p(c15) | -q(f4(z)) | -q(z) | p(c19) | q(u).  [deny(1)].
+-p(x) | -p(f3(x)) | -q(y) | -p(c15) | -q(f4(z)) | -q(z) | -p(u) | -q(c20).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(positive_inference). % (non-Horn)
+    % set(positive_inference) -> assign(literal_selection, max_negative).
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(back_unit_deletion).  % (non-Horn)
+    % set(back_unit_deletion) -> set(unit_deletion).
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+347 p(x) | p(f3(x)) | q(c14) | q(f4(y)) | q(y) | -p(z) | -q(c20).  [factor(95,a,d)].
+351 p(x) | p(f3(x)) | q(c14) | -q(f4(y)) | -q(y) | -p(z) | -q(c20).  [factor(97,a,d)].
+364 p(x) | p(f3(x)) | -q(y) | -p(c15) | q(f4(z)) | q(z) | p(c19).  [factor(102,e,h)].
+368 p(x) | p(f3(x)) | -q(f4(y)) | -p(c15) | -q(y) | p(c19) | q(z).  [factor(104,c,e)].
+382 -p(x) | -p(f3(x)) | q(c14) | p(y) | q(f4(z)) | q(z) | -q(c20).  [factor(111,a,g)].
+386 -p(x) | -p(f3(x)) | q(c14) | p(y) | -q(f4(z)) | -q(z) | -q(c20).  [factor(113,a,g)].
+401 -p(x) | -p(f3(x)) | -q(y) | -p(c15) | q(f4(z)) | q(z) | p(c19).  [factor(118,e,h)].
+406 -p(x) | -p(f3(x)) | -q(f4(y)) | -p(c15) | -q(y) | p(c19) | q(z).  [factor(120,c,e)].
+410 p(x) | p(f1(x)) | -q(y) | q(f2(z)) | q(z) | -p(u).  [factor(122,d,g)].
+412 p(x) | p(f1(x)) | -q(c7) | q(f2(y)) | q(y) | p(c6).  [factor(124,c,g)].
+413 p(x) | p(f1(x)) | -q(f2(y)) | -q(y) | -p(z) | q(u).  [factor(126,c,d)].
+415 p(x) | p(f1(x)) | -q(f2(y)) | -q(y) | p(c6) | -q(c7).  [factor(128,c,d)].
+427 p(x) | p(f1(x)) | -q(c8) | q(y) | -p(z) | -q(c10).  [factor(138,c,e)].
+430 p(x) | p(f1(x)) | q(c1) | -p(c2) | q(f2(y)) | q(y).  [factor(141,d,g)].
+435 -p(x) | -p(f1(x)) | -q(y) | p(z) | q(f2(u)) | q(u).  [factor(153,e,g)].
+436 -p(x) | -p(f1(x)) | -q(f2(y)) | p(z) | -q(y) | q(u).  [factor(157,c,e)].
+437 -p(x) | -p(f1(x)) | -q(f2(y)) | p(c6) | -q(y) | -q(c7).  [factor(159,d,f)].
+447 -p(x) | -p(f1(x)) | -q(c8) | p(y) | q(z) | -q(c10).  [factor(169,c,f)].
+452 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | q(f2(y)) | q(y).  [factor(172,c,g)].
+456 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(f2(y)) | -q(y).  [factor(176,c,g)].
+459 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(c10) | q(c8).  [factor(181,e,g)].
+463 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(c8) | -q(c10).  [factor(186,c,e)].
+487 -p(c3) | p(x) | -q(y) | -p(c5) | q(f2(z)) | q(z).  [factor(209,e,g)].
+488 -p(c3) | p(x) | -q(f2(y)) | -p(c5) | -q(y) | q(z).  [factor(213,c,e)].
+489 -p(c3) | p(c6) | -q(f2(x)) | -p(c5) | -q(x) | -q(c7).  [factor(215,c,e)].
+499 -p(c3) | p(x) | -q(c8) | -p(c5) | q(y) | -q(c10).  [factor(225,c,f)].
+510 p(c3) | -p(x) | q(c4) | -q(y) | q(c8) | p(c9).  [factor(238,c,g)].
+524 p(c3) | -p(c5) | -q(f2(x)) | -q(x) | p(c6) | -q(c7).  [factor(254,c,d)].
+565 -p(c11) | p(c19) | q(c12) | -p(c13) | q(f4(x)) | q(x).  [factor(292,c,g)].
+582 p(c11) | -p(x) | -q(y) | q(f4(z)) | q(z) | p(c19).  [factor(313,d,g)].
+586 p(c11) | -p(x) | -q(f4(y)) | -q(y) | p(c19) | q(z).  [factor(318,c,d)].
+595 p(c11) | -p(c13) | q(c12) | q(f4(x)) | q(x) | p(c19).  [factor(327,c,g)].
+600 p(x) | p(f3(x)) | q(c14) | -q(y) | q(c16) | -p(z).  [factor(336,c,g)].
+602 p(x) | p(f3(x)) | q(c14) | -q(c18) | q(c16) | p(c17).  [factor(338,d,g)].
+606 p(x) | p(f3(x)) | q(c14) | -q(c16) | p(c17) | -q(c18).  [factor(342,c,d)].
+609 p(x) | p(f3(x)) | q(c14) | q(f4(y)) | q(y) | p(c19).  [factor(344,c,g)].
+611 p(x) | p(f3(x)) | q(c14) | q(f4(c14)) | -p(y) | -q(c20).  [factor(347,c,e)].
+613 p(x) | p(f3(x)) | q(c14) | -q(f4(y)) | -q(y) | p(c19).  [factor(349,c,g)].
+614 p(x) | p(f3(x)) | q(c14) | -q(f4(c20)) | -q(c20) | -p(y).  [factor(351,e,g)].
+622 p(c19) | p(f3(c19)) | -q(x) | -p(c15) | q(f4(y)) | q(y).  [factor(363,e,g)].
+623 p(x) | p(f3(x)) | -q(c20) | -p(c15) | q(f4(y)) | q(y).  [factor(365,d,g)].
+624 p(c19) | p(f3(c19)) | -q(f4(x)) | -p(c15) | -q(x) | q(y).  [factor(367,c,e)].
+625 p(x) | p(f3(x)) | -q(f4(y)) | -p(c15) | -q(y) | -q(c20).  [factor(369,d,f)].
+627 -p(x) | -p(f3(x)) | q(c14) | p(y) | -q(z) | q(c16).  [factor(371,c,g)].
+633 -p(x) | -p(f3(x)) | q(c14) | p(c19) | q(f4(y)) | q(y).  [factor(380,d,g)].
+634 -p(x) | -p(f3(x)) | q(c14) | p(y) | q(f4(c14)) | -q(c20).  [factor(382,c,f)].
+635 -p(x) | -p(f3(x)) | q(c14) | p(c19) | -q(f4(y)) | -q(y).  [factor(384,d,g)].
+636 -p(x) | -p(f3(x)) | q(c14) | p(y) | -q(f4(c20)) | -q(c20).  [factor(386,f,g)].
+652 -p(c15) | -p(f3(c15)) | -q(x) | q(f4(y)) | q(y) | p(c19).  [factor(400,d,g)].
+655 -p(x) | -p(f3(x)) | -q(c20) | -p(c15) | q(f4(y)) | q(y).  [factor(403,c,g)].
+656 -p(c15) | -p(f3(c15)) | -q(f4(x)) | -q(x) | p(c19) | q(y).  [factor(405,c,d)].
+659 -p(x) | -p(f3(x)) | -q(f4(y)) | -p(c15) | -q(y) | -q(c20).  [factor(408,c,e)].
+661 p(c6) | p(f1(c6)) | -q(c7) | q(f2(x)) | q(x).  [factor(411,c,f)].
+662 p(c6) | p(f1(c6)) | -q(f2(x)) | -q(x) | -q(c7).  [factor(414,c,d)].
+663 p(x) | p(f1(x)) | -q(f2(c7)) | -q(c7) | p(c6).  [factor(415,d,f)].
+666 p(x) | p(f1(x)) | -q(y) | q(c8) | p(c9).  [factor(418,d,f)].
+667 p(x) | p(f1(x)) | -q(c10) | q(c8) | -p(y).  [factor(421,c,f)].
+670 p(x) | p(f1(x)) | -q(c8) | q(y) | p(c9).  [factor(424,d,f)].
+671 p(x) | p(f1(x)) | q(c1) | -p(c2) | q(f2(c1)).  [factor(428,d,f)].
+673 -p(x) | -p(f1(x)) | -q(f2(c7)) | p(c6) | -q(c7).  [factor(437,e,f)].
+674 -p(x) | -p(f1(x)) | -q(y) | p(c9) | q(c8).  [factor(439,e,f)].
+675 -p(x) | -p(f1(x)) | -q(c10) | p(y) | q(c8).  [factor(442,c,f)].
+676 -p(x) | -p(f1(x)) | -q(c8) | p(c9) | q(y).  [factor(444,e,f)].
+678 -p(c2) | -p(f1(c2)) | q(c1) | q(f2(x)) | q(x).  [factor(448,c,f)].
+680 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | q(f2(c1)).  [factor(451,c,f)].
+681 -p(c2) | -p(f1(c2)) | q(c1) | -q(f2(x)) | -q(x).  [factor(454,c,f)].
+682 -p(c2) | -p(f1(c2)) | q(c1) | -q(c10) | q(c8).  [factor(457,d,f)].
+683 -p(c2) | -p(f1(c2)) | q(c1) | -q(c8) | -q(c10).  [factor(461,c,d)].
+685 -p(c3) | p(x) | q(c4) | q(f2(y)) | q(y).  [factor(464,c,f)].
+689 -p(c3) | p(x) | q(c4) | -q(f2(y)) | -q(y).  [factor(472,c,f)].
+690 -p(c3) | p(c9) | q(c4) | -q(x) | q(c8).  [factor(476,c,f)].
+691 -p(c3) | p(x) | q(c4) | -q(c10) | q(c8).  [factor(478,d,f)].
+694 -p(c3) | p(x) | q(c4) | -q(c8) | -q(c10).  [factor(484,c,d)].
+695 -p(c3) | p(c6) | -q(f2(c7)) | -p(c5) | -q(c7).  [factor(489,e,f)].
+696 -p(c3) | p(c9) | -q(x) | -p(c5) | q(c8).  [factor(491,e,f)].
+697 -p(c3) | p(x) | -q(c10) | -p(c5) | q(c8).  [factor(494,c,f)].
+698 -p(c3) | p(c9) | -q(c8) | -p(c5) | q(x).  [factor(496,e,f)].
+700 p(c3) | -p(x) | q(c4) | q(f2(y)) | q(y).  [factor(500,c,f)].
+703 p(c3) | -p(x) | q(c4) | -q(f2(y)) | -q(y).  [factor(507,c,f)].
+704 p(c3) | -p(x) | q(c4) | -q(c10) | q(c8).  [factor(511,d,f)].
+705 p(c3) | -p(x) | q(c4) | -q(c8) | p(c9).  [factor(514,c,f)].
+706 p(c3) | -p(x) | q(c4) | -q(c8) | -q(c10).  [factor(516,c,d)].
+707 p(c3) | -p(c5) | -q(x) | q(f2(y)) | q(y).  [factor(519,d,f)].
+708 p(c3) | -p(c5) | -q(f2(x)) | -q(x) | q(y).  [factor(522,c,d)].
+709 p(c3) | -p(c5) | -q(f2(c7)) | -q(c7) | p(c6).  [factor(524,d,f)].
+710 p(c3) | -p(c5) | -q(x) | q(c8) | p(c9).  [factor(526,d,f)].
+713 p(c3) | -p(c5) | -q(c8) | q(x) | p(c9).  [factor(532,d,f)].
+714 p(c3) | -p(c5) | -q(c8) | q(x) | -q(c10).  [factor(535,c,e)].
+723 -p(c11) | p(c19) | -q(x) | q(f4(y)) | q(y).  [factor(552,d,f)].
+724 -p(c11) | p(x) | -q(c20) | q(f4(y)) | q(y).  [factor(554,c,f)].
+725 -p(c11) | p(c19) | -q(f4(x)) | -q(x) | q(y).  [factor(557,c,d)].
+726 -p(c11) | p(x) | -q(f4(y)) | -q(y) | -q(c20).  [factor(559,c,d)].
+729 -p(c11) | p(c19) | q(c12) | -p(c13) | q(f4(c12)).  [factor(564,c,f)].
+738 p(c11) | -p(x) | -q(c20) | q(f4(y)) | q(y).  [factor(583,c,f)].
+739 p(c11) | -p(x) | -q(f4(y)) | -q(y) | -q(c20).  [factor(587,c,d)].
+742 p(c11) | -p(c13) | q(c12) | q(f4(c12)) | p(c19).  [factor(594,c,f)].
+744 p(c17) | p(f3(c17)) | q(c14) | -q(c18) | q(c16).  [factor(601,d,f)].
+745 p(x) | p(f3(x)) | q(c14) | -q(c16) | -p(y).  [factor(603,c,f)].
+746 p(c17) | p(f3(c17)) | q(c14) | -q(c16) | -q(c18).  [factor(605,c,d)].
+748 p(c19) | p(f3(c19)) | q(c14) | q(f4(x)) | q(x).  [factor(607,c,f)].
+749 p(x) | p(f3(x)) | q(c14) | q(f4(c14)) | p(c19).  [factor(608,c,f)].
+750 p(c19) | p(f3(c19)) | q(c14) | -q(f4(x)) | -q(x).  [factor(612,c,f)].
+751 p(x) | p(f3(x)) | -q(y) | -p(c15) | q(c16).  [factor(615,e,f)].
+752 p(x) | p(f3(x)) | -q(c16) | -p(c15) | q(y).  [factor(619,e,f)].
+753 p(x) | p(f3(x)) | -q(f4(c20)) | -p(c15) | -q(c20).  [factor(625,e,f)].
+754 -p(x) | -p(f3(x)) | q(c14) | p(y) | -q(c16).  [factor(628,c,f)].
+755 -p(x) | -p(f3(x)) | q(c14) | p(c19) | q(f4(c14)).  [factor(631,d,f)].
+759 -p(x) | -p(f3(x)) | -q(y) | -p(c15) | q(c16).  [factor(640,e,f)].
+764 -p(x) | -p(f3(x)) | -q(c16) | -p(c15) | q(y).  [factor(648,e,f)].
+765 -p(c15) | -p(f3(c15)) | -q(c20) | q(f4(x)) | q(x).  [factor(653,c,f)].
+766 -p(c15) | -p(f3(c15)) | -q(f4(x)) | -q(x) | -q(c20).  [factor(657,c,d)].
+768 -p(x) | -p(f3(x)) | -q(f4(c20)) | -p(c15) | -q(c20).  [factor(659,e,f)].
+769 p(c6) | p(f1(c6)) | -q(f2(c7)) | -q(c7).  [factor(662,d,e)].
+770 p(c9) | p(f1(c9)) | -q(x) | q(c8).  [factor(664,d,e)].
+771 p(c9) | p(f1(c9)) | -q(c8) | q(x).  [factor(668,d,e)].
+772 -p(c2) | -p(f1(c2)) | q(c1) | q(f2(c1)).  [factor(677,c,e)].
+773 -p(c3) | p(x) | q(c4) | q(f2(c4)).  [factor(684,c,e)].
+774 -p(c3) | p(c9) | q(c4) | -q(c8).  [factor(692,c,e)].
+775 p(c3) | -p(x) | q(c4) | q(f2(c4)).  [factor(699,c,e)].
+776 p(c3) | -p(c5) | -q(c10) | q(c8).  [factor(711,c,e)].
+777 -p(c11) | p(x) | -q(y) | q(c16).  [factor(715,d,e)].
+778 -p(c11) | p(x) | -q(c16) | q(y).  [factor(719,d,e)].
+779 -p(c11) | p(x) | -q(f4(c20)) | -q(c20).  [factor(726,d,e)].
+780 p(c11) | -p(x) | -q(y) | q(c16).  [factor(730,d,e)].
+781 p(c11) | -p(x) | -q(c16) | q(y).  [factor(734,d,e)].
+782 p(c11) | -p(x) | -q(f4(c20)) | -q(c20).  [factor(739,d,e)].
+783 p(c19) | p(f3(c19)) | q(c14) | q(f4(c14)).  [factor(747,c,e)].
+784 -p(c15) | -p(f3(c15)) | -q(x) | q(c16).  [factor(756,d,e)].
+785 -p(c15) | -p(f3(c15)) | -q(c16) | q(x).  [factor(761,d,e)].
+786 -p(c15) | -p(f3(c15)) | -q(f4(c20)) | -q(c20).  [factor(766,d,e)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.06 seconds.
+
+given #1 (I,wt=16): 347 p(x) | p(f3(x)) | q(c14) | q(f4(y)) | q(y) | -p(z) | -q(c20).  [factor(95,a,d)].
+
+given #2 (I,wt=16): 351 p(x) | p(f3(x)) | q(c14) | -q(f4(y)) | -q(y) | -p(z) | -q(c20).  [factor(97,a,d)].
+
+given #3 (I,wt=16): 364 p(x) | p(f3(x)) | -q(y) | -p(c15) | q(f4(z)) | q(z) | p(c19).  [factor(102,e,h)].
+
+given #4 (I,wt=16): 368 p(x) | p(f3(x)) | -q(f4(y)) | -p(c15) | -q(y) | p(c19) | q(z).  [factor(104,c,e)].
+
+given #5 (I,wt=16): 382 -p(x) | -p(f3(x)) | q(c14) | p(y) | q(f4(z)) | q(z) | -q(c20).  [factor(111,a,g)].
+
+given #6 (I,wt=16): 386 -p(x) | -p(f3(x)) | q(c14) | p(y) | -q(f4(z)) | -q(z) | -q(c20).  [factor(113,a,g)].
+
+given #7 (I,wt=16): 401 -p(x) | -p(f3(x)) | -q(y) | -p(c15) | q(f4(z)) | q(z) | p(c19).  [factor(118,e,h)].
+
+given #8 (I,wt=16): 406 -p(x) | -p(f3(x)) | -q(f4(y)) | -p(c15) | -q(y) | p(c19) | q(z).  [factor(120,c,e)].
+
+given #9 (I,wt=14): 410 p(x) | p(f1(x)) | -q(y) | q(f2(z)) | q(z) | -p(u).  [factor(122,d,g)].
+
+given #10 (I,wt=14): 412 p(x) | p(f1(x)) | -q(c7) | q(f2(y)) | q(y) | p(c6).  [factor(124,c,g)].
+
+given #11 (I,wt=14): 413 p(x) | p(f1(x)) | -q(f2(y)) | -q(y) | -p(z) | q(u).  [factor(126,c,d)].
+
+given #12 (I,wt=14): 415 p(x) | p(f1(x)) | -q(f2(y)) | -q(y) | p(c6) | -q(c7).  [factor(128,c,d)].
+
+given #13 (I,wt=13): 427 p(x) | p(f1(x)) | -q(c8) | q(y) | -p(z) | -q(c10).  [factor(138,c,e)].
+
+given #14 (I,wt=14): 430 p(x) | p(f1(x)) | q(c1) | -p(c2) | q(f2(y)) | q(y).  [factor(141,d,g)].
+
+given #15 (I,wt=14): 435 -p(x) | -p(f1(x)) | -q(y) | p(z) | q(f2(u)) | q(u).  [factor(153,e,g)].
+
+given #16 (I,wt=14): 436 -p(x) | -p(f1(x)) | -q(f2(y)) | p(z) | -q(y) | q(u).  [factor(157,c,e)].
+
+given #17 (I,wt=14): 437 -p(x) | -p(f1(x)) | -q(f2(y)) | p(c6) | -q(y) | -q(c7).  [factor(159,d,f)].
+
+given #18 (I,wt=13): 447 -p(x) | -p(f1(x)) | -q(c8) | p(y) | q(z) | -q(c10).  [factor(169,c,f)].
+
+given #19 (I,wt=14): 452 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | q(f2(y)) | q(y).  [factor(172,c,g)].
+
+given #20 (I,wt=14): 456 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(f2(y)) | -q(y).  [factor(176,c,g)].
+
+given #21 (I,wt=13): 459 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(c10) | q(c8).  [factor(181,e,g)].
+
+given #22 (I,wt=13): 463 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | -q(c8) | -q(c10).  [factor(186,c,e)].
+
+given #23 (I,wt=13): 487 -p(c3) | p(x) | -q(y) | -p(c5) | q(f2(z)) | q(z).  [factor(209,e,g)].
+
+given #24 (I,wt=13): 488 -p(c3) | p(x) | -q(f2(y)) | -p(c5) | -q(y) | q(z).  [factor(213,c,e)].
+
+given #25 (I,wt=13): 489 -p(c3) | p(c6) | -q(f2(x)) | -p(c5) | -q(x) | -q(c7).  [factor(215,c,e)].
+
+given #26 (I,wt=12): 499 -p(c3) | p(x) | -q(c8) | -p(c5) | q(y) | -q(c10).  [factor(225,c,f)].
+
+given #27 (I,wt=12): 510 p(c3) | -p(x) | q(c4) | -q(y) | q(c8) | p(c9).  [factor(238,c,g)].
+
+given #28 (I,wt=13): 524 p(c3) | -p(c5) | -q(f2(x)) | -q(x) | p(c6) | -q(c7).  [factor(254,c,d)].
+
+given #29 (I,wt=13): 565 -p(c11) | p(c19) | q(c12) | -p(c13) | q(f4(x)) | q(x).  [factor(292,c,g)].
+
+given #30 (I,wt=13): 582 p(c11) | -p(x) | -q(y) | q(f4(z)) | q(z) | p(c19).  [factor(313,d,g)].
+
+given #31 (I,wt=13): 586 p(c11) | -p(x) | -q(f4(y)) | -q(y) | p(c19) | q(z).  [factor(318,c,d)].
+
+given #32 (I,wt=13): 595 p(c11) | -p(c13) | q(c12) | q(f4(x)) | q(x) | p(c19).  [factor(327,c,g)].
+
+given #33 (I,wt=13): 600 p(x) | p(f3(x)) | q(c14) | -q(y) | q(c16) | -p(z).  [factor(336,c,g)].
+
+given #34 (I,wt=13): 602 p(x) | p(f3(x)) | q(c14) | -q(c18) | q(c16) | p(c17).  [factor(338,d,g)].
+
+given #35 (I,wt=13): 606 p(x) | p(f3(x)) | q(c14) | -q(c16) | p(c17) | -q(c18).  [factor(342,c,d)].
+
+given #36 (I,wt=14): 609 p(x) | p(f3(x)) | q(c14) | q(f4(y)) | q(y) | p(c19).  [factor(344,c,g)].
+
+given #37 (I,wt=14): 611 p(x) | p(f3(x)) | q(c14) | q(f4(c14)) | -p(y) | -q(c20).  [factor(347,c,e)].
+
+given #38 (I,wt=14): 613 p(x) | p(f3(x)) | q(c14) | -q(f4(y)) | -q(y) | p(c19).  [factor(349,c,g)].
+
+given #39 (I,wt=14): 614 p(x) | p(f3(x)) | q(c14) | -q(f4(c20)) | -q(c20) | -p(y).  [factor(351,e,g)].
+
+given #40 (I,wt=14): 622 p(c19) | p(f3(c19)) | -q(x) | -p(c15) | q(f4(y)) | q(y).  [factor(363,e,g)].
+
+given #41 (I,wt=14): 623 p(x) | p(f3(x)) | -q(c20) | -p(c15) | q(f4(y)) | q(y).  [factor(365,d,g)].
+
+given #42 (I,wt=14): 624 p(c19) | p(f3(c19)) | -q(f4(x)) | -p(c15) | -q(x) | q(y).  [factor(367,c,e)].
+
+given #43 (I,wt=14): 625 p(x) | p(f3(x)) | -q(f4(y)) | -p(c15) | -q(y) | -q(c20).  [factor(369,d,f)].
+
+given #44 (I,wt=13): 627 -p(x) | -p(f3(x)) | q(c14) | p(y) | -q(z) | q(c16).  [factor(371,c,g)].
+
+given #45 (I,wt=14): 633 -p(x) | -p(f3(x)) | q(c14) | p(c19) | q(f4(y)) | q(y).  [factor(380,d,g)].
+
+given #46 (I,wt=14): 634 -p(x) | -p(f3(x)) | q(c14) | p(y) | q(f4(c14)) | -q(c20).  [factor(382,c,f)].
+
+given #47 (I,wt=14): 635 -p(x) | -p(f3(x)) | q(c14) | p(c19) | -q(f4(y)) | -q(y).  [factor(384,d,g)].
+
+given #48 (I,wt=14): 636 -p(x) | -p(f3(x)) | q(c14) | p(y) | -q(f4(c20)) | -q(c20).  [factor(386,f,g)].
+
+given #49 (I,wt=14): 652 -p(c15) | -p(f3(c15)) | -q(x) | q(f4(y)) | q(y) | p(c19).  [factor(400,d,g)].
+
+given #50 (I,wt=14): 655 -p(x) | -p(f3(x)) | -q(c20) | -p(c15) | q(f4(y)) | q(y).  [factor(403,c,g)].
+
+given #51 (I,wt=14): 656 -p(c15) | -p(f3(c15)) | -q(f4(x)) | -q(x) | p(c19) | q(y).  [factor(405,c,d)].
+
+given #52 (I,wt=14): 659 -p(x) | -p(f3(x)) | -q(f4(y)) | -p(c15) | -q(y) | -q(c20).  [factor(408,c,e)].
+
+given #53 (I,wt=12): 661 p(c6) | p(f1(c6)) | -q(c7) | q(f2(x)) | q(x).  [factor(411,c,f)].
+
+given #54 (I,wt=12): 662 p(c6) | p(f1(c6)) | -q(f2(x)) | -q(x) | -q(c7).  [factor(414,c,d)].
+
+given #55 (I,wt=12): 663 p(x) | p(f1(x)) | -q(f2(c7)) | -q(c7) | p(c6).  [factor(415,d,f)].
+
+given #56 (I,wt=11): 666 p(x) | p(f1(x)) | -q(y) | q(c8) | p(c9).  [factor(418,d,f)].
+
+given #57 (I,wt=11): 667 p(x) | p(f1(x)) | -q(c10) | q(c8) | -p(y).  [factor(421,c,f)].
+
+given #58 (I,wt=11): 670 p(x) | p(f1(x)) | -q(c8) | q(y) | p(c9).  [factor(424,d,f)].
+
+given #59 (I,wt=12): 671 p(x) | p(f1(x)) | q(c1) | -p(c2) | q(f2(c1)).  [factor(428,d,f)].
+
+given #60 (I,wt=12): 673 -p(x) | -p(f1(x)) | -q(f2(c7)) | p(c6) | -q(c7).  [factor(437,e,f)].
+
+given #61 (I,wt=11): 674 -p(x) | -p(f1(x)) | -q(y) | p(c9) | q(c8).  [factor(439,e,f)].
+
+given #62 (I,wt=11): 675 -p(x) | -p(f1(x)) | -q(c10) | p(y) | q(c8).  [factor(442,c,f)].
+
+given #63 (I,wt=11): 676 -p(x) | -p(f1(x)) | -q(c8) | p(c9) | q(y).  [factor(444,e,f)].
+
+given #64 (I,wt=12): 678 -p(c2) | -p(f1(c2)) | q(c1) | q(f2(x)) | q(x).  [factor(448,c,f)].
+
+given #65 (I,wt=12): 680 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | q(f2(c1)).  [factor(451,c,f)].
+
+given #66 (I,wt=12): 681 -p(c2) | -p(f1(c2)) | q(c1) | -q(f2(x)) | -q(x).  [factor(454,c,f)].
+
+given #67 (I,wt=11): 682 -p(c2) | -p(f1(c2)) | q(c1) | -q(c10) | q(c8).  [factor(457,d,f)].
+
+given #68 (I,wt=11): 683 -p(c2) | -p(f1(c2)) | q(c1) | -q(c8) | -q(c10).  [factor(461,c,d)].
+
+given #69 (I,wt=11): 685 -p(c3) | p(x) | q(c4) | q(f2(y)) | q(y).  [factor(464,c,f)].
+
+given #70 (I,wt=11): 689 -p(c3) | p(x) | q(c4) | -q(f2(y)) | -q(y).  [factor(472,c,f)].
+
+given #71 (I,wt=10): 690 -p(c3) | p(c9) | q(c4) | -q(x) | q(c8).  [factor(476,c,f)].
+
+given #72 (I,wt=10): 691 -p(c3) | p(x) | q(c4) | -q(c10) | q(c8).  [factor(478,d,f)].
+
+given #73 (I,wt=10): 694 -p(c3) | p(x) | q(c4) | -q(c8) | -q(c10).  [factor(484,c,d)].
+
+given #74 (I,wt=11): 695 -p(c3) | p(c6) | -q(f2(c7)) | -p(c5) | -q(c7).  [factor(489,e,f)].
+
+given #75 (I,wt=10): 696 -p(c3) | p(c9) | -q(x) | -p(c5) | q(c8).  [factor(491,e,f)].
+
+given #76 (I,wt=10): 697 -p(c3) | p(x) | -q(c10) | -p(c5) | q(c8).  [factor(494,c,f)].
+
+given #77 (I,wt=10): 698 -p(c3) | p(c9) | -q(c8) | -p(c5) | q(x).  [factor(496,e,f)].
+
+given #78 (I,wt=11): 700 p(c3) | -p(x) | q(c4) | q(f2(y)) | q(y).  [factor(500,c,f)].
+
+given #79 (I,wt=11): 703 p(c3) | -p(x) | q(c4) | -q(f2(y)) | -q(y).  [factor(507,c,f)].
+
+given #80 (I,wt=10): 704 p(c3) | -p(x) | q(c4) | -q(c10) | q(c8).  [factor(511,d,f)].
+
+given #81 (I,wt=10): 705 p(c3) | -p(x) | q(c4) | -q(c8) | p(c9).  [factor(514,c,f)].
+
+given #82 (I,wt=10): 706 p(c3) | -p(x) | q(c4) | -q(c8) | -q(c10).  [factor(516,c,d)].
+
+given #83 (I,wt=11): 707 p(c3) | -p(c5) | -q(x) | q(f2(y)) | q(y).  [factor(519,d,f)].
+
+given #84 (I,wt=11): 708 p(c3) | -p(c5) | -q(f2(x)) | -q(x) | q(y).  [factor(522,c,d)].
+
+given #85 (I,wt=11): 709 p(c3) | -p(c5) | -q(f2(c7)) | -q(c7) | p(c6).  [factor(524,d,f)].
+
+given #86 (I,wt=10): 710 p(c3) | -p(c5) | -q(x) | q(c8) | p(c9).  [factor(526,d,f)].
+
+given #87 (I,wt=10): 713 p(c3) | -p(c5) | -q(c8) | q(x) | p(c9).  [factor(532,d,f)].
+
+given #88 (I,wt=10): 714 p(c3) | -p(c5) | -q(c8) | q(x) | -q(c10).  [factor(535,c,e)].
+
+given #89 (I,wt=11): 723 -p(c11) | p(c19) | -q(x) | q(f4(y)) | q(y).  [factor(552,d,f)].
+
+given #90 (I,wt=11): 724 -p(c11) | p(x) | -q(c20) | q(f4(y)) | q(y).  [factor(554,c,f)].
+
+given #91 (I,wt=11): 725 -p(c11) | p(c19) | -q(f4(x)) | -q(x) | q(y).  [factor(557,c,d)].
+
+given #92 (I,wt=11): 726 -p(c11) | p(x) | -q(f4(y)) | -q(y) | -q(c20).  [factor(559,c,d)].
+
+given #93 (I,wt=11): 729 -p(c11) | p(c19) | q(c12) | -p(c13) | q(f4(c12)).  [factor(564,c,f)].
+
+given #94 (I,wt=11): 738 p(c11) | -p(x) | -q(c20) | q(f4(y)) | q(y).  [factor(583,c,f)].
+
+given #95 (I,wt=11): 739 p(c11) | -p(x) | -q(f4(y)) | -q(y) | -q(c20).  [factor(587,c,d)].
+
+given #96 (I,wt=11): 742 p(c11) | -p(c13) | q(c12) | q(f4(c12)) | p(c19).  [factor(594,c,f)].
+
+given #97 (I,wt=11): 744 p(c17) | p(f3(c17)) | q(c14) | -q(c18) | q(c16).  [factor(601,d,f)].
+
+given #98 (I,wt=11): 745 p(x) | p(f3(x)) | q(c14) | -q(c16) | -p(y).  [factor(603,c,f)].
+
+given #99 (I,wt=11): 746 p(c17) | p(f3(c17)) | q(c14) | -q(c16) | -q(c18).  [factor(605,c,d)].
+
+given #100 (I,wt=12): 748 p(c19) | p(f3(c19)) | q(c14) | q(f4(x)) | q(x).  [factor(607,c,f)].
+
+given #101 (I,wt=12): 749 p(x) | p(f3(x)) | q(c14) | q(f4(c14)) | p(c19).  [factor(608,c,f)].
+
+given #102 (I,wt=12): 750 p(c19) | p(f3(c19)) | q(c14) | -q(f4(x)) | -q(x).  [factor(612,c,f)].
+
+given #103 (I,wt=11): 751 p(x) | p(f3(x)) | -q(y) | -p(c15) | q(c16).  [factor(615,e,f)].
+
+given #104 (I,wt=11): 752 p(x) | p(f3(x)) | -q(c16) | -p(c15) | q(y).  [factor(619,e,f)].
+
+given #105 (I,wt=12): 753 p(x) | p(f3(x)) | -q(f4(c20)) | -p(c15) | -q(c20).  [factor(625,e,f)].
+
+given #106 (I,wt=11): 754 -p(x) | -p(f3(x)) | q(c14) | p(y) | -q(c16).  [factor(628,c,f)].
+
+given #107 (I,wt=12): 755 -p(x) | -p(f3(x)) | q(c14) | p(c19) | q(f4(c14)).  [factor(631,d,f)].
+
+given #108 (I,wt=11): 759 -p(x) | -p(f3(x)) | -q(y) | -p(c15) | q(c16).  [factor(640,e,f)].
+
+given #109 (I,wt=11): 764 -p(x) | -p(f3(x)) | -q(c16) | -p(c15) | q(y).  [factor(648,e,f)].
+
+given #110 (I,wt=12): 765 -p(c15) | -p(f3(c15)) | -q(c20) | q(f4(x)) | q(x).  [factor(653,c,f)].
+
+given #111 (I,wt=12): 766 -p(c15) | -p(f3(c15)) | -q(f4(x)) | -q(x) | -q(c20).  [factor(657,c,d)].
+
+given #112 (I,wt=12): 768 -p(x) | -p(f3(x)) | -q(f4(c20)) | -p(c15) | -q(c20).  [factor(659,e,f)].
+
+given #113 (I,wt=10): 769 p(c6) | p(f1(c6)) | -q(f2(c7)) | -q(c7).  [factor(662,d,e)].
+
+given #114 (I,wt=9): 770 p(c9) | p(f1(c9)) | -q(x) | q(c8).  [factor(664,d,e)].
+
+given #115 (I,wt=9): 771 p(c9) | p(f1(c9)) | -q(c8) | q(x).  [factor(668,d,e)].
+
+given #116 (I,wt=10): 772 -p(c2) | -p(f1(c2)) | q(c1) | q(f2(c1)).  [factor(677,c,e)].
+
+given #117 (I,wt=9): 773 -p(c3) | p(x) | q(c4) | q(f2(c4)).  [factor(684,c,e)].
+
+given #118 (I,wt=8): 774 -p(c3) | p(c9) | q(c4) | -q(c8).  [factor(692,c,e)].
+
+given #119 (I,wt=9): 775 p(c3) | -p(x) | q(c4) | q(f2(c4)).  [factor(699,c,e)].
+
+given #120 (I,wt=8): 776 p(c3) | -p(c5) | -q(c10) | q(c8).  [factor(711,c,e)].
+
+given #121 (I,wt=8): 777 -p(c11) | p(x) | -q(y) | q(c16).  [factor(715,d,e)].
+
+given #122 (I,wt=8): 778 -p(c11) | p(x) | -q(c16) | q(y).  [factor(719,d,e)].
+
+given #123 (I,wt=9): 779 -p(c11) | p(x) | -q(f4(c20)) | -q(c20).  [factor(726,d,e)].
+
+given #124 (I,wt=8): 780 p(c11) | -p(x) | -q(y) | q(c16).  [factor(730,d,e)].
+
+given #125 (I,wt=8): 781 p(c11) | -p(x) | -q(c16) | q(y).  [factor(734,d,e)].
+
+given #126 (I,wt=9): 782 p(c11) | -p(x) | -q(f4(c20)) | -q(c20).  [factor(739,d,e)].
+
+given #127 (I,wt=10): 783 p(c19) | p(f3(c19)) | q(c14) | q(f4(c14)).  [factor(747,c,e)].
+
+given #128 (I,wt=9): 784 -p(c15) | -p(f3(c15)) | -q(x) | q(c16).  [factor(756,d,e)].
+
+given #129 (I,wt=9): 785 -p(c15) | -p(f3(c15)) | -q(c16) | q(x).  [factor(761,d,e)].
+
+given #130 (I,wt=10): 786 -p(c15) | -p(f3(c15)) | -q(f4(c20)) | -q(c20).  [factor(766,d,e)].
+
+given #131 (A,wt=19): 798 p(x) | p(f3(x)) | q(c14) | p(c19) | p(c3) | -p(y) | q(c4) | q(c8) | p(c9).  [factor(788,c,d)].
+
+given #132 (T,wt=11): 834 p(c19) | p(f3(c19)) | q(c14) | q(c16) | -p(x).  [factor(811,c,d)].
+
+given #133 (T,wt=13): 813 p(x) | p(f3(x)) | q(c14) | p(c19) | q(c16) | -p(y).  [factor(793,c,d)].
+
+given #134 (T,wt=14): 849 p(c19) | p(f3(c19)) | q(c14) | -p(c3) | -p(c5) | q(f2(c14)).  [factor(835,c,g)].
+
+given #135 (T,wt=14): 878 p(c9) | p(f1(c9)) | q(c8) | p(f3(c9)) | q(c14) | p(c19).  [factor(863,c,f)].
+
+given #136 (A,wt=21): 809 p(x) | p(f3(x)) | q(c14) | p(c19) | p(y) | p(f1(y)) | q(f2(z)) | q(z) | -p(u).  [factor(791,c,d)].
+
+given #137 (T,wt=12): 924 p(c9) | p(f1(c9)) | q(c8) | p(f3(c9)) | p(c19).  [resolve(878,e,770,c),merge(f),merge(g),merge(h)].
+
+given #138 (T,wt=12): 929 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | q(x).  [resolve(924,c,771,c),merge(e),merge(f)].
+
+given #139 (T,wt=14): 880 p(c9) | p(f1(c9)) | q(c8) | p(c19) | p(f3(c19)) | q(c14).  [factor(865,d,g)].
+
+given #140 (T,wt=12): 946 p(c9) | p(f1(c9)) | q(c8) | p(c19) | p(f3(c19)).  [resolve(880,f,770,c),merge(f),merge(g),merge(h)].
+
+given #141 (A,wt=17): 814 p(c19) | p(f3(c19)) | q(c14) | p(c3) | -p(x) | q(c4) | q(c8) | p(c9).  [factor(795,c,d)].
+
+given #142 (T,wt=12): 951 p(c9) | p(f1(c9)) | p(c19) | p(f3(c19)) | q(x).  [resolve(946,c,771,c),merge(e),merge(f)].
+
+given #143 (T,wt=14): 881 p(c19) | p(f1(c19)) | q(c8) | p(c9) | p(f3(c19)) | q(c14).  [factor(867,c,g)].
+
+given #144 (T,wt=12): 984 p(c19) | p(f1(c19)) | q(c8) | p(c9) | p(f3(c19)).  [factor(976,a,f),merge(f)].
+
+given #145 (T,wt=12): 1002 p(c19) | p(f1(c19)) | p(c9) | p(f3(c19)) | q(x).  [factor(996,a,e),merge(e)].
+
+given #146 (A,wt=17): 815 p(c3) | p(f3(c3)) | q(c14) | p(c19) | -p(x) | q(c4) | q(c8) | p(c9).  [factor(796,c,d)].
+
+given #147 (T,wt=14): 885 p(c19) | p(f1(c19)) | q(c8) | p(c9) | p(f3(c9)) | q(c14).  [factor(873,d,e)].
+
+given #148 (T,wt=12): 1036 p(c19) | p(f1(c19)) | q(c8) | p(c9) | p(f3(c9)).  [factor(1026,a,f),merge(f)].
+
+given #149 (T,wt=12): 1056 p(c19) | p(f1(c19)) | p(c9) | p(f3(c9)) | q(x).  [factor(1048,a,e),merge(e)].
+
+given #150 (T,wt=14): 911 p(c3) | -p(c5) | q(f2(c14)) | q(c14) | p(f3(c3)) | p(c19).  [factor(908,d,f)].
+
+given #151 (A,wt=17): 816 p(c9) | p(f3(c9)) | q(c14) | p(c19) | p(c3) | -p(x) | q(c4) | q(c8).  [factor(797,c,d)].
+
+given #152 (T,wt=14): 912 p(c3) | -p(c5) | q(f2(c14)) | q(c14) | p(c19) | p(f3(c19)).  [factor(909,e,g)].
+
+given #153 (T,wt=14): 940 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | -p(c11) | -q(c20).  [factor(932,a,f)].
+
+given #154 (T,wt=12): 1073 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | -p(c11).  [resolve(940,f,929,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #155 (T,wt=14): 941 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | -p(c15) | -q(c20).  [factor(935,a,e),merge(e)].
+
+given #156 (A,wt=18): 819 p(x) | p(f3(x)) | q(c14) | p(c19) | -p(c3) | -p(c5) | q(f2(y)) | q(y).  [factor(800,c,d)].
+
+given #157 (T,wt=12): 1076 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | -p(c15).  [resolve(941,f,929,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #158 (T,wt=14): 942 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | -q(c7) | p(c6).  [factor(939,a,e),merge(e)].
+
+given #159 (T,wt=12): 1079 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | p(c6).  [resolve(942,e,929,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #160 (T,wt=14): 962 p(c9) | p(f1(c9)) | p(c19) | p(f3(c19)) | -p(c11) | -q(c20).  [factor(954,a,f)].
+
+given #161 (A,wt=19): 823 p(x) | p(f3(x)) | q(c14) | p(c19) | -p(y) | -p(f1(y)) | q(f2(z)) | q(z).  [factor(803,c,d)].
+
+given #162 (T,wt=12): 1094 p(c9) | p(f1(c9)) | p(c19) | p(f3(c19)) | -p(c11).  [resolve(962,f,951,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #163 (T,wt=14): 964 p(c9) | p(f1(c9)) | p(c19) | p(f3(c19)) | -p(c15) | -q(c20).  [factor(957,c,e),merge(e)].
+
+given #164 (T,wt=12): 1096 p(c9) | p(f1(c9)) | p(c19) | p(f3(c19)) | -p(c15).  [resolve(964,f,951,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #165 (T,wt=14): 965 p(c9) | p(f1(c9)) | p(c19) | p(f3(c19)) | -q(c7) | p(c6).  [factor(961,a,e),merge(e)].
+
+given #166 (A,wt=19): 827 p(c19) | p(f3(c19)) | q(c14) | p(x) | p(f1(x)) | q(f2(y)) | q(y) | -p(z).  [factor(805,c,d)].
+
+given #167 (T,wt=12): 1098 p(c9) | p(f1(c9)) | p(c19) | p(f3(c19)) | p(c6).  [resolve(965,e,951,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #168 (T,wt=14): 1013 p(c19) | p(f1(c19)) | p(c9) | p(f3(c19)) | -p(c11) | -q(c20).  [factor(1005,a,f)].
+
+given #169 (T,wt=12): 1100 p(c19) | p(f1(c19)) | p(c9) | p(f3(c19)) | -p(c11).  [resolve(1013,f,1002,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #170 (T,wt=14): 1014 p(c19) | p(f1(c19)) | p(c9) | p(f3(c19)) | -p(c15) | -q(c20).  [factor(1008,a,e),merge(e)].
+
+given #171 (A,wt=19): 828 p(x) | p(f3(x)) | q(c14) | p(c19) | p(f1(x)) | q(f2(y)) | q(y) | -p(z).  [factor(806,c,d)].
+
+given #172 (T,wt=12): 1102 p(c19) | p(f1(c19)) | p(c9) | p(f3(c19)) | -p(c15).  [resolve(1014,f,1002,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #173 (T,wt=14): 1015 p(c19) | p(f1(c19)) | p(c9) | p(f3(c19)) | -q(c7) | p(c6).  [factor(1012,a,e),merge(e)].
+
+given #174 (T,wt=12): 1104 p(c19) | p(f1(c19)) | p(c9) | p(f3(c19)) | p(c6).  [resolve(1015,e,1002,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #175 (T,wt=14): 1067 p(c19) | p(f1(c19)) | p(c9) | p(f3(c9)) | -p(c11) | -q(c20).  [factor(1059,a,f)].
+
+given #176 (A,wt=20): 829 p(f1(x)) | p(f3(f1(x))) | q(c14) | p(c19) | p(x) | q(f2(y)) | q(y) | -p(z).  [factor(807,c,d)].
+
+given #177 (T,wt=12): 1124 p(c19) | p(f1(c19)) | p(c9) | p(f3(c9)) | -p(c11).  [resolve(1067,f,1056,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #178 (T,wt=14): 1069 p(c19) | p(f1(c19)) | p(c9) | p(f3(c9)) | -p(c15) | -q(c20).  [factor(1062,c,e),merge(e)].
+
+given #179 (T,wt=12): 1125 p(c19) | p(f1(c19)) | p(c9) | p(f3(c9)) | -p(c15).  [resolve(1069,f,1056,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #180 (T,wt=14): 1070 p(c19) | p(f1(c19)) | p(c9) | p(f3(c9)) | -q(c7) | p(c6).  [factor(1066,a,e),merge(e)].
+
+given #181 (A,wt=20): 831 p(x) | p(f3(x)) | q(c14) | p(c19) | p(f1(f3(x))) | q(f2(y)) | q(y) | -p(z).  [factor(808,c,d)].
+
+given #182 (T,wt=12): 1126 p(c19) | p(f1(c19)) | p(c9) | p(f3(c9)) | p(c6).  [resolve(1070,e,1056,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #183 (T,wt=15): 850 p(c19) | p(f3(c19)) | q(c14) | -p(x) | -p(f1(x)) | q(f2(c14)).  [factor(838,c,g)].
+
+given #184 (T,wt=15): 851 p(c19) | p(f3(c19)) | q(c14) | p(f1(c19)) | q(f2(c14)) | -p(x).  [factor(841,c,f)].
+
+given #185 (T,wt=15): 879 p(c9) | p(f1(c9)) | q(c8) | p(f3(f1(c9))) | q(c14) | p(c19).  [factor(864,c,f)].
+
+given #186 (A,wt=19): 832 p(x) | p(f3(x)) | q(c14) | p(c19) | p(y) | p(f1(y)) | q(f2(c14)) | -p(z).  [factor(809,c,h)].
+
+given #187 (T,wt=13): 1130 p(c9) | p(f1(c9)) | q(c8) | p(f3(f1(c9))) | p(c19).  [resolve(879,e,770,c),merge(f),merge(g),merge(h)].
+
+given #188 (T,wt=13): 1135 p(c9) | p(f1(c9)) | p(f3(f1(c9))) | p(c19) | q(x).  [resolve(1130,c,771,c),merge(e),merge(f)].
+
+given #189 (T,wt=15): 882 p(f3(c9)) | p(f1(f3(c9))) | q(c8) | p(c9) | q(c14) | p(c19).  [factor(869,d,e)].
+
+given #190 (T,wt=13): 1170 p(f3(c9)) | p(f1(f3(c9))) | q(c8) | p(c9) | p(c19).  [factor(1159,a,f),merge(f)].
+
+given #191 (A,wt=19): 833 p(x) | p(f3(x)) | q(c14) | p(c19) | p(f1(c19)) | q(f2(y)) | q(y) | -p(z).  [factor(809,d,e)].
+
+given #192 (T,wt=13): 1191 p(f3(c9)) | p(f1(f3(c9))) | p(c9) | p(c19) | q(x).  [factor(1182,a,e),merge(e)].
+
+given #193 (T,wt=15): 883 p(f3(c19)) | p(f1(f3(c19))) | q(c8) | p(c9) | p(c19) | q(c14).  [factor(869,e,g)].
+
+given #194 (T,wt=13): 1225 p(f3(c19)) | p(f1(f3(c19))) | q(c8) | p(c9) | p(c19).  [factor(1216,a,f),merge(f)].
+
+given #195 (T,wt=13): 1244 p(f3(c19)) | p(f1(f3(c19))) | p(c9) | p(c19) | q(x).  [factor(1237,a,e),merge(e)].
+
+given #196 (A,wt=16): 835 p(c19) | p(f3(c19)) | q(c14) | -p(c3) | -p(c5) | q(f2(x)) | q(x).  [factor(817,c,d)].
+
+given #197 (T,wt=15): 884 p(c19) | p(f1(c19)) | q(c8) | p(c9) | p(f3(f1(c19))) | q(c14).  [factor(872,c,g)].
+
+given #198 (T,wt=13): 1279 p(c19) | p(f1(c19)) | q(c8) | p(c9) | p(f3(f1(c19))).  [factor(1270,a,f),merge(f)].
+
+given #199 (T,wt=13): 1299 p(c19) | p(f1(c19)) | p(c9) | p(f3(f1(c19))) | q(x).  [factor(1292,a,e),merge(e)].
+
+given #200 (T,wt=15): 896 -p(c3) | p(c9) | q(c4) | q(c8) | p(f3(c9)) | q(c14) | p(c19).  [factor(893,c,g)].
+
+given #201 (A,wt=16): 837 p(x) | p(f3(x)) | q(c14) | p(c19) | -p(c3) | -p(c5) | q(f2(c14)).  [factor(819,c,h)].
+
+given #202 (T,wt=15): 897 -p(c3) | p(c9) | q(c4) | q(c8) | p(c19) | p(f3(c19)) | q(c14).  [factor(894,e,h)].
+
+given #203 (T,wt=15): 902 -p(c3) | p(c9) | -p(c5) | q(c8) | p(f3(c9)) | q(c14) | p(c19).  [factor(899,d,g)].
+
+given #204 (T,wt=15): 903 -p(c3) | p(c9) | -p(c5) | q(c8) | p(c19) | p(f3(c19)) | q(c14).  [factor(900,e,h)].
+
+given #205 (T,wt=15): 918 p(c3) | -p(c5) | q(c8) | p(c9) | p(f3(c3)) | q(c14) | p(c19).  [factor(914,c,g)].
+
+given #206 (A,wt=17): 838 p(c19) | p(f3(c19)) | q(c14) | -p(x) | -p(f1(x)) | q(f2(y)) | q(y).  [factor(821,c,d)].
+
+given #207 (T,wt=15): 919 p(c3) | -p(c5) | q(c8) | p(c9) | p(f3(c9)) | q(c14) | p(c19).  [factor(915,d,e)].
+
+given #208 (T,wt=15): 920 p(c3) | -p(c5) | q(c8) | p(c9) | p(c19) | p(f3(c19)) | q(c14).  [factor(915,e,h)].
+
+given #209 (T,wt=15): 1146 p(c9) | p(f1(c9)) | p(f3(f1(c9))) | p(c19) | -p(c11) | -q(c20).  [factor(1138,a,f)].
+
+given #210 (T,wt=13): 1314 p(c9) | p(f1(c9)) | p(f3(f1(c9))) | p(c19) | -p(c11).  [resolve(1146,f,1135,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #211 (A,wt=17): 840 p(x) | p(f3(x)) | q(c14) | p(c19) | -p(y) | -p(f1(y)) | q(f2(c14)).  [factor(823,c,h)].
+
+given #212 (T,wt=15): 1147 p(c9) | p(f1(c9)) | p(f3(f1(c9))) | p(c19) | -p(c15) | -q(c20).  [factor(1141,b,e),merge(e)].
+
+given #213 (T,wt=13): 1316 p(c9) | p(f1(c9)) | p(f3(f1(c9))) | p(c19) | -p(c15).  [resolve(1147,f,1135,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #214 (T,wt=15): 1148 p(c9) | p(f1(c9)) | p(f3(f1(c9))) | p(c19) | -q(c7) | p(c6).  [factor(1145,a,e),merge(e)].
+
+given #215 (T,wt=13): 1318 p(c9) | p(f1(c9)) | p(f3(f1(c9))) | p(c19) | p(c6).  [resolve(1148,e,1135,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #216 (A,wt=17): 841 p(c19) | p(f3(c19)) | q(c14) | p(f1(c19)) | q(f2(x)) | q(x) | -p(y).  [factor(825,c,d)].
+
+given #217 (T,wt=15): 1202 p(f3(c9)) | p(f1(f3(c9))) | p(c9) | p(c19) | -p(c11) | -q(c20).  [factor(1194,a,f)].
+
+given #218 (T,wt=13): 1320 p(f3(c9)) | p(f1(f3(c9))) | p(c9) | p(c19) | -p(c11).  [resolve(1202,f,1191,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #219 (T,wt=15): 1204 p(f3(c9)) | p(f1(f3(c9))) | p(c9) | p(c19) | -p(c15) | -q(c20).  [factor(1197,a,f),merge(e)].
+
+given #220 (T,wt=13): 1322 p(f3(c9)) | p(f1(f3(c9))) | p(c9) | p(c19) | -p(c15).  [resolve(1204,f,1191,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #221 (A,wt=18): 842 p(c19) | p(f3(c19)) | q(c14) | p(f1(f3(c19))) | q(f2(x)) | q(x) | -p(y).  [factor(826,c,d)].
+
+given #222 (T,wt=15): 1205 p(f3(c9)) | p(f1(f3(c9))) | p(c9) | p(c19) | -q(c7) | p(c6).  [factor(1201,a,e),merge(e)].
+
+given #223 (T,wt=13): 1324 p(f3(c9)) | p(f1(f3(c9))) | p(c9) | p(c19) | p(c6).  [resolve(1205,e,1191,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #224 (T,wt=13): 1344 p(f3(c9)) | p(c9) | p(c19) | p(c6) | q(c14) | q(c16).  [factor(1332,a,f),merge(e)].
+
+given #225 (T,wt=13): 1365 p(f3(c9)) | p(c9) | p(c19) | p(c6) | q(c14) | -p(x).  [factor(1355,a,g),merge(f)].
+
+given #226 (A,wt=17): 843 p(c19) | p(f3(c19)) | q(c14) | p(x) | p(f1(x)) | q(f2(c14)) | -p(y).  [factor(827,c,g)].
+
+given #227 (T,wt=11): 1366 p(f3(c9)) | p(c9) | p(c19) | p(c6) | q(c14).  [resolve(1365,f,1324,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #228 (T,wt=13): 1388 p(f3(c9)) | p(c9) | p(c19) | p(c6) | -p(c11) | q(c16).  [factor(1369,a,f)].
+
+given #229 (T,wt=13): 1390 p(f3(c9)) | p(c9) | p(c19) | p(c6) | -p(c15) | q(c16).  [factor(1371,a,f),merge(e)].
+
+given #230 (T,wt=14): 1391 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(f1(c6)) | q(c8).  [factor(1378,d,e)].
+
+given #231 (A,wt=17): 844 p(x) | p(f3(x)) | q(c14) | p(c19) | p(f1(x)) | q(f2(c14)) | -p(y).  [factor(828,c,g)].
+
+given #232 (T,wt=14): 1403 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(f1(c6)) | q(x).  [factor(1402,d,f),merge(f)].
+
+given #233 (T,wt=14): 1407 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(f1(c6)) | -q(c7).  [resolve(1403,f,769,c),merge(f),merge(g)].
+
+given #234 (T,wt=12): 1413 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(f1(c6)).  [resolve(1407,f,1403,f),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #235 (T,wt=15): 1255 p(f3(c19)) | p(f1(f3(c19))) | p(c9) | p(c19) | -p(c11) | -q(c20).  [factor(1247,a,f)].
+
+given #236 (A,wt=18): 845 p(f1(x)) | p(f3(f1(x))) | q(c14) | p(c19) | p(x) | q(f2(c14)) | -p(y).  [factor(829,c,g)].
+
+given #237 (T,wt=13): 1440 p(f3(c19)) | p(f1(f3(c19))) | p(c9) | p(c19) | -p(c11).  [resolve(1255,f,1244,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #238 (T,wt=15): 1257 p(f3(c19)) | p(f1(f3(c19))) | p(c9) | p(c19) | -p(c15) | -q(c20).  [factor(1250,a,f),merge(e)].
+
+given #239 (T,wt=13): 1441 p(f3(c19)) | p(f1(f3(c19))) | p(c9) | p(c19) | -p(c15).  [resolve(1257,f,1244,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #240 (T,wt=15): 1258 p(f3(c19)) | p(f1(f3(c19))) | p(c9) | p(c19) | -q(c7) | p(c6).  [factor(1254,a,e),merge(e)].
+
+given #241 (A,wt=18): 846 p(f1(c19)) | p(f3(f1(c19))) | q(c14) | p(c19) | q(f2(x)) | q(x) | -p(y).  [factor(829,d,e)].
+
+given #242 (T,wt=13): 1442 p(f3(c19)) | p(f1(f3(c19))) | p(c9) | p(c19) | p(c6).  [resolve(1258,e,1244,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #243 (T,wt=13): 1446 p(f3(c19)) | p(c9) | p(c19) | p(c6) | q(c14) | q(c16).  [resolve(1442,b,834,e),merge(e),merge(f)].
+
+given #244 (T,wt=13): 1471 p(f3(c19)) | p(c9) | p(c19) | p(c6) | q(c14) | -p(x).  [factor(1461,a,g),merge(f)].
+
+given #245 (T,wt=11): 1472 p(f3(c19)) | p(c9) | p(c19) | p(c6) | q(c14).  [resolve(1471,f,1442,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #246 (A,wt=18): 847 p(x) | p(f3(x)) | q(c14) | p(c19) | p(f1(f3(x))) | q(f2(c14)) | -p(y).  [factor(831,c,g)].
+
+given #247 (T,wt=13): 1492 p(f3(c19)) | p(c9) | p(c19) | p(c6) | -p(c11) | q(c16).  [factor(1475,a,f)].
+
+given #248 (T,wt=13): 1494 p(f3(c19)) | p(c9) | p(c19) | p(c6) | -p(c15) | q(c16).  [factor(1477,a,f),merge(e)].
+
+given #249 (T,wt=14): 1495 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(f1(c6)) | q(c8).  [factor(1484,d,e)].
+
+given #250 (T,wt=14): 1505 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(f1(c6)) | q(x).  [factor(1504,d,f),merge(f)].
+
+given #251 (A,wt=17): 848 p(x) | p(f3(x)) | q(c14) | p(c19) | p(f1(c19)) | q(f2(c14)) | -p(y).  [factor(832,d,e)].
+
+given #252 (T,wt=14): 1509 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(f1(c6)) | -q(c7).  [resolve(1505,f,769,c),merge(f),merge(g)].
+
+given #253 (T,wt=12): 1515 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(f1(c6)).  [resolve(1509,f,1505,f),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #254 (T,wt=15): 1310 p(c19) | p(f1(c19)) | p(c9) | p(f3(f1(c19))) | -p(c11) | -q(c20).  [factor(1302,a,f)].
+
+given #255 (T,wt=13): 1516 p(c19) | p(f1(c19)) | p(c9) | p(f3(f1(c19))) | -p(c11).  [resolve(1310,f,1299,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #256 (A,wt=16): 852 p(c19) | p(f3(c19)) | q(c14) | p(f1(f3(c19))) | q(f2(c14)) | -p(x).  [factor(842,c,f)].
+
+given #257 (T,wt=15): 1311 p(c19) | p(f1(c19)) | p(c9) | p(f3(f1(c19))) | -p(c15) | -q(c20).  [factor(1305,b,e),merge(e)].
+
+given #258 (T,wt=13): 1517 p(c19) | p(f1(c19)) | p(c9) | p(f3(f1(c19))) | -p(c15).  [resolve(1311,f,1299,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #259 (T,wt=15): 1312 p(c19) | p(f1(c19)) | p(c9) | p(f3(f1(c19))) | -q(c7) | p(c6).  [factor(1309,a,e),merge(e)].
+
+given #260 (T,wt=13): 1518 p(c19) | p(f1(c19)) | p(c9) | p(f3(f1(c19))) | p(c6).  [resolve(1312,e,1299,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #261 (A,wt=16): 853 p(f1(c19)) | p(f3(f1(c19))) | q(c14) | p(c19) | q(f2(c14)) | -p(x).  [factor(845,d,e)].
+
+given #262 (T,wt=15): 1368 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(c11) | -p(x) | q(c16).  [resolve(1366,e,780,c)].
+
+given #263 (T,wt=13): 1520 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(c11) | q(c16).  [resolve(1368,f,1324,b),merge(g),merge(h),merge(i),merge(j)].
+
+given #264 (T,wt=15): 1373 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(c3) | -p(c5) | q(c8).  [resolve(1366,e,710,c),merge(h)].
+
+given #265 (T,wt=15): 1375 p(f3(c9)) | p(c9) | p(c19) | p(c6) | -p(c3) | -p(c5) | q(c8).  [resolve(1366,e,696,c),merge(f)].
+
+given #266 (A,wt=18): 860 p(x) | p(f1(x)) | q(c8) | p(c9) | p(y) | p(f3(y)) | q(c14) | p(c19).  [factor(854,c,h)].
+
+given #267 (T,wt=14): 1562 p(c9) | p(f1(c9)) | q(c8) | p(x) | p(f3(x)) | p(c19).  [factor(1526,a,d),merge(g)].
+
+given #268 (T,wt=14): 1655 p(x) | p(f1(x)) | q(c8) | p(c9) | p(f3(x)) | p(c19).  [factor(1609,a,g),merge(g)].
+
+given #269 (T,wt=14): 1657 p(c19) | p(f1(c19)) | q(c8) | p(c9) | p(x) | p(f3(x)).  [factor(1611,a,g),merge(g)].
+
+given #270 (T,wt=14): 1659 p(x) | p(f1(x)) | q(c8) | p(c9) | p(f3(c9)) | p(c19).  [factor(1612,d,e)].
+
+given #271 (A,wt=18): 888 -p(x) | -p(f1(x)) | p(c9) | q(c8) | p(y) | p(f3(y)) | q(c14) | p(c19).  [factor(886,d,h)].
+
+given #272 (T,wt=14): 1660 p(x) | p(f1(x)) | q(c8) | p(c9) | p(c19) | p(f3(c19)).  [factor(1612,e,g)].
+
+given #273 (T,wt=14): 1665 p(c9) | p(f1(c9)) | p(x) | p(f3(x)) | p(c19) | q(y).  [resolve(1562,c,771,c),merge(f),merge(g)].
+
+given #274 (T,wt=14): 1688 p(x) | p(f1(x)) | p(c9) | p(f3(x)) | p(c19) | q(y).  [factor(1677,a,f),merge(f)].
+
+given #275 (T,wt=14): 1710 p(c19) | p(f1(c19)) | p(c9) | p(x) | p(f3(x)) | q(y).  [factor(1700,a,f),merge(f)].
+
+given #276 (A,wt=16): 890 -p(x) | -p(f1(x)) | p(c9) | q(c8) | p(f3(c9)) | q(c14) | p(c19).  [factor(887,d,g)].
+
+given #277 (T,wt=14): 1735 p(x) | p(f1(x)) | p(c9) | p(f3(c9)) | p(c19) | q(y).  [factor(1722,a,f),merge(f)].
+
+given #278 (T,wt=14): 1758 p(x) | p(f1(x)) | p(c9) | p(c19) | p(f3(c19)) | q(y).  [factor(1747,a,f),merge(f)].
+
+given #279 (T,wt=14): 1779 p(c9) | p(f1(c9)) | p(c6) | p(f3(c6)) | p(c19) | -q(c7).  [factor(1778,c,g)].
+
+given #280 (T,wt=12): 1854 p(c9) | p(f1(c9)) | p(c6) | p(f3(c6)) | p(c19).  [factor(1851,c,f),merge(f)].
+
+given #281 (A,wt=16): 891 -p(x) | -p(f1(x)) | p(c9) | q(c8) | p(c19) | p(f3(c19)) | q(c14).  [factor(888,e,h)].
+
+given #282 (T,wt=14): 1792 p(c6) | p(f1(c6)) | p(c9) | p(f3(c6)) | p(c19) | -q(c7).  [factor(1783,a,f),merge(f)].
+
+given #283 (T,wt=12): 1858 p(c6) | p(f1(c6)) | p(c9) | p(f3(c6)) | p(c19).  [factor(1856,a,f),merge(f),merge(g)].
+
+given #284 (T,wt=14): 1816 p(c19) | p(f1(c19)) | p(c9) | p(c6) | p(f3(c6)) | -q(c7).  [factor(1815,d,g)].
+
+given #285 (T,wt=12): 1860 p(c19) | p(f1(c19)) | p(c9) | p(c6) | p(f3(c6)).  [factor(1859,d,f),merge(f)].
+
+given #286 (A,wt=17): 894 -p(c3) | p(c9) | q(c4) | q(c8) | p(x) | p(f3(x)) | q(c14) | p(c19).  [factor(892,c,h)].
+
+given #287 (T,wt=15): 1376 p(f3(c9)) | p(c9) | p(c19) | p(c6) | -p(c3) | q(c4) | q(c8).  [resolve(1366,e,690,d),merge(f)].
+
+given #288 (T,wt=15): 1474 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(c11) | -p(x) | q(c16).  [resolve(1472,e,780,c)].
+
+given #289 (T,wt=13): 1861 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(c11) | q(c16).  [resolve(1474,f,1442,b),merge(g),merge(h),merge(i),merge(j)].
+
+given #290 (T,wt=15): 1479 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(c3) | -p(c5) | q(c8).  [resolve(1472,e,710,c),merge(h)].
+
+given #291 (A,wt=17): 900 -p(c3) | p(c9) | -p(c5) | q(c8) | p(x) | p(f3(x)) | q(c14) | p(c19).  [factor(898,d,h)].
+
+given #292 (T,wt=15): 1481 p(f3(c19)) | p(c9) | p(c19) | p(c6) | -p(c3) | -p(c5) | q(c8).  [resolve(1472,e,696,c),merge(f)].
+
+given #293 (T,wt=15): 1482 p(f3(c19)) | p(c9) | p(c19) | p(c6) | -p(c3) | q(c4) | q(c8).  [resolve(1472,e,690,d),merge(f)].
+
+given #294 (T,wt=15): 1522 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(c11) | -p(x) | q(y).  [resolve(1520,f,781,c),merge(f)].
+
+given #295 (T,wt=13): 1865 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(c11) | q(x).  [resolve(1522,f,1324,b),merge(g),merge(h),merge(i),merge(j)].
+
+given #296 (A,wt=18): 906 p(c3) | -p(c5) | q(f2(x)) | q(x) | p(y) | p(f3(y)) | q(c14) | p(c19).  [factor(904,c,h)].
+
+given #297 (T,wt=15): 1656 p(f3(x)) | p(f1(f3(x))) | q(c8) | p(c9) | p(x) | p(c19).  [factor(1610,a,g),merge(g)].
+
+given #298 (T,wt=15): 1658 p(x) | p(f1(x)) | q(c8) | p(c9) | p(f3(f1(x))) | p(c19).  [factor(1612,b,e)].
+
+given #299 (T,wt=15): 1863 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(c11) | -p(x) | q(y).  [resolve(1861,f,781,c),merge(f)].
+
+given #300 (T,wt=13): 1915 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(c11) | q(x).  [resolve(1863,f,1442,b),merge(g),merge(h),merge(i),merge(j)].
+
+given #301 (A,wt=16): 908 p(c3) | -p(c5) | q(f2(x)) | q(x) | p(f3(c3)) | q(c14) | p(c19).  [factor(905,c,g)].
+
+given #302 (T,wt=15): 1867 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(c11) | -p(x) | -q(c20).  [resolve(1865,f,782,c),merge(f)].
+
+given #303 (T,wt=13): 1922 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(c11) | -p(x).  [resolve(1867,g,1865,f),merge(g),merge(h),merge(i),merge(j),merge(k)].
+
+given #304 (T,wt=11): 1924 p(f3(c9)) | p(c9) | p(c19) | p(c6) | p(c11).  [resolve(1922,f,1324,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #305 (T,wt=15): 1892 p(f3(x)) | p(f1(f3(x))) | p(c9) | p(x) | p(c19) | q(y).  [factor(1882,a,f),merge(f)].
+
+given #306 (A,wt=16): 909 p(c3) | -p(c5) | q(f2(c14)) | q(c14) | p(x) | p(f3(x)) | p(c19).  [factor(906,d,g)].
+
+given #307 (T,wt=15): 1914 p(x) | p(f1(x)) | p(c9) | p(f3(f1(x))) | p(c19) | q(y).  [factor(1904,a,f),merge(f)].
+
+given #308 (T,wt=15): 1917 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(c11) | -p(x) | -q(c20).  [resolve(1915,f,782,c),merge(f)].
+
+given #309 (T,wt=13): 1981 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(c11) | -p(x).  [resolve(1917,g,1915,f),merge(g),merge(h),merge(i),merge(j),merge(k)].
+
+given #310 (T,wt=11): 1982 p(f3(c19)) | p(c9) | p(c19) | p(c6) | p(c11).  [resolve(1981,f,1924,a),merge(f),merge(g),merge(h),merge(i)].
+
+given #311 (A,wt=16): 910 p(c3) | -p(c5) | q(f2(x)) | q(x) | p(c19) | p(f3(c19)) | q(c14).  [factor(906,e,h)].
+
+given #312 (T,wt=15): 1930 p(c9) | p(c19) | p(c6) | p(c11) | p(c3) | q(c4) | q(f2(c4)).  [resolve(1924,a,775,b)].
+
+given #313 (T,wt=15): 1935 p(c9) | p(c19) | p(c6) | p(c11) | p(f3(c6)) | q(c14) | q(c16).  [factor(1927,c,e)].
+
+given #314 (T,wt=15): 1936 p(c9) | p(c19) | p(c6) | p(c11) | p(f3(c11)) | q(c14) | q(c16).  [factor(1927,d,e)].
+
+given #315 (T,wt=15): 1963 p(f3(c6)) | p(f1(f3(c6))) | p(c9) | p(c6) | p(c19) | -q(c7).  [factor(1962,d,g)].
+
+given #316 (A,wt=17): 915 p(c3) | -p(c5) | q(c8) | p(c9) | p(x) | p(f3(x)) | q(c14) | p(c19).  [factor(913,c,h)].
+
+given #317 (T,wt=13): 2017 p(f3(c6)) | p(f1(f3(c6))) | p(c9) | p(c6) | p(c19).  [factor(2011,a,f),merge(f),merge(g)].
+
+given #318 (T,wt=13): 2028 p(f3(c6)) | p(c9) | p(c6) | p(c19) | q(c14) | q(c16).  [factor(2020,a,f),merge(e)].
+
+given #319 (T,wt=13): 2047 p(f3(c6)) | p(c9) | p(c6) | p(c19) | q(c14) | -p(x).  [factor(2038,a,g),merge(f)].
+
+given #320 (T,wt=11): 2048 p(f3(c6)) | p(c9) | p(c6) | p(c19) | q(c14).  [resolve(2047,f,2017,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #321 (A,wt=16): 931 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | p(c11) | -p(x) | -q(c20).  [resolve(929,e,782,c)].
+
+given #322 (T,wt=13): 2068 p(f3(c6)) | p(c9) | p(c6) | p(c19) | -p(c11) | q(c16).  [factor(2051,a,f)].
+
+given #323 (T,wt=13): 2070 p(f3(c6)) | p(c9) | p(c6) | p(c19) | -p(c15) | q(c16).  [factor(2053,a,f),merge(e)].
+
+given #324 (T,wt=14): 2084 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | p(c11) | -p(x).  [resolve(931,g,929,e),merge(g),merge(h),merge(i),merge(j)].
+
+given #325 (T,wt=15): 1976 p(c6) | p(f1(c6)) | p(c9) | p(f3(f1(c6))) | p(c19) | -q(c7).  [factor(1967,a,f),merge(f)].
+
+given #326 (A,wt=16): 953 p(c9) | p(f1(c9)) | p(c19) | p(f3(c19)) | p(c11) | -p(x) | -q(c20).  [resolve(951,e,782,c)].
+
+given #327 (T,wt=13): 2090 p(c6) | p(f1(c6)) | p(c9) | p(f3(f1(c6))) | p(c19).  [factor(2085,a,f),merge(f),merge(g)].
+
+given #328 (T,wt=14): 2098 p(c9) | p(f1(c9)) | p(c19) | p(f3(c19)) | p(c11) | -p(x).  [resolve(953,g,951,e),merge(g),merge(h),merge(i),merge(j)].
+
+given #329 (T,wt=15): 2009 p(c9) | p(c19) | p(c6) | p(c11) | p(f3(c11)) | q(c14) | -p(x).  [factor(2005,f,h)].
+
+given #330 (T,wt=13): 2100 p(c9) | p(c19) | p(c6) | p(c11) | p(f3(c11)) | q(c14).  [resolve(2009,g,1982,a),merge(g),merge(h),merge(i),merge(j)].
+
+given #331 (A,wt=16): 1004 p(c19) | p(f1(c19)) | p(c9) | p(f3(c19)) | p(c11) | -p(x) | -q(c20).  [resolve(1002,e,782,c)].
+
+given #332 (T,wt=14): 2123 p(c19) | p(f1(c19)) | p(c9) | p(f3(c19)) | p(c11) | -p(x).  [resolve(1004,g,1002,e),merge(g),merge(h),merge(i),merge(j)].
+
+given #333 (T,wt=15): 2050 p(f3(c6)) | p(c9) | p(c6) | p(c19) | p(c11) | -p(x) | q(c16).  [resolve(2048,e,780,c)].
+
+given #334 (T,wt=13): 2124 p(f3(c6)) | p(c9) | p(c6) | p(c19) | p(c11) | q(c16).  [resolve(2050,f,2017,b),merge(g),merge(h),merge(i),merge(j)].
+
+given #335 (T,wt=15): 2055 p(f3(c6)) | p(c9) | p(c6) | p(c19) | p(c3) | -p(c5) | q(c8).  [resolve(2048,e,710,c),merge(h)].
+
+given #336 (A,wt=16): 1058 p(c19) | p(f1(c19)) | p(c9) | p(f3(c9)) | p(c11) | -p(x) | -q(c20).  [resolve(1056,e,782,c)].
+
+given #337 (T,wt=14): 2133 p(c19) | p(f1(c19)) | p(c9) | p(f3(c9)) | p(c11) | -p(x).  [resolve(1058,g,1056,e),merge(g),merge(h),merge(i),merge(j)].
+
+given #338 (T,wt=15): 2057 p(f3(c6)) | p(c9) | p(c6) | p(c19) | -p(c3) | -p(c5) | q(c8).  [resolve(2048,e,696,c),merge(f)].
+
+given #339 (T,wt=15): 2058 p(f3(c6)) | p(c9) | p(c6) | p(c19) | -p(c3) | q(c4) | q(c8).  [resolve(2048,e,690,d),merge(f)].
+
+given #340 (T,wt=15): 2102 p(c9) | p(c19) | p(c6) | p(c11) | p(f3(c11)) | -p(x) | q(c16).  [resolve(2100,f,780,c),merge(f)].
+
+given #341 (A,wt=16): 1082 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(c4) | q(f2(c4)).  [resolve(1079,c,775,b)].
+
+given #342 (T,wt=13): 2135 p(c9) | p(c19) | p(c6) | p(c11) | p(f3(c11)) | q(c16).  [resolve(2102,f,1982,a),merge(g),merge(h),merge(i),merge(j)].
+
+given #343 (T,wt=15): 2126 p(f3(c6)) | p(c9) | p(c6) | p(c19) | p(c11) | -p(x) | q(y).  [resolve(2124,f,781,c),merge(f)].
+
+given #344 (T,wt=13): 2151 p(f3(c6)) | p(c9) | p(c6) | p(c19) | p(c11) | q(x).  [resolve(2126,f,2017,b),merge(g),merge(h),merge(i),merge(j)].
+
+given #345 (T,wt=15): 2138 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(c4) | q(c8).  [resolve(1082,g,770,c),merge(g),merge(h)].
+
+given #346 (A,wt=16): 1108 p(c19) | p(f1(c19)) | p(c9) | p(c6) | p(c3) | q(c4) | q(f2(c4)).  [resolve(1104,d,775,b)].
+
+given #347 (T,wt=13): 2161 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(c4).  [factor(2159,f,g)].
+
+given #348 (T,wt=13): 2182 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(c8).  [resolve(2161,f,770,c),merge(f),merge(g)].
+
+given #349 (T,wt=13): 2196 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(x).  [resolve(2182,f,771,c),merge(f),merge(g)].
+
+given #350 (T,wt=13): 2206 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | -q(c7).  [factor(2204,a,f),merge(f)].
+
+given #351 (A,wt=18): 1109 p(c19) | p(f1(c19)) | p(c9) | p(c6) | p(c3) | q(c4) | q(f2(x)) | q(x).  [resolve(1104,d,700,b)].
+
+given #352 (T,wt=11): 2207 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3).  [resolve(2206,f,2196,f),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #353 (T,wt=13): 2213 p(c9) | p(c19) | p(c6) | p(c3) | q(c4) | q(f2(c4)).  [resolve(2207,b,775,b),merge(e)].
+
+given #354 (T,wt=14): 2230 p(c9) | p(c19) | p(c6) | p(c3) | q(c4) | -p(x) | q(c8).  [resolve(2213,f,510,d),merge(f),merge(h),merge(j)].
+
+given #355 (T,wt=12): 2244 p(c9) | p(c19) | p(c6) | p(c3) | q(c4) | q(c8).  [resolve(2230,f,2207,b),merge(g),merge(h),merge(i),merge(j)].
+
+given #356 (A,wt=17): 1137 p(c9) | p(f1(c9)) | p(f3(f1(c9))) | p(c19) | p(c11) | -p(x) | -q(c20).  [resolve(1135,e,782,c)].
+
+given #357 (T,wt=12): 2246 p(c9) | p(c19) | p(c6) | p(c3) | q(c4) | -p(x).  [resolve(2244,f,705,d),merge(f),merge(h),merge(i)].
+
+given #358 (T,wt=10): 2261 p(c9) | p(c19) | p(c6) | p(c3) | q(c4).  [resolve(2246,f,2207,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #359 (T,wt=12): 2268 p(c9) | p(c19) | p(c6) | p(c3) | -p(c5) | q(c8).  [resolve(2261,e,710,c),merge(e),merge(h)].
+
+given #360 (T,wt=12): 2279 p(c9) | p(c19) | p(c6) | p(c3) | -p(c11) | q(c16).  [factor(2264,a,f)].
+
+given #361 (A,wt=17): 1193 p(f3(c9)) | p(f1(f3(c9))) | p(c9) | p(c19) | p(c11) | -p(x) | -q(c20).  [resolve(1191,e,782,c)].
+
+given #362 (T,wt=13): 2281 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c19)) | q(c8).  [factor(2271,b,e)].
+
+given #363 (T,wt=13): 2282 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c6)) | q(c8).  [factor(2271,c,e)].
+
+given #364 (T,wt=13): 2283 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)) | q(c8).  [factor(2271,d,e)].
+
+given #365 (T,wt=13): 2298 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c19)) | q(x).  [factor(2297,b,f),merge(f)].
+
+given #366 (A,wt=17): 1246 p(f3(c19)) | p(f1(f3(c19))) | p(c9) | p(c19) | p(c11) | -p(x) | -q(c20).  [resolve(1244,e,782,c)].
+
+given #367 (T,wt=13): 2302 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c6)) | q(x).  [factor(2301,c,f),merge(f)].
+
+given #368 (T,wt=13): 2306 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)) | q(x).  [factor(2305,d,f),merge(f)].
+
+given #369 (T,wt=13): 2316 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c19)) | -q(c7).  [factor(2314,b,f),merge(f)].
+
+given #370 (T,wt=11): 2342 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c19)).  [resolve(2316,f,2298,f),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #371 (A,wt=17): 1301 p(c19) | p(f1(c19)) | p(c9) | p(f3(f1(c19))) | p(c11) | -p(x) | -q(c20).  [resolve(1299,e,782,c)].
+
+given #372 (T,wt=13): 2324 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c6)) | -q(c7).  [resolve(2302,f,769,c),merge(f),merge(g)].
+
+given #373 (T,wt=11): 2348 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c6)).  [resolve(2324,f,2302,f),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #374 (T,wt=13): 2339 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)) | -q(c7).  [factor(2336,d,f),merge(f)].
+
+given #375 (T,wt=11): 2349 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)).  [resolve(2339,f,2306,f),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #376 (A,wt=16): 1372 p(f3(c9)) | p(c9) | p(c19) | p(c6) | -p(c11) | q(f4(x)) | q(x).  [resolve(1366,e,723,c),merge(f)].
+
+given #377 (T,wt=14): 2263 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | -p(x) | q(c16).  [resolve(2261,e,780,c)].
+
+given #378 (T,wt=12): 2350 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | q(c16).  [resolve(2263,f,2349,e),merge(g),merge(h),merge(i),merge(j)].
+
+given #379 (T,wt=14): 2352 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | -p(x) | q(y).  [resolve(2350,f,781,c),merge(f)].
+
+given #380 (T,wt=12): 2353 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | q(x).  [resolve(2352,f,2349,e),merge(g),merge(h),merge(i),merge(j)].
+
+given #381 (A,wt=16): 1377 p(f3(c9)) | p(c9) | p(c19) | p(c6) | -p(x) | -p(f1(x)) | q(c8).  [resolve(1366,e,674,c),merge(g)].
+
+given #382 (T,wt=14): 2355 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | -p(x) | -q(c20).  [resolve(2353,f,782,c),merge(f)].
+
+given #383 (T,wt=12): 2360 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | -p(x).  [resolve(2355,g,2353,f),merge(g),merge(h),merge(i),merge(j),merge(k)].
+
+given #384 (T,wt=10): 2361 p(c9) | p(c19) | p(c6) | p(c3) | p(c11).  [resolve(2360,f,2349,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #385 (T,wt=13): 2362 p(c9) | p(c6) | p(c3) | p(c11) | q(c4) | q(f2(c4)).  [resolve(2361,b,775,b),merge(e)].
+
+given #386 (A,wt=18): 1392 p(f3(c9)) | p(c9) | p(c19) | p(c6) | -p(c3) | -p(c5) | q(f2(x)) | q(x).  [factor(1383,a,f)].
+
+given #387 (T,wt=14): 2365 p(c9) | p(c6) | p(c3) | p(c11) | q(c4) | -p(x) | q(c16).  [resolve(2362,f,780,c),merge(f)].
+
+given #388 (T,wt=12): 2374 p(c9) | p(c6) | p(c3) | p(c11) | q(c4) | q(c16).  [resolve(2365,f,2361,b),merge(g),merge(h),merge(i),merge(j)].
+
+given #389 (T,wt=12): 2378 p(c9) | p(c6) | p(c3) | p(c11) | q(c4) | -p(x).  [factor(2376,e,g)].
+
+given #390 (T,wt=10): 2379 p(c9) | p(c6) | p(c3) | p(c11) | q(c4).  [resolve(2378,f,2361,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #391 (A,wt=19): 1393 p(f3(c9)) | p(c9) | p(c19) | p(c6) | -p(x) | -p(f1(x)) | q(f2(y)) | q(y).  [factor(1384,a,g)].
+
+given #392 (T,wt=12): 2381 p(c9) | p(c6) | p(c3) | p(c11) | -p(x) | q(c16).  [resolve(2379,e,780,c),merge(e)].
+
+given #393 (T,wt=10): 2397 p(c9) | p(c6) | p(c3) | p(c11) | q(c16).  [resolve(2381,e,2361,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #394 (T,wt=12): 2399 p(c9) | p(c6) | p(c3) | p(c11) | -p(x) | q(y).  [resolve(2397,e,781,c),merge(e)].
+
+given #395 (T,wt=10): 2400 p(c9) | p(c6) | p(c3) | p(c11) | q(x).  [resolve(2399,e,2361,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #396 (A,wt=16): 1396 p(f3(c9)) | p(c9) | p(c19) | p(c6) | -p(c15) | q(f4(x)) | q(x).  [factor(1387,a,f),merge(e)].
+
+given #397 (T,wt=12): 2402 p(c9) | p(c6) | p(c3) | p(c11) | -p(x) | -q(c20).  [resolve(2400,e,782,c),merge(e)].
+
+given #398 (T,wt=10): 2410 p(c9) | p(c6) | p(c3) | p(c11) | -p(x).  [resolve(2402,f,2400,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #399 (T,wt=8): 2411 p(c9) | p(c6) | p(c3) | p(c11).  [resolve(2410,e,2361,b),merge(e),merge(f),merge(g),merge(h)].
+
+given #400 (T,wt=10): 2412 p(c9) | p(c6) | p(c3) | p(c19) | q(c16).  [resolve(2411,d,2279,e),merge(d),merge(f),merge(g)].
+
+given #401 (A,wt=18): 1422 p(c9) | p(c19) | p(c6) | p(f1(c6)) | p(x) | p(f3(x)) | q(c14) | q(c16).  [resolve(1413,a,813,f),merge(h)].
+
+given #402 (T,wt=11): 2414 p(c9) | p(c6) | p(c3) | q(c4) | q(f2(c4)).  [resolve(2411,d,775,b),merge(d)].
+
+given #403 (T,wt=12): 2422 p(c9) | p(c6) | p(c3) | p(c19) | -p(c11) | q(x).  [factor(2417,a,f)].
+
+given #404 (T,wt=10): 2465 p(c9) | p(c6) | p(c3) | p(c19) | q(x).  [resolve(2422,e,2411,d),merge(f),merge(g),merge(h)].
+
+given #405 (T,wt=12): 2454 p(c9) | p(c6) | p(c3) | q(c4) | -p(x) | q(c8).  [resolve(2414,e,510,d),merge(e),merge(g),merge(i)].
+
+given #406 (A,wt=19): 1429 p(c9) | p(c19) | p(c6) | p(f1(c6)) | p(x) | p(f3(x)) | q(c14) | q(f2(c14)).  [factor(1417,c,h),merge(h)].
+
+given #407 (T,wt=10): 2478 p(c9) | p(c6) | p(c3) | q(c4) | q(c8).  [resolve(2454,e,2411,d),merge(f),merge(g),merge(h)].
+
+given #408 (T,wt=10): 2481 p(c9) | p(c6) | p(c3) | q(c4) | -p(x).  [resolve(2478,e,705,d),merge(e),merge(g),merge(h)].
+
+given #409 (T,wt=8): 2489 p(c9) | p(c6) | p(c3) | q(c4).  [resolve(2481,e,2411,d),merge(e),merge(f),merge(g)].
+
+given #410 (T,wt=10): 2495 p(c9) | p(c6) | p(c3) | -p(c5) | q(c8).  [resolve(2489,d,710,c),merge(d),merge(g)].
+
+given #411 (A,wt=21): 1438 p(c9) | p(c19) | p(c6) | p(f1(c6)) | p(x) | p(f3(x)) | q(c14) | q(f2(y)) | q(y).  [factor(1423,c,h),merge(h)].
+
+given #412 (T,wt=10): 2503 p(c9) | p(c6) | p(c3) | -p(c11) | q(c16).  [factor(2491,a,e)].
+
+given #413 (T,wt=8): 2517 p(c9) | p(c6) | p(c3) | q(c16).  [resolve(2503,d,2411,d),merge(e),merge(f),merge(g)].
+
+given #414 (T,wt=10): 2524 p(c9) | p(c6) | p(c3) | -p(c11) | q(x).  [factor(2519,a,e)].
+
+given #415 (T,wt=8): 2532 p(c9) | p(c6) | p(c3) | q(x).  [resolve(2524,d,2411,d),merge(e),merge(f),merge(g)].
+
+given #416 (A,wt=16): 1478 p(f3(c19)) | p(c9) | p(c19) | p(c6) | -p(c11) | q(f4(x)) | q(x).  [resolve(1472,e,723,c),merge(f)].
+
+given #417 (T,wt=10): 2538 p(c9) | p(c6) | p(c3) | -p(c5) | -q(c7).  [resolve(2532,d,709,c),merge(d),merge(g)].
+
+given #418 (T,wt=8): 2547 p(c9) | p(c6) | p(c3) | -p(c5).  [resolve(2538,e,2532,d),merge(e),merge(f),merge(g)].
+
+given #419 (T,wt=10): 2541 p(c9) | p(c6) | p(c3) | -p(c11) | -q(c20).  [factor(2534,a,e)].
+
+given #420 (T,wt=8): 2548 p(c9) | p(c6) | p(c3) | -p(c11).  [resolve(2541,e,2532,d),merge(e),merge(f),merge(g)].
+
+given #421 (A,wt=16): 1483 p(f3(c19)) | p(c9) | p(c19) | p(c6) | -p(x) | -p(f1(x)) | q(c8).  [resolve(1472,e,674,c),merge(g)].
+
+given #422 (T,wt=6): 2549 p(c9) | p(c6) | p(c3).  [resolve(2548,d,2411,d),merge(d),merge(e),merge(f)].
+
+given #423 (T,wt=9): 2570 p(c6) | p(c3) | q(c4) | q(f2(c4)).  [resolve(2549,a,775,b),merge(c)].
+
+given #424 (T,wt=10): 2619 p(c6) | p(c3) | q(c4) | -p(c11) | q(c16).  [factor(2608,a,e)].
+
+given #425 (T,wt=11): 2571 p(c6) | p(c3) | q(c4) | q(f2(x)) | q(x).  [resolve(2549,a,700,b),merge(c)].
+
+given #426 (A,wt=16): 1486 p(f3(c19)) | p(c9) | p(c19) | p(c6) | -p(c15) | q(f4(x)) | q(x).  [resolve(1472,e,622,c),merge(e),merge(f)].
+
+given #427 (T,wt=12): 2607 p(c6) | p(c3) | q(c4) | p(c11) | -p(x) | q(c16).  [resolve(2570,d,780,c)].
+
+given #428 (T,wt=10): 2635 p(c6) | p(c3) | q(c4) | p(c11) | q(c16).  [resolve(2607,e,2549,a),merge(f),merge(g)].
+
+given #429 (T,wt=10): 2639 p(c6) | p(c3) | q(c4) | p(c11) | -p(x).  [factor(2637,c,f)].
+
+given #430 (T,wt=8): 2640 p(c6) | p(c3) | q(c4) | p(c11).  [resolve(2639,e,2549,a),merge(e),merge(f)].
+
+given #431 (A,wt=18): 1496 p(f3(c19)) | p(c9) | p(c19) | p(c6) | -p(c3) | -p(c5) | q(f2(x)) | q(x).  [factor(1489,a,f)].
+
+given #432 (T,wt=10): 2642 p(c6) | p(c3) | p(c11) | -p(x) | q(c16).  [resolve(2640,c,780,c),merge(d)].
+
+given #433 (T,wt=8): 2653 p(c6) | p(c3) | p(c11) | q(c16).  [resolve(2642,d,2549,a),merge(e),merge(f)].
+
+given #434 (T,wt=10): 2655 p(c6) | p(c3) | p(c11) | -p(x) | q(y).  [resolve(2653,d,781,c),merge(d)].
+
+given #435 (T,wt=8): 2656 p(c6) | p(c3) | p(c11) | q(x).  [resolve(2655,d,2549,a),merge(e),merge(f)].
+
+given #436 (A,wt=19): 1497 p(f3(c19)) | p(c9) | p(c19) | p(c6) | -p(x) | -p(f1(x)) | q(f2(y)) | q(y).  [factor(1490,a,g)].
+
+given #437 (T,wt=10): 2658 p(c6) | p(c3) | p(c11) | -p(x) | -q(c20).  [resolve(2656,d,782,c),merge(d)].
+
+given #438 (T,wt=8): 2665 p(c6) | p(c3) | p(c11) | -p(x).  [resolve(2658,e,2656,d),merge(e),merge(f),merge(g)].
+
+given #439 (T,wt=6): 2666 p(c6) | p(c3) | p(c11).  [resolve(2665,d,2549,a),merge(d),merge(e)].
+
+given #440 (T,wt=8): 2667 p(c6) | p(c3) | q(c4) | q(c16).  [resolve(2666,c,2619,d),merge(c),merge(d)].
+
+given #441 (A,wt=16): 1612 p(x) | p(f1(x)) | q(c8) | p(c9) | p(y) | p(f3(y)) | p(c19).  [factor(1534,a,h),merge(h)].
+
+given #442 (T,wt=8): 2684 p(c6) | p(c3) | q(c4) | -p(c11).  [factor(2675,c,e)].
+
+given #443 (T,wt=6): 2712 p(c6) | p(c3) | q(c4).  [resolve(2684,d,2666,c),merge(d),merge(e)].
+
+given #444 (T,wt=8): 2727 p(c6) | p(c3) | -p(c11) | q(c16).  [factor(2714,a,d)].
+
+given #445 (T,wt=6): 2738 p(c6) | p(c3) | q(c16).  [resolve(2727,c,2666,c),merge(d),merge(e)].
+
+given #446 (A,wt=18): 1760 p(c9) | p(f1(c9)) | p(x) | p(f3(x)) | p(c19) | p(c11) | -p(y) | -q(c20).  [resolve(1665,f,782,c)].
+
+given #447 (T,wt=8): 2745 p(c6) | p(c3) | -p(c11) | q(x).  [factor(2740,a,d)].
+
+given #448 (T,wt=6): 2763 p(c6) | p(c3) | q(x).  [resolve(2745,c,2666,c),merge(d),merge(e)].
+
+given #449 (T,wt=8): 2769 p(c6) | p(c3) | -p(c5) | -q(c7).  [resolve(2763,c,709,c),merge(c),merge(f)].
+
+given #450 (T,wt=6): 2776 p(c6) | p(c3) | -p(c5).  [resolve(2769,d,2763,c),merge(d),merge(e)].
+
+given #451 (A,wt=16): 1770 p(c9) | p(f1(c9)) | p(x) | p(f3(x)) | p(c19) | -p(c11) | -q(c20).  [factor(1761,a,g)].
+
+given #452 (T,wt=8): 2772 p(c6) | p(c3) | -p(c11) | -q(c20).  [factor(2765,a,d)].
+
+given #453 (T,wt=6): 2787 p(c6) | p(c3) | -p(c11).  [resolve(2772,d,2763,c),merge(d),merge(e)].
+
+given #454 (T,wt=4): 2788 p(c6) | p(c3).  [resolve(2787,c,2666,c),merge(c),merge(d)].
+
+given #455 (T,wt=7): 2817 p(c3) | q(c4) | q(f2(c4)).  [resolve(2788,a,775,b),merge(b)].
+
+given #456 (A,wt=16): 1773 p(c9) | p(f1(c9)) | p(x) | p(f3(x)) | p(c19) | -p(c15) | -q(c20).  [factor(1764,c,f),merge(f)].
+
+given #457 (T,wt=8): 2852 p(c3) | q(c4) | -p(c11) | q(c16).  [factor(2836,a,d)].
+
+given #458 (T,wt=9): 2818 p(c3) | q(c4) | q(f2(x)) | q(x).  [resolve(2788,a,700,b),merge(b)].
+
+given #459 (T,wt=10): 2835 p(c3) | q(c4) | p(c11) | -p(x) | q(c16).  [resolve(2817,c,780,c)].
+
+given #460 (T,wt=8): 2875 p(c3) | q(c4) | p(c11) | q(c16).  [resolve(2835,d,2788,a),merge(e)].
+
+given #461 (A,wt=16): 1778 p(c9) | p(f1(c9)) | p(x) | p(f3(x)) | p(c19) | -q(c7) | p(c6).  [factor(1768,a,f),merge(f)].
+
+given #462 (T,wt=8): 2879 p(c3) | q(c4) | p(c11) | -p(x).  [factor(2877,b,e)].
+
+given #463 (T,wt=6): 2890 p(c3) | q(c4) | p(c11).  [resolve(2879,d,2788,a),merge(d)].
+
+given #464 (T,wt=8): 2892 p(c3) | p(c11) | -p(x) | q(c16).  [resolve(2890,b,780,c),merge(c)].
+
+given #465 (T,wt=6): 2908 p(c3) | p(c11) | q(c16).  [resolve(2892,c,2788,a),merge(d)].
+
+given #466 (A,wt=18): 1781 p(x) | p(f1(x)) | p(c9) | p(f3(x)) | p(c19) | p(c11) | -p(y) | -q(c20).  [resolve(1688,f,782,c)].
+
+given #467 (T,wt=8): 2910 p(c3) | p(c11) | -p(x) | q(y).  [resolve(2908,c,781,c),merge(c)].
+
+given #468 (T,wt=6): 2940 p(c3) | p(c11) | q(x).  [resolve(2910,c,2788,a),merge(d)].
+
+given #469 (T,wt=8): 2942 p(c3) | p(c11) | -p(x) | -q(c20).  [resolve(2940,c,782,c),merge(c)].
+
+given #470 (T,wt=6): 2943 p(c3) | p(c11) | -p(x).  [resolve(2942,d,2940,c),merge(d),merge(e)].
+
+given #471 (A,wt=16): 1791 p(x) | p(f1(x)) | p(c9) | p(f3(x)) | p(c19) | -p(c11) | -q(c20).  [factor(1782,a,g)].
+
+given #472 (T,wt=4): 2944 p(c3) | p(c11).  [resolve(2943,c,2788,a),merge(c)].
+
+given #473 (T,wt=6): 2963 p(c3) | q(c4) | q(c16).  [resolve(2944,b,2852,c),merge(b)].
+
+given #474 (T,wt=6): 2986 p(c3) | q(c4) | -p(c11).  [factor(2979,b,d)].
+
+given #475 (T,wt=4): 2988 p(c3) | q(c4).  [resolve(2986,c,2944,b),merge(c)].
+
+given #476 (A,wt=16): 1794 p(x) | p(f1(x)) | p(c9) | p(f3(x)) | p(c19) | -p(c15) | -q(c20).  [factor(1785,a,f),merge(f)].
+
+given #477 (T,wt=6): 3007 p(c3) | -p(c11) | q(c16).  [factor(2990,a,c)].
+
+given #478 (T,wt=4): 3033 p(c3) | q(c16).  [resolve(3007,b,2944,b),merge(c)].
+
+given #479 (T,wt=6): 3040 p(c3) | -p(c11) | q(x).  [factor(3035,a,c)].
+
+given #480 (T,wt=4): 3044 p(c3) | q(x).  [resolve(3040,b,2944,b),merge(c)].
+
+given #481 (A,wt=16): 1796 p(x) | p(f1(x)) | p(c9) | p(f3(x)) | p(c19) | -q(c7) | p(c6).  [factor(1789,a,f),merge(f)].
+
+given #482 (T,wt=6): 3049 p(c3) | -p(c11) | -q(c20).  [factor(3046,a,c)].
+
+given #483 (T,wt=4): 3071 p(c3) | -p(c11).  [resolve(3049,c,3044,b),merge(c)].
+
+given #484 (T,wt=2): 3072 p(c3).  [resolve(3071,b,2944,b),merge(b)].
+
+given #485 (T,wt=6): 3093 p(c9) | q(c4) | -q(c8).  [back_unit_del(774),unit_del(a,3072)].
+
+given #486 (A,wt=18): 1798 p(c19) | p(f1(c19)) | p(c9) | p(x) | p(f3(x)) | p(c11) | -p(y) | -q(c20).  [resolve(1710,f,782,c)].
+
+given #487 (T,wt=7): 3094 p(x) | q(c4) | q(f2(c4)).  [back_unit_del(773),unit_del(a,3072)].
+
+given #488 (T,wt=8): 3095 p(c9) | -q(c8) | -p(c5) | q(x).  [back_unit_del(698),unit_del(a,3072)].
+
+given #489 (T,wt=8): 3096 p(x) | -q(c10) | -p(c5) | q(c8).  [back_unit_del(697),unit_del(a,3072)].
+
+given #490 (T,wt=8): 3097 p(c9) | -q(x) | -p(c5) | q(c8).  [back_unit_del(696),unit_del(a,3072)].
+
+given #491 (A,wt=16): 1808 p(c19) | p(f1(c19)) | p(c9) | p(x) | p(f3(x)) | -p(c11) | -q(c20).  [factor(1799,a,g)].
+
+given #492 (T,wt=8): 3099 p(x) | q(c4) | -q(c8) | -q(c10).  [back_unit_del(694),unit_del(a,3072)].
+
+given #493 (T,wt=8): 3100 p(x) | q(c4) | -q(c10) | q(c8).  [back_unit_del(691),unit_del(a,3072)].
+
+given #494 (T,wt=8): 3101 p(c9) | q(c4) | -q(x) | q(c8).  [back_unit_del(690),unit_del(a,3072)].
+
+given #495 (T,wt=6): 3191 p(c9) | q(c4) | q(c8).  [factor(3190,a,d)].
+
+given #496 (A,wt=16): 1810 p(c19) | p(f1(c19)) | p(c9) | p(x) | p(f3(x)) | -p(c15) | -q(c20).  [factor(1802,d,f),merge(f)].
+
+given #497 (T,wt=4): 3193 p(c9) | q(c4).  [resolve(3191,c,3093,c),merge(c),merge(d)].
+
+given #498 (T,wt=6): 3200 p(c9) | -p(c5) | q(c8).  [resolve(3193,b,3097,b),merge(b)].
+
+given #499 (T,wt=6): 3219 p(c9) | -p(c11) | q(c16).  [factor(3203,a,c)].
+
+given #500 (T,wt=7): 3204 p(c9) | p(f1(c9)) | q(c8).  [resolve(3193,b,770,c),merge(b)].
+
+given #501 (A,wt=16): 1815 p(c19) | p(f1(c19)) | p(c9) | p(x) | p(f3(x)) | -q(c7) | p(c6).  [factor(1806,a,f),merge(f)].
+
+given #502 (T,wt=7): 3227 p(c9) | p(f1(c9)) | q(x).  [resolve(3204,c,771,c),merge(c),merge(d)].
+
+given #503 (T,wt=8): 3156 p(c11) | q(c4) | -p(x) | q(c16).  [factor(3141,a,c)].
+
+given #504 (T,wt=6): 3246 p(c11) | q(c4) | q(c16).  [resolve(3156,c,3072,a)].
+
+given #505 (T,wt=6): 3250 p(c11) | q(c4) | -p(x).  [factor(3248,b,d)].
+
+given #506 (A,wt=18): 1818 p(x) | p(f1(x)) | p(c9) | p(f3(c9)) | p(c19) | p(c11) | -p(y) | -q(c20).  [resolve(1735,f,782,c)].
+
+given #507 (T,wt=4): 3251 p(c11) | q(c4).  [resolve(3250,c,3072,a)].
+
+given #508 (T,wt=6): 3263 p(c11) | -p(x) | q(c16).  [resolve(3251,b,780,c),merge(b)].
+
+given #509 (T,wt=4): 3271 p(c11) | q(c16).  [resolve(3263,b,3072,a)].
+
+given #510 (T,wt=6): 3273 p(c11) | -p(x) | q(y).  [resolve(3271,b,781,c),merge(b)].
+
+given #511 (A,wt=16): 1827 p(x) | p(f1(x)) | p(c9) | p(f3(c9)) | p(c19) | -p(c11) | -q(c20).  [factor(1819,a,g)].
+
+given #512 (T,wt=4): 3274 p(c11) | q(x).  [resolve(3273,b,3072,a)].
+
+given #513 (T,wt=6): 3284 p(c11) | -p(x) | -q(c20).  [resolve(3274,b,782,c),merge(b)].
+
+given #514 (T,wt=4): 3289 p(c11) | -p(x).  [resolve(3284,c,3274,b),merge(c)].
+
+given #515 (T,wt=2): 3290 p(c11).  [resolve(3289,b,3072,a)].
+
+given #516 (A,wt=16): 1848 p(x) | p(f1(x)) | p(c9) | p(c19) | p(f3(c19)) | -q(c7) | p(c6).  [factor(1841,a,f),merge(f)].
+
+given #517 (T,wt=4): 3293 p(c9) | q(c16).  [back_unit_del(3219),unit_del(b,3290)].
+
+given #518 (T,wt=6): 3298 p(x) | q(c4) | q(c16).  [back_unit_del(3157),unit_del(c,3290)].
+
+given #519 (T,wt=6): 3313 p(x) | -q(c16) | q(y).  [back_unit_del(778),unit_del(a,3290)].
+
+given #520 (T,wt=4): 3337 p(c9) | q(x).  [factor(3334,a,c)].
+
+given #521 (A,wt=12): 3089 p(c19) | p(f3(c19)) | q(c14) | -p(c5) | q(f2(c14)).  [back_unit_del(849),unit_del(d,3072)].
+
+given #522 (T,wt=4): 3338 p(x) | q(c4).  [factor(3335,b,c)].
+
+given #523 (T,wt=6): 3314 p(x) | -q(y) | q(c16).  [back_unit_del(777),unit_del(a,3290)].
+
+given #524 (T,wt=4): 3351 p(x) | q(c16).  [factor(3350,a,c)].
+
+given #525 (T,wt=4): 3355 p(x) | q(y).  [factor(3352,a,b)].
+
+given #526 (A,wt=9): 3098 p(c6) | -q(f2(c7)) | -p(c5) | -q(c7).  [back_unit_del(695),unit_del(a,3072)].
+
+given #527 (T,wt=6): 3365 p(c6) | -p(c5) | -q(c7).  [factor(3364,a,d)].
+
+given #528 (T,wt=4): 3367 p(c6) | -p(c5).  [factor(3366,a,c)].
+
+given #529 (T,wt=7): 3292 p(c9) | p(f1(c9)) | -q(c20).  [back_unit_del(3242),unit_del(c,3290)].
+
+given #530 (T,wt=5): 3369 p(c9) | p(f1(c9)).  [factor(3368,a,c)].
+
+given #531 (A,wt=12): 3291 p(x) | p(f1(x)) | p(c9) | p(f3(c9)) | p(c19).  [back_unit_del(3282),unit_del(f,3290)].
+
+given #532 (T,wt=7): 3312 p(x) | -q(f4(c20)) | -q(c20).  [back_unit_del(779),unit_del(a,3290)].
+
+given #533 (T,wt=4): 3371 p(x) | -q(c20).  [factor(3370,a,c)].
+
+given #534 (T,wt=2): 3373 p(x).  [factor(3372,a,b)].
+
+given #535 (T,wt=4): 3375 -q(c16) | q(x).  [back_unit_del(785),unit_del(a,3373),unit_del(b,3373)].
+
+given #536 (A,wt=5): 3374 -q(f4(c20)) | -q(c20).  [back_unit_del(786),unit_del(a,3373),unit_del(b,3373)].
+
+given #537 (F,wt=7): 3378 -q(f4(x)) | -q(x) | -q(c20).  [back_unit_del(766),unit_del(a,3373),unit_del(b,3373)].
+
+given #538 (T,wt=4): 3376 -q(x) | q(c16).  [back_unit_del(784),unit_del(a,3373),unit_del(b,3373)].
+
+given #539 (T,wt=5): 3377 q(c1) | q(f2(c1)).  [back_unit_del(772),unit_del(a,3373),unit_del(b,3373)].
+
+given #540 (T,wt=4): 3384 q(c1) | q(c16).  [resolve(3377,b,3376,a)].
+
+given #541 (T,wt=2): 3386 q(c1).  [factor(3385,a,b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.54 (+ 0.01) seconds.
+% Length of proof is 254.
+% Level of proof is 157.
+% Maximum clause weight is 20.
+% Given clauses 541.
+
+1 ((exists x all y (p(x) <-> p(y))) <-> ((exists u q(u)) <-> (all v p(v)))) <-> ((exists w all z (q(z) <-> q(w))) <-> ((exists x1 p(x1)) <-> (all x2 q(x2)))) # label(non_clause) # label(goal).  [goal].
+5 p(x) | p(f1(x)) | -q(y) | p(z) | -q(f2(u)) | -q(u) | p(c6) | -q(c7).  [deny(1)].
+6 p(x) | p(f1(x)) | -q(y) | p(z) | -q(u) | q(c8) | p(c9) | q(w).  [deny(1)].
+8 p(x) | p(f1(x)) | -q(y) | p(z) | q(u) | -q(c8) | p(c9) | q(w).  [deny(1)].
+24 -p(x) | -p(f1(x)) | q(c1) | -p(c2) | q(f2(y)) | q(y) | -p(z) | q(u).  [deny(1)].
+30 -p(c3) | p(x) | q(c4) | p(y) | q(f2(z)) | q(z) | -p(u) | q(w).  [deny(1)].
+46 p(c3) | -p(x) | q(c4) | p(y) | q(f2(z)) | q(z) | -p(u) | q(w).  [deny(1)].
+50 p(c3) | -p(x) | q(c4) | p(y) | -q(z) | q(c8) | p(c9) | q(u).  [deny(1)].
+52 p(c3) | -p(x) | q(c4) | p(y) | q(z) | -q(c8) | p(c9) | q(u).  [deny(1)].
+62 -p(c11) | p(x) | -q(y) | p(z) | -q(u) | q(c16) | -p(w) | q(v5).  [deny(1)].
+64 -p(c11) | p(x) | -q(y) | p(z) | q(u) | -q(c16) | -p(w) | q(v5).  [deny(1)].
+69 -p(c11) | p(x) | -q(y) | p(z) | -q(f4(u)) | -q(u) | -p(w) | -q(c20).  [deny(1)].
+76 p(c11) | -p(x) | -q(y) | p(z) | -q(u) | q(c16) | -p(w) | q(v5).  [deny(1)].
+78 p(c11) | -p(x) | -q(y) | p(z) | q(u) | -q(c16) | -p(w) | q(v5).  [deny(1)].
+83 p(c11) | -p(x) | -q(y) | p(z) | -q(f4(u)) | -q(u) | -p(w) | -q(c20).  [deny(1)].
+94 p(x) | p(f3(x)) | q(c14) | p(y) | q(f4(z)) | q(z) | p(c19) | q(u).  [deny(1)].
+114 -p(x) | -p(f3(x)) | -q(y) | -p(c15) | -q(z) | q(c16) | -p(u) | q(w).  [deny(1)].
+116 -p(x) | -p(f3(x)) | -q(y) | -p(c15) | q(z) | -q(c16) | -p(u) | q(w).  [deny(1)].
+121 -p(x) | -p(f3(x)) | -q(y) | -p(c15) | -q(f4(z)) | -q(z) | -p(u) | -q(c20).  [deny(1)].
+128 p(x) | p(f1(x)) | -q(y) | -q(f2(z)) | -q(z) | p(c6) | -q(c7).  [factor(5,a,d)].
+130 p(x) | p(f1(x)) | -q(y) | -q(z) | q(c8) | p(c9) | q(u).  [factor(6,a,d)].
+135 p(x) | p(f1(x)) | -q(y) | q(z) | -q(c8) | p(c9) | q(u).  [factor(8,a,d)].
+171 -p(c2) | -p(f1(c2)) | q(c1) | q(f2(x)) | q(x) | -p(y) | q(z).  [factor(24,a,d)].
+188 -p(c3) | p(x) | q(c4) | p(y) | q(f2(z)) | q(z) | q(u).  [factor(30,a,g)].
+227 p(c3) | -p(x) | q(c4) | q(f2(y)) | q(y) | -p(z) | q(u).  [factor(46,a,d)].
+238 p(c3) | -p(x) | q(c4) | -q(y) | q(c8) | p(c9) | q(z).  [factor(50,a,d)].
+243 p(c3) | -p(x) | q(c4) | q(y) | -q(c8) | p(c9) | q(z).  [factor(52,a,d)].
+266 -p(c11) | p(x) | -q(y) | p(z) | -q(u) | q(c16) | q(w).  [factor(62,a,g)].
+272 -p(c11) | p(x) | -q(y) | p(z) | q(u) | -q(c16) | q(w).  [factor(64,a,g)].
+285 -p(c11) | p(x) | -q(y) | p(z) | -q(f4(u)) | -q(u) | -q(c20).  [factor(69,a,g)].
+301 p(c11) | -p(x) | -q(y) | -q(z) | q(c16) | -p(u) | q(w).  [factor(76,a,d)].
+307 p(c11) | -p(x) | -q(y) | q(z) | -q(c16) | -p(u) | q(w).  [factor(78,a,d)].
+320 p(c11) | -p(x) | -q(y) | -q(f4(z)) | -q(z) | -p(u) | -q(c20).  [factor(83,a,d)].
+344 p(x) | p(f3(x)) | q(c14) | q(f4(y)) | q(y) | p(c19) | q(z).  [factor(94,a,d)].
+388 -p(c15) | -p(f3(c15)) | -q(x) | -q(y) | q(c16) | -p(z) | q(u).  [factor(114,a,d)].
+394 -p(c15) | -p(f3(c15)) | -q(x) | q(y) | -q(c16) | -p(z) | q(u).  [factor(116,a,d)].
+407 -p(c15) | -p(f3(c15)) | -q(x) | -q(f4(y)) | -q(y) | -p(z) | -q(c20).  [factor(121,a,d)].
+415 p(x) | p(f1(x)) | -q(f2(y)) | -q(y) | p(c6) | -q(c7).  [factor(128,c,d)].
+417 p(c9) | p(f1(c9)) | -q(x) | -q(y) | q(c8) | q(z).  [factor(130,a,f)].
+418 p(x) | p(f1(x)) | -q(y) | q(c8) | p(c9) | q(z).  [factor(130,c,d)].
+423 p(c9) | p(f1(c9)) | -q(x) | q(y) | -q(c8) | q(z).  [factor(135,a,f)].
+424 p(x) | p(f1(x)) | -q(c8) | q(y) | p(c9) | q(z).  [factor(135,c,e)].
+448 -p(c2) | -p(f1(c2)) | q(c1) | q(f2(x)) | q(x) | q(y).  [factor(171,a,f)].
+464 -p(c3) | p(x) | q(c4) | q(f2(y)) | q(y) | q(z).  [factor(188,b,d)].
+500 p(c3) | -p(x) | q(c4) | q(f2(y)) | q(y) | q(z).  [factor(227,b,f)].
+510 p(c3) | -p(x) | q(c4) | -q(y) | q(c8) | p(c9).  [factor(238,c,g)].
+514 p(c3) | -p(x) | q(c4) | -q(c8) | p(c9) | q(y).  [factor(243,c,d)].
+537 -p(c11) | p(x) | -q(y) | -q(z) | q(c16) | q(u).  [factor(266,b,d)].
+545 -p(c11) | p(x) | -q(y) | q(z) | -q(c16) | q(u).  [factor(272,b,d)].
+559 -p(c11) | p(x) | -q(y) | -q(f4(z)) | -q(z) | -q(c20).  [factor(285,b,d)].
+569 p(c11) | -p(x) | -q(y) | -q(z) | q(c16) | q(u).  [factor(301,b,f)].
+576 p(c11) | -p(x) | -q(y) | q(z) | -q(c16) | q(u).  [factor(307,b,f)].
+587 p(c11) | -p(x) | -q(y) | -q(f4(z)) | -q(z) | -q(c20).  [factor(320,b,f)].
+609 p(x) | p(f3(x)) | q(c14) | q(f4(y)) | q(y) | p(c19).  [factor(344,c,g)].
+637 -p(c15) | -p(f3(c15)) | -q(x) | -q(y) | q(c16) | q(z).  [factor(388,a,f)].
+645 -p(c15) | -p(f3(c15)) | -q(x) | q(y) | -q(c16) | q(z).  [factor(394,a,f)].
+657 -p(c15) | -p(f3(c15)) | -q(x) | -q(f4(y)) | -q(y) | -q(c20).  [factor(407,a,f)].
+663 p(x) | p(f1(x)) | -q(f2(c7)) | -q(c7) | p(c6).  [factor(415,d,f)].
+664 p(c9) | p(f1(c9)) | -q(x) | q(c8) | q(y).  [factor(417,c,d)].
+666 p(x) | p(f1(x)) | -q(y) | q(c8) | p(c9).  [factor(418,d,f)].
+668 p(c9) | p(f1(c9)) | -q(c8) | q(x) | q(y).  [factor(423,c,e)].
+670 p(x) | p(f1(x)) | -q(c8) | q(y) | p(c9).  [factor(424,d,f)].
+677 -p(c2) | -p(f1(c2)) | q(c1) | q(f2(c1)) | q(x).  [factor(448,c,e)].
+684 -p(c3) | p(x) | q(c4) | q(f2(c4)) | q(y).  [factor(464,c,e)].
+699 p(c3) | -p(x) | q(c4) | q(f2(c4)) | q(y).  [factor(500,c,e)].
+705 p(c3) | -p(x) | q(c4) | -q(c8) | p(c9).  [factor(514,c,f)].
+715 -p(c11) | p(x) | -q(y) | q(c16) | q(z).  [factor(537,c,d)].
+719 -p(c11) | p(x) | -q(c16) | q(y) | q(z).  [factor(545,c,e)].
+726 -p(c11) | p(x) | -q(f4(y)) | -q(y) | -q(c20).  [factor(559,c,d)].
+730 p(c11) | -p(x) | -q(y) | q(c16) | q(z).  [factor(569,c,d)].
+734 p(c11) | -p(x) | -q(c16) | q(y) | q(z).  [factor(576,c,e)].
+739 p(c11) | -p(x) | -q(f4(y)) | -q(y) | -q(c20).  [factor(587,c,d)].
+756 -p(c15) | -p(f3(c15)) | -q(x) | q(c16) | q(y).  [factor(637,c,d)].
+761 -p(c15) | -p(f3(c15)) | -q(c16) | q(x) | q(y).  [factor(645,c,e)].
+766 -p(c15) | -p(f3(c15)) | -q(f4(x)) | -q(x) | -q(c20).  [factor(657,c,d)].
+770 p(c9) | p(f1(c9)) | -q(x) | q(c8).  [factor(664,d,e)].
+771 p(c9) | p(f1(c9)) | -q(c8) | q(x).  [factor(668,d,e)].
+772 -p(c2) | -p(f1(c2)) | q(c1) | q(f2(c1)).  [factor(677,c,e)].
+773 -p(c3) | p(x) | q(c4) | q(f2(c4)).  [factor(684,c,e)].
+775 p(c3) | -p(x) | q(c4) | q(f2(c4)).  [factor(699,c,e)].
+777 -p(c11) | p(x) | -q(y) | q(c16).  [factor(715,d,e)].
+778 -p(c11) | p(x) | -q(c16) | q(y).  [factor(719,d,e)].
+779 -p(c11) | p(x) | -q(f4(c20)) | -q(c20).  [factor(726,d,e)].
+780 p(c11) | -p(x) | -q(y) | q(c16).  [factor(730,d,e)].
+781 p(c11) | -p(x) | -q(c16) | q(y).  [factor(734,d,e)].
+782 p(c11) | -p(x) | -q(f4(c20)) | -q(c20).  [factor(739,d,e)].
+784 -p(c15) | -p(f3(c15)) | -q(x) | q(c16).  [factor(756,d,e)].
+785 -p(c15) | -p(f3(c15)) | -q(c16) | q(x).  [factor(761,d,e)].
+854 p(x) | p(f1(x)) | q(c8) | p(c9) | p(y) | p(f3(y)) | q(c14) | q(z) | p(c19).  [resolve(666,c,609,d)].
+855 p(c9) | p(f1(c9)) | q(c8) | p(x) | p(f3(x)) | q(c14) | q(y) | p(c19).  [factor(854,a,d)].
+863 p(c9) | p(f1(c9)) | q(c8) | p(f3(c9)) | q(c14) | q(x) | p(c19).  [factor(855,a,d)].
+878 p(c9) | p(f1(c9)) | q(c8) | p(f3(c9)) | q(c14) | p(c19).  [factor(863,c,f)].
+924 p(c9) | p(f1(c9)) | q(c8) | p(f3(c9)) | p(c19).  [resolve(878,e,770,c),merge(f),merge(g),merge(h)].
+929 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | q(x).  [resolve(924,c,771,c),merge(e),merge(f)].
+939 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | p(x) | p(f1(x)) | -q(c7) | p(c6).  [resolve(929,e,663,c)].
+942 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | -q(c7) | p(c6).  [factor(939,a,e),merge(e)].
+1079 p(c9) | p(f1(c9)) | p(f3(c9)) | p(c19) | p(c6).  [resolve(942,e,929,e),merge(f),merge(g),merge(h),merge(i)].
+1082 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(c4) | q(f2(c4)).  [resolve(1079,c,775,b)].
+2138 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(c4) | q(c8).  [resolve(1082,g,770,c),merge(g),merge(h)].
+2159 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(c4) | q(x).  [resolve(2138,g,771,c),merge(g),merge(h)].
+2161 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(c4).  [factor(2159,f,g)].
+2182 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(c8).  [resolve(2161,f,770,c),merge(f),merge(g)].
+2196 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | q(x).  [resolve(2182,f,771,c),merge(f),merge(g)].
+2204 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | p(x) | p(f1(x)) | -q(c7).  [resolve(2196,f,663,c),merge(i)].
+2206 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3) | -q(c7).  [factor(2204,a,f),merge(f)].
+2207 p(c9) | p(f1(c9)) | p(c19) | p(c6) | p(c3).  [resolve(2206,f,2196,f),merge(f),merge(g),merge(h),merge(i),merge(j)].
+2213 p(c9) | p(c19) | p(c6) | p(c3) | q(c4) | q(f2(c4)).  [resolve(2207,b,775,b),merge(e)].
+2230 p(c9) | p(c19) | p(c6) | p(c3) | q(c4) | -p(x) | q(c8).  [resolve(2213,f,510,d),merge(f),merge(h),merge(j)].
+2244 p(c9) | p(c19) | p(c6) | p(c3) | q(c4) | q(c8).  [resolve(2230,f,2207,b),merge(g),merge(h),merge(i),merge(j)].
+2246 p(c9) | p(c19) | p(c6) | p(c3) | q(c4) | -p(x).  [resolve(2244,f,705,d),merge(f),merge(h),merge(i)].
+2261 p(c9) | p(c19) | p(c6) | p(c3) | q(c4).  [resolve(2246,f,2207,b),merge(f),merge(g),merge(h),merge(i)].
+2263 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | -p(x) | q(c16).  [resolve(2261,e,780,c)].
+2271 p(c9) | p(c19) | p(c6) | p(c3) | p(x) | p(f1(x)) | q(c8).  [resolve(2261,e,666,c),merge(h)].
+2283 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)) | q(c8).  [factor(2271,d,e)].
+2305 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)) | p(x) | p(f1(x)) | q(y).  [resolve(2283,f,670,c),merge(i)].
+2306 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)) | q(x).  [factor(2305,d,f),merge(f)].
+2336 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)) | p(x) | p(f1(x)) | -q(c7).  [resolve(2306,f,663,c),merge(i)].
+2339 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)) | -q(c7).  [factor(2336,d,f),merge(f)].
+2349 p(c9) | p(c19) | p(c6) | p(c3) | p(f1(c3)).  [resolve(2339,f,2306,f),merge(f),merge(g),merge(h),merge(i),merge(j)].
+2350 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | q(c16).  [resolve(2263,f,2349,e),merge(g),merge(h),merge(i),merge(j)].
+2352 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | -p(x) | q(y).  [resolve(2350,f,781,c),merge(f)].
+2353 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | q(x).  [resolve(2352,f,2349,e),merge(g),merge(h),merge(i),merge(j)].
+2355 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | -p(x) | -q(c20).  [resolve(2353,f,782,c),merge(f)].
+2360 p(c9) | p(c19) | p(c6) | p(c3) | p(c11) | -p(x).  [resolve(2355,g,2353,f),merge(g),merge(h),merge(i),merge(j),merge(k)].
+2361 p(c9) | p(c19) | p(c6) | p(c3) | p(c11).  [resolve(2360,f,2349,e),merge(f),merge(g),merge(h),merge(i)].
+2362 p(c9) | p(c6) | p(c3) | p(c11) | q(c4) | q(f2(c4)).  [resolve(2361,b,775,b),merge(e)].
+2365 p(c9) | p(c6) | p(c3) | p(c11) | q(c4) | -p(x) | q(c16).  [resolve(2362,f,780,c),merge(f)].
+2374 p(c9) | p(c6) | p(c3) | p(c11) | q(c4) | q(c16).  [resolve(2365,f,2361,b),merge(g),merge(h),merge(i),merge(j)].
+2376 p(c9) | p(c6) | p(c3) | p(c11) | q(c4) | -p(x) | q(y).  [resolve(2374,f,781,c),merge(f)].
+2378 p(c9) | p(c6) | p(c3) | p(c11) | q(c4) | -p(x).  [factor(2376,e,g)].
+2379 p(c9) | p(c6) | p(c3) | p(c11) | q(c4).  [resolve(2378,f,2361,b),merge(f),merge(g),merge(h),merge(i)].
+2381 p(c9) | p(c6) | p(c3) | p(c11) | -p(x) | q(c16).  [resolve(2379,e,780,c),merge(e)].
+2397 p(c9) | p(c6) | p(c3) | p(c11) | q(c16).  [resolve(2381,e,2361,b),merge(f),merge(g),merge(h),merge(i)].
+2399 p(c9) | p(c6) | p(c3) | p(c11) | -p(x) | q(y).  [resolve(2397,e,781,c),merge(e)].
+2400 p(c9) | p(c6) | p(c3) | p(c11) | q(x).  [resolve(2399,e,2361,b),merge(f),merge(g),merge(h),merge(i)].
+2402 p(c9) | p(c6) | p(c3) | p(c11) | -p(x) | -q(c20).  [resolve(2400,e,782,c),merge(e)].
+2410 p(c9) | p(c6) | p(c3) | p(c11) | -p(x).  [resolve(2402,f,2400,e),merge(f),merge(g),merge(h),merge(i)].
+2411 p(c9) | p(c6) | p(c3) | p(c11).  [resolve(2410,e,2361,b),merge(e),merge(f),merge(g),merge(h)].
+2414 p(c9) | p(c6) | p(c3) | q(c4) | q(f2(c4)).  [resolve(2411,d,775,b),merge(d)].
+2454 p(c9) | p(c6) | p(c3) | q(c4) | -p(x) | q(c8).  [resolve(2414,e,510,d),merge(e),merge(g),merge(i)].
+2478 p(c9) | p(c6) | p(c3) | q(c4) | q(c8).  [resolve(2454,e,2411,d),merge(f),merge(g),merge(h)].
+2481 p(c9) | p(c6) | p(c3) | q(c4) | -p(x).  [resolve(2478,e,705,d),merge(e),merge(g),merge(h)].
+2489 p(c9) | p(c6) | p(c3) | q(c4).  [resolve(2481,e,2411,d),merge(e),merge(f),merge(g)].
+2491 p(c9) | p(c6) | p(c3) | -p(c11) | p(x) | q(c16).  [resolve(2489,d,777,c)].
+2503 p(c9) | p(c6) | p(c3) | -p(c11) | q(c16).  [factor(2491,a,e)].
+2517 p(c9) | p(c6) | p(c3) | q(c16).  [resolve(2503,d,2411,d),merge(e),merge(f),merge(g)].
+2519 p(c9) | p(c6) | p(c3) | -p(c11) | p(x) | q(y).  [resolve(2517,d,778,c)].
+2524 p(c9) | p(c6) | p(c3) | -p(c11) | q(x).  [factor(2519,a,e)].
+2532 p(c9) | p(c6) | p(c3) | q(x).  [resolve(2524,d,2411,d),merge(e),merge(f),merge(g)].
+2534 p(c9) | p(c6) | p(c3) | -p(c11) | p(x) | -q(c20).  [resolve(2532,d,779,c)].
+2541 p(c9) | p(c6) | p(c3) | -p(c11) | -q(c20).  [factor(2534,a,e)].
+2548 p(c9) | p(c6) | p(c3) | -p(c11).  [resolve(2541,e,2532,d),merge(e),merge(f),merge(g)].
+2549 p(c9) | p(c6) | p(c3).  [resolve(2548,d,2411,d),merge(d),merge(e),merge(f)].
+2570 p(c6) | p(c3) | q(c4) | q(f2(c4)).  [resolve(2549,a,775,b),merge(c)].
+2607 p(c6) | p(c3) | q(c4) | p(c11) | -p(x) | q(c16).  [resolve(2570,d,780,c)].
+2608 p(c6) | p(c3) | q(c4) | -p(c11) | p(x) | q(c16).  [resolve(2570,d,777,c)].
+2619 p(c6) | p(c3) | q(c4) | -p(c11) | q(c16).  [factor(2608,a,e)].
+2635 p(c6) | p(c3) | q(c4) | p(c11) | q(c16).  [resolve(2607,e,2549,a),merge(f),merge(g)].
+2637 p(c6) | p(c3) | q(c4) | p(c11) | -p(x) | q(y).  [resolve(2635,e,781,c),merge(e)].
+2639 p(c6) | p(c3) | q(c4) | p(c11) | -p(x).  [factor(2637,c,f)].
+2640 p(c6) | p(c3) | q(c4) | p(c11).  [resolve(2639,e,2549,a),merge(e),merge(f)].
+2642 p(c6) | p(c3) | p(c11) | -p(x) | q(c16).  [resolve(2640,c,780,c),merge(d)].
+2653 p(c6) | p(c3) | p(c11) | q(c16).  [resolve(2642,d,2549,a),merge(e),merge(f)].
+2655 p(c6) | p(c3) | p(c11) | -p(x) | q(y).  [resolve(2653,d,781,c),merge(d)].
+2656 p(c6) | p(c3) | p(c11) | q(x).  [resolve(2655,d,2549,a),merge(e),merge(f)].
+2658 p(c6) | p(c3) | p(c11) | -p(x) | -q(c20).  [resolve(2656,d,782,c),merge(d)].
+2665 p(c6) | p(c3) | p(c11) | -p(x).  [resolve(2658,e,2656,d),merge(e),merge(f),merge(g)].
+2666 p(c6) | p(c3) | p(c11).  [resolve(2665,d,2549,a),merge(d),merge(e)].
+2667 p(c6) | p(c3) | q(c4) | q(c16).  [resolve(2666,c,2619,d),merge(c),merge(d)].
+2669 p(c6) | p(c3) | q(c4) | -p(c11) | p(x) | q(y).  [resolve(2667,d,778,c)].
+2675 p(c6) | p(c3) | q(c4) | -p(c11) | q(x).  [factor(2669,a,e)].
+2684 p(c6) | p(c3) | q(c4) | -p(c11).  [factor(2675,c,e)].
+2712 p(c6) | p(c3) | q(c4).  [resolve(2684,d,2666,c),merge(d),merge(e)].
+2714 p(c6) | p(c3) | -p(c11) | p(x) | q(c16).  [resolve(2712,c,777,c)].
+2727 p(c6) | p(c3) | -p(c11) | q(c16).  [factor(2714,a,d)].
+2738 p(c6) | p(c3) | q(c16).  [resolve(2727,c,2666,c),merge(d),merge(e)].
+2740 p(c6) | p(c3) | -p(c11) | p(x) | q(y).  [resolve(2738,c,778,c)].
+2745 p(c6) | p(c3) | -p(c11) | q(x).  [factor(2740,a,d)].
+2763 p(c6) | p(c3) | q(x).  [resolve(2745,c,2666,c),merge(d),merge(e)].
+2765 p(c6) | p(c3) | -p(c11) | p(x) | -q(c20).  [resolve(2763,c,779,c)].
+2772 p(c6) | p(c3) | -p(c11) | -q(c20).  [factor(2765,a,d)].
+2787 p(c6) | p(c3) | -p(c11).  [resolve(2772,d,2763,c),merge(d),merge(e)].
+2788 p(c6) | p(c3).  [resolve(2787,c,2666,c),merge(c),merge(d)].
+2817 p(c3) | q(c4) | q(f2(c4)).  [resolve(2788,a,775,b),merge(b)].
+2835 p(c3) | q(c4) | p(c11) | -p(x) | q(c16).  [resolve(2817,c,780,c)].
+2836 p(c3) | q(c4) | -p(c11) | p(x) | q(c16).  [resolve(2817,c,777,c)].
+2852 p(c3) | q(c4) | -p(c11) | q(c16).  [factor(2836,a,d)].
+2875 p(c3) | q(c4) | p(c11) | q(c16).  [resolve(2835,d,2788,a),merge(e)].
+2877 p(c3) | q(c4) | p(c11) | -p(x) | q(y).  [resolve(2875,d,781,c),merge(d)].
+2879 p(c3) | q(c4) | p(c11) | -p(x).  [factor(2877,b,e)].
+2890 p(c3) | q(c4) | p(c11).  [resolve(2879,d,2788,a),merge(d)].
+2892 p(c3) | p(c11) | -p(x) | q(c16).  [resolve(2890,b,780,c),merge(c)].
+2908 p(c3) | p(c11) | q(c16).  [resolve(2892,c,2788,a),merge(d)].
+2910 p(c3) | p(c11) | -p(x) | q(y).  [resolve(2908,c,781,c),merge(c)].
+2940 p(c3) | p(c11) | q(x).  [resolve(2910,c,2788,a),merge(d)].
+2942 p(c3) | p(c11) | -p(x) | -q(c20).  [resolve(2940,c,782,c),merge(c)].
+2943 p(c3) | p(c11) | -p(x).  [resolve(2942,d,2940,c),merge(d),merge(e)].
+2944 p(c3) | p(c11).  [resolve(2943,c,2788,a),merge(c)].
+2963 p(c3) | q(c4) | q(c16).  [resolve(2944,b,2852,c),merge(b)].
+2973 p(c3) | q(c4) | -p(c11) | p(x) | q(y).  [resolve(2963,c,778,c)].
+2979 p(c3) | q(c4) | -p(c11) | q(x).  [factor(2973,a,d)].
+2986 p(c3) | q(c4) | -p(c11).  [factor(2979,b,d)].
+2988 p(c3) | q(c4).  [resolve(2986,c,2944,b),merge(c)].
+2990 p(c3) | -p(c11) | p(x) | q(c16).  [resolve(2988,b,777,c)].
+3007 p(c3) | -p(c11) | q(c16).  [factor(2990,a,c)].
+3033 p(c3) | q(c16).  [resolve(3007,b,2944,b),merge(c)].
+3035 p(c3) | -p(c11) | p(x) | q(y).  [resolve(3033,b,778,c)].
+3040 p(c3) | -p(c11) | q(x).  [factor(3035,a,c)].
+3044 p(c3) | q(x).  [resolve(3040,b,2944,b),merge(c)].
+3046 p(c3) | -p(c11) | p(x) | -q(c20).  [resolve(3044,b,779,c)].
+3049 p(c3) | -p(c11) | -q(c20).  [factor(3046,a,c)].
+3071 p(c3) | -p(c11).  [resolve(3049,c,3044,b),merge(c)].
+3072 p(c3).  [resolve(3071,b,2944,b),merge(b)].
+3094 p(x) | q(c4) | q(f2(c4)).  [back_unit_del(773),unit_del(a,3072)].
+3141 p(x) | q(c4) | p(c11) | -p(y) | q(c16).  [resolve(3094,c,780,c)].
+3142 p(x) | q(c4) | -p(c11) | p(y) | q(c16).  [resolve(3094,c,777,c)].
+3156 p(c11) | q(c4) | -p(x) | q(c16).  [factor(3141,a,c)].
+3157 p(x) | q(c4) | -p(c11) | q(c16).  [factor(3142,a,d)].
+3246 p(c11) | q(c4) | q(c16).  [resolve(3156,c,3072,a)].
+3248 p(c11) | q(c4) | -p(x) | q(y).  [resolve(3246,c,781,c),merge(c)].
+3250 p(c11) | q(c4) | -p(x).  [factor(3248,b,d)].
+3251 p(c11) | q(c4).  [resolve(3250,c,3072,a)].
+3263 p(c11) | -p(x) | q(c16).  [resolve(3251,b,780,c),merge(b)].
+3271 p(c11) | q(c16).  [resolve(3263,b,3072,a)].
+3273 p(c11) | -p(x) | q(y).  [resolve(3271,b,781,c),merge(b)].
+3274 p(c11) | q(x).  [resolve(3273,b,3072,a)].
+3284 p(c11) | -p(x) | -q(c20).  [resolve(3274,b,782,c),merge(b)].
+3289 p(c11) | -p(x).  [resolve(3284,c,3274,b),merge(c)].
+3290 p(c11).  [resolve(3289,b,3072,a)].
+3298 p(x) | q(c4) | q(c16).  [back_unit_del(3157),unit_del(c,3290)].
+3312 p(x) | -q(f4(c20)) | -q(c20).  [back_unit_del(779),unit_del(a,3290)].
+3313 p(x) | -q(c16) | q(y).  [back_unit_del(778),unit_del(a,3290)].
+3314 p(x) | -q(y) | q(c16).  [back_unit_del(777),unit_del(a,3290)].
+3333 p(x) | q(y) | p(z) | q(c4).  [resolve(3313,b,3298,c)].
+3335 p(x) | q(y) | q(c4).  [factor(3333,a,c)].
+3338 p(x) | q(c4).  [factor(3335,b,c)].
+3350 p(x) | q(c16) | p(y).  [resolve(3314,b,3338,b)].
+3351 p(x) | q(c16).  [factor(3350,a,c)].
+3352 p(x) | p(y) | q(z).  [resolve(3351,b,3313,b)].
+3355 p(x) | q(y).  [factor(3352,a,b)].
+3370 p(x) | -q(c20) | p(y).  [resolve(3312,b,3355,b)].
+3371 p(x) | -q(c20).  [factor(3370,a,c)].
+3372 p(x) | p(y).  [resolve(3371,b,3355,b)].
+3373 p(x).  [factor(3372,a,b)].
+3375 -q(c16) | q(x).  [back_unit_del(785),unit_del(a,3373),unit_del(b,3373)].
+3376 -q(x) | q(c16).  [back_unit_del(784),unit_del(a,3373),unit_del(b,3373)].
+3377 q(c1) | q(f2(c1)).  [back_unit_del(772),unit_del(a,3373),unit_del(b,3373)].
+3378 -q(f4(x)) | -q(x) | -q(c20).  [back_unit_del(766),unit_del(a,3373),unit_del(b,3373)].
+3384 q(c1) | q(c16).  [resolve(3377,b,3376,a)].
+3385 q(c1) | q(x).  [resolve(3384,b,3375,a)].
+3386 q(c1).  [factor(3385,a,b)].
+3387 q(c16).  [resolve(3386,a,3376,a)].
+3388 q(x).  [back_unit_del(3375),unit_del(a,3387)].
+3389 $F.  [back_unit_del(3378),unit_del(a,3388),unit_del(b,3388),unit_del(c,3388)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=541. Generated=16883. Kept=3387. proofs=1.
+Usable=2. Sos=0. Demods=0. Limbo=1, Disabled=3512. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=13495. Back_subsumed=3297.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=87.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=19863. Nonunit_bsub_feature_tests=7473.
+Megabytes=2.15.
+User_CPU=0.54, System_CPU=0.01, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 16595 exit (max_proofs) Tue Oct  9 04:23:03 2007

@@ -1,14 +1,18 @@
 package KnowledgeBase;
 
 import java.util.ArrayList;
+import java.io.File;
 import java.lang.ProcessBuilder;
 import java.lang.Process;
+import java.net.URISyntaxException;
 
 import util.InputCreator;
 
 public class KnowledgeBase 
 {
 	private static final int TIMEOUT_SECONDS = 10;
+	private static final String PROVER9_EXE = "\\src\\LADR\\bin\\Prover9.exe";
+	private static final String QUERY_DIR = "\\QFolder\\"; 
 	private String sProver9FullPath;
 	private String sQueryDirectory;
 	private ArrayList<String> KnowledgePool = new ArrayList<String>();
@@ -17,9 +21,7 @@ public class KnowledgeBase
 	// Constructor
 	public KnowledgeBase()
 	{
-		// Set Prover9 path and a folder for input file(s)
-		this.sProver9FullPath = "C:\\Vikedo\\CS531\\Assignment_#4\\WumpusAgent\\LADR\\bin\\Prover9.exe";
-		this.sQueryDirectory = "C:\\Vikedo\\CS531\\Assignment_#4\\WumpusAgent\\JavaWumpus\\Wumpus\\QFolder\\";
+		SetPaths();
 	}
 	
 	public KnowledgeBase(String prover9Path)
@@ -34,7 +36,31 @@ public class KnowledgeBase
 		return sProver9FullPath;
 	}
 		
-	// Private Methods	
+	// Private Methods
+	// Set Prover9 and QueryFolder (folder for input file(s)) path
+	private void SetPaths()
+	{
+		try 
+		{
+			File file = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+			String sParentFullPath = file.getParent();
+			
+			file = new File(sParentFullPath + PROVER9_EXE);
+			if(file.exists() && file.isFile())
+				this.sProver9FullPath = sParentFullPath + PROVER9_EXE;
+			else
+				System.out.println("\nProver9 not found in: " + file.getParent());
+			
+			file = new File(sParentFullPath + QUERY_DIR);
+			if(!file.exists())
+				file.mkdir();
+			this.sQueryDirectory = sParentFullPath + QUERY_DIR;
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	// Formats the command to call Prover9
 	private String BuildCommand(String input)
 	{

@@ -1,0 +1,20 @@
+
+formulas(assumptions).
+
+  % Group Theory Axioms
+
+  e * x = x                  # label(left_identity).
+  x' * x = e                 # label(left_inverse).
+  (x * y) * z = x * (y * z)  # label(associativity).
+
+  % Assume group is Boolean
+
+  x * x = e # label(Boolean).
+
+end_of_list.
+
+formulas(goals).
+
+  x * y = y * x # label(commutativity).
+
+end_of_list.

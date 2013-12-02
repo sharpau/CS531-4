@@ -1,0 +1,144 @@
+============================== Mace4 =================================
+Mace4 (32) version Oct-2007, Oct 2007.
+Process 16624 was started by mccune on cleo,
+Tue Oct  9 04:23:29 2007
+The command was "/home/mccune/bin/mace4 -c -f x2.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file x2.in
+
+assign(max_seconds,5).
+
+formulas(sos).
+(x * y) * z = x * (y * z).
+x * e = x.
+x * x' = e.
+end_of_list.
+
+formulas(goals).
+x * y = y * x.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x * y = y * x # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+(x * y) * z = x * (y * z).
+x * e = x.
+x * x' = e.
+c2 * c1 != c1 * c2.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The maximum domain element in the input is 0.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=13, kept=13.
+Selections=7, assignments=14, propagations=12, current_models=0.
+Rewrite_terms=124, rewrite_bools=32, indexes=15.
+Rules_from_neg_clauses=4, cross_offs=4.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=34, kept=34.
+Selections=13, assignments=36, propagations=50, current_models=0.
+Rewrite_terms=562, rewrite_bools=139, indexes=92.
+Rules_from_neg_clauses=15, cross_offs=40.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=73, kept=73.
+Selections=31, assignments=109, propagations=235, current_models=0.
+Rewrite_terms=2798, rewrite_bools=619, indexes=428.
+Rules_from_neg_clauses=46, cross_offs=211.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=136, kept=136.
+Selections=63, assignments=263, propagations=536, current_models=0.
+Rewrite_terms=6371, rewrite_bools=1223, indexes=1484.
+Rules_from_neg_clauses=80, cross_offs=559.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 6 =========================
+
+============================== MODEL =================================
+
+interpretation( 6, [number=1, seconds=0], [
+
+        function(e, [ 0 ]),
+
+        function(c1, [ 1 ]),
+
+        function(c2, [ 2 ]),
+
+        function('(_), [ 0, 1, 2, 4, 3, 5 ]),
+
+        function(*(_,_), [
+			   0, 1, 2, 3, 4, 5,
+			   1, 0, 3, 2, 5, 4,
+			   2, 4, 0, 5, 1, 3,
+			   3, 5, 1, 4, 0, 2,
+			   4, 2, 5, 0, 3, 1,
+			   5, 3, 4, 1, 2, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 6.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=229, kept=229.
+Selections=14, assignments=44, propagations=94, current_models=1.
+Rewrite_terms=1566, rewrite_bools=339, indexes=370.
+Rules_from_neg_clauses=8, cross_offs=138.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 16624 exit (max_models) Tue Oct  9 04:23:29 2007
+The process finished Tue Oct  9 04:23:29 2007

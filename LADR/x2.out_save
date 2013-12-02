@@ -1,0 +1,177 @@
+============================== Prover9 ===============================
+Prover9 (32) version Oct-2007, Oct 2007.
+Process 3864 was started by Bill on K8V-VM-XPHome,
+Wed Oct 10 10:21:38 2007
+The command was "bin/prover9 -f x2.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file x2.in
+
+
+formulas(assumptions).
+e * x = x # label(left_identity).
+x' * x = e # label(left_inverse).
+(x * y) * z = x * (y * z) # label(associativity).
+x * x = e # label(Boolean).
+end_of_list.
+
+formulas(goals).
+x * y = y * x # label(commutativity).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x * y = y * x # label(commutativity) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+e * x = x # label(left_identity).  [assumption].
+x' * x = e # label(left_inverse).  [assumption].
+(x * y) * z = x * (y * z) # label(associativity).  [assumption].
+x * x = e # label(Boolean).  [assumption].
+c2 * c1 != c1 * c2 # label(commutativity).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % copying label commutativity to answer in negative clause
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e, c1, c2, *, ' ]).
+After inverse_order: Function symbol precedence:  function_order([ e, c1, c2, *, ' ]).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+    % set(paramodulation) -> set(back_demod).
+
+Auto_process settings:  (no changes).
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 e * x = x # label(left_identity).  [assumption].
+3 x' * x = e # label(left_inverse).  [assumption].
+4 (x * y) * z = x * (y * z) # label(associativity).  [assumption].
+5 x * x = e # label(Boolean).  [assumption].
+6 c2 * c1 != c1 * c2 # label(commutativity) # answer(commutativity).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+2 e * x = x # label(left_identity).  [assumption].
+3 x' * x = e # label(left_inverse).  [assumption].
+4 (x * y) * z = x * (y * z) # label(associativity).  [assumption].
+5 x * x = e # label(Boolean).  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.03 seconds.
+
+given #1 (I,wt=5): 2 e * x = x # label(left_identity).  [assumption].
+
+given #2 (I,wt=6): 3 x' * x = e # label(left_inverse).  [assumption].
+
+given #3 (I,wt=11): 4 (x * y) * z = x * (y * z) # label(associativity).  [assumption].
+
+given #4 (I,wt=5): 5 x * x = e # label(Boolean).  [assumption].
+
+given #5 (I,wt=7): 6 c2 * c1 != c1 * c2 # label(commutativity) # answer(commutativity).  [deny(1)].
+
+given #6 (A,wt=8): 7 x' * (x * y) = y.  [para(3(a,1),4(a,1,1)),rewrite([2(2)]),flip(a)].
+
+given #7 (T,wt=4): 15 x' = x.  [back_rewrite(11),rewrite([13(4)])].
+
+given #8 (T,wt=5): 16 x * e = x.  [back_rewrite(13),rewrite([15(1)])].
+
+given #9 (T,wt=7): 8 x * (x * y) = y.  [para(5(a,1),4(a,1,1)),rewrite([2(2)]),flip(a)].
+
+given #10 (T,wt=9): 9 x * (y * (x * y)) = e.  [para(5(a,1),4(a,1)),flip(a)].
+
+given #11 (A,wt=11): 17 x * (y * (x * (y * z))) = z.  [back_rewrite(12),rewrite([15(2),4(4)])].
+
+given #12 (T,wt=7): 19 x * (y * x) = y.  [para(9(a,1),8(a,1,2)),rewrite([16(2)]),flip(a)].
+
+% Operation * is commutative; C redundancy checks enabled.
+
+============================== PROOF =================================
+
+% Proof 1 at 0.03 (+ 0.06) seconds: commutativity.
+% Length of proof is 16.
+% Level of proof is 7.
+% Maximum clause weight is 11.
+% Given clauses 12.
+
+1 x * y = y * x # label(commutativity) # label(non_clause) # label(goal).  [goal].
+2 e * x = x # label(left_identity).  [assumption].
+3 x' * x = e # label(left_inverse).  [assumption].
+4 (x * y) * z = x * (y * z) # label(associativity).  [assumption].
+5 x * x = e # label(Boolean).  [assumption].
+6 c2 * c1 != c1 * c2 # label(commutativity) # answer(commutativity).  [deny(1)].
+7 x' * (x * y) = y.  [para(3(a,1),4(a,1,1)),rewrite([2(2)]),flip(a)].
+8 x * (x * y) = y.  [para(5(a,1),4(a,1,1)),rewrite([2(2)]),flip(a)].
+9 x * (y * (x * y)) = e.  [para(5(a,1),4(a,1)),flip(a)].
+11 x'' * e = x.  [para(3(a,1),7(a,1,2))].
+13 x' * e = x.  [para(5(a,1),7(a,1,2))].
+15 x' = x.  [back_rewrite(11),rewrite([13(4)])].
+16 x * e = x.  [back_rewrite(13),rewrite([15(1)])].
+19 x * (y * x) = y.  [para(9(a,1),8(a,1,2)),rewrite([16(2)]),flip(a)].
+24 x * y = y * x.  [para(19(a,1),8(a,1,2))].
+25 $F # answer(commutativity).  [resolve(24,a,6,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=12. Generated=118. Kept=23. proofs=1.
+Usable=8. Sos=3. Demods=12. Limbo=2, Disabled=14. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=95. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=21 (0 lex), Back_demodulated=9. Back_unit_deleted=0.
+Demod_attempts=702. Demod_rewrites=156.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
+User_CPU=0.03, System_CPU=0.06, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 3864 exit (max_proofs) Wed Oct 10 10:21:38 2007
