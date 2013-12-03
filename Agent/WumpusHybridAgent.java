@@ -51,15 +51,13 @@ public class WumpusHybridAgent implements Agent {
 	ArrayList<WumpusAction> 	plan = new ArrayList<WumpusAction>();
 	Position 					agentpos = new Position(1, 1);
 	public DIRECTION 			agentdir = DIRECTION.DIRUP;
+	public DIRECTION			plandir; // direction the agent will be facing after execution of the plan
 	
 	// private methods
 	
-	// given the agent's direction and the direction of the neighboring square to move to,
-	// returns the actions necessary
-	private ArrayList<WumpusAction> getMoves(DIRECTION facing, DIRECTION tomove) throws Exception {
+	private ArrayList<WumpusAction> turnTo(DIRECTION current, DIRECTION goal) throws Exception {
 		ArrayList<WumpusAction> moves = new ArrayList<WumpusAction>();
-		
-		int turns = tomove.ordinal() - facing.ordinal();
+		int turns = goal.ordinal() - current.ordinal();
 		switch(turns) {
 		case 0:
 			break;
@@ -84,13 +82,23 @@ public class WumpusHybridAgent implements Agent {
 			moves.add(new WumpusAction(ACTION.TURNRIGHT));
 			break;
 		}
+		return moves;
+	}
+	
+	// given the agent's direction and the direction of the neighboring square to move to,
+	// returns the actions necessary
+	private ArrayList<WumpusAction> getMoves(DIRECTION facing, DIRECTION tomove) throws Exception {
+		// update where the plan is taking us, direction-wise
+		plandir = facing;
+		ArrayList<WumpusAction> moves = new ArrayList<WumpusAction>();
+		moves.addAll(turnTo(facing, tomove));
 		moves.add(new WumpusAction(ACTION.MOVE));
-
 		return moves;
 	}
 	
 	// use A* search to plan a route to any of the goals using any of the allowed squares
-	private void planRoute(ArrayList<Position> goals, ArrayList<Position> allowed) throws Exception {
+	// returns int i where goals[i] is the square chosen to navigate to
+	private int planRoute(ArrayList<Position> goals, ArrayList<Position> allowed) throws Exception {
 		ArrayList<Node> frontier = new ArrayList<Node>();
 		ArrayList<Position> explored = new ArrayList<Position>();
 		Node cur = new Node(agentpos, agentdir, 0, plan);
@@ -125,7 +133,7 @@ public class WumpusHybridAgent implements Agent {
 			// find and expand best node as cur
 			if(frontier.size() == 0) {
 				// no nodes to expand, no path found, so we don't update the plan
-				return;
+				return -1;
 			}
 			int min = 9999;
 			int idx = -1;
@@ -143,8 +151,52 @@ public class WumpusHybridAgent implements Agent {
 		
 		// goal state found, update plan to match moves to get to that state
 		plan = cur.moves;
+		return goals.indexOf(cur);
 	}
 
+	private void planShot(ArrayList<Position> targets, ArrayList<Position> allowed) throws Exception {
+		// figure out all goals
+		ArrayList<Position> goals = new ArrayList<Position>();
+		ArrayList<DIRECTION> dirs = new ArrayList<DIRECTION>();
+		
+		int maxSize = 4;
+		for(Position t : targets) {
+			for(int i = 0; i < maxSize; i++) {
+				if(i != t.x && allowed.contains(new Position(i, t.y))) {
+					goals.add(new Position(i, t.y));
+					if(i < t.x) {
+						dirs.add(DIRECTION.DIRRIGHT);
+					}
+					else if(i > t.x) {
+						dirs.add(DIRECTION.DIRLEFT);
+					}
+				}
+			}
+			for(int j = 0; j < maxSize; j++) {
+				if(j != t.y && allowed.contains(new Position(t.x, j))) {
+					goals.add(new Position(t.x, j));
+					if(j < t.y) {
+						dirs.add(DIRECTION.DIRUP);
+					}
+					else if(j > t.y) {
+						dirs.add(DIRECTION.DIRDOWN);
+					}
+				}
+			}
+		}
+		
+		// planRoute to goals
+		int idx = planRoute(goals, allowed);
+		
+		// if we have a plan / made it to a goal, turn the right way and plan a shot
+		if(idx != -1) {
+			// we want to turn to face dirs.get(idx) - the shooting direction associated with the goal we're going to
+			plan.addAll(turnTo(plandir, dirs.get(idx)));
+			plan.add(new WumpusAction(ACTION.SHOOT));
+			plandir = dirs.get(idx);
+		}
+	}
+	
 	@Override
 	public Action getAction(Percept p) throws Exception {
 		// test pathfinding
@@ -196,9 +248,7 @@ public class WumpusHybridAgent implements Agent {
 		if(plan.size() == 0 && /*AskKB(HaveArrow, t) = */ true) {
 			ArrayList<Position> possibleWumpus = null; //  = AskKBWumpus(); // this method returns all squares for which there might be a wumpus
 			plan = new ArrayList<WumpusAction>();
-			// planRoute(possibleWumpus, safe); // TODO replace with planShot!!!
-			// TODO: figure out which way to face!!!
-			plan.add(new WumpusAction(ACTION.SHOOT));
+			planShot(possibleWumpus, safe);
 		}
 		if(plan.size() == 0) {
 			// time to take a risk
