@@ -8,8 +8,6 @@ import Environment.WumpusEnvironment.DIRECTION;
 import Environment.WumpusPercept;
 import KnowledgeBase.KnowledgeBase;
 
-// see textbook pg 270 algorithm
-
 public class WumpusHybridAgent implements Agent {
 	class Position {
 		public int x;
