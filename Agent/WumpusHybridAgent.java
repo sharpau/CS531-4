@@ -43,16 +43,18 @@ public class WumpusHybridAgent implements Agent {
 		}
 	}
 	
-	public WumpusHybridAgent(int size) {
+	public WumpusHybridAgent(int size, Boolean risk) {
 		worldSize = size;
+		risky = risk;
 	}
 	
 	// members
 	KnowledgeBase 				kb = new KnowledgeBase();
 	int 						time = 0;
 	int							worldSize;
+	Boolean						risky;
 	ArrayList<WumpusAction> 	plan = new ArrayList<WumpusAction>();
-	Position 					agentpos = new Position(1, 1);
+	Position 					agentpos = new Position(0, 0);
 	public DIRECTION 			agentdir = DIRECTION.DIRUP;
 	public DIRECTION			plandir; // direction the agent will be facing after execution of the plan
 	
@@ -255,9 +257,9 @@ public class WumpusHybridAgent implements Agent {
 	{
 		ArrayList<Position> safePositions = new ArrayList<Position>();
 	
-		for(int i = 1; i <= 4; i++)
+		for(int i = 0; i <= worldSize; i++)
 		{
-			for(int j = 1; j <= 4; j++)
+			for(int j = 0; j <= worldSize; j++)
 			{
 				if(kb.Ask(String.format("Safe([%d,%d]", i, j)))
 					safePositions.add(new Position(i, j));
@@ -273,9 +275,9 @@ public class WumpusHybridAgent implements Agent {
 	{
 		ArrayList<Position> unProvenSafePositions = new ArrayList<Position>();
 		
-		for(int i = 1; i <= 4; i++)
+		for(int i = 0; i <= worldSize; i++)
 		{
-			for(int j = 1; j <= 4; j++)
+			for(int j = 0; j <= worldSize; j++)
 			{
 				if(!kb.Ask(String.format("Safe([%d,%d]", i, j)))
 					unProvenSafePositions.add(new Position(i, j));
@@ -296,9 +298,9 @@ public class WumpusHybridAgent implements Agent {
 	private ArrayList<Position> AskKBUnvisited()
 	{
 		ArrayList<Position> visitedPositions = new ArrayList<Position>();
-		for(int i = 1; i <= 4; i++)
+		for(int i = 0; i <= worldSize; i++)
 		{
-			for(int j = 1; j <= 4; j++)
+			for(int j = 0; j <= worldSize; j++)
 			{
 				if(kb.Ask(String.format("Visited([%d,%d]", i, j)))
 					visitedPositions.add(new Position(i, j));
@@ -312,9 +314,9 @@ public class WumpusHybridAgent implements Agent {
 	private ArrayList<Position> AskKBWumpus()
 	{
 		ArrayList<Position> possibleWumpusPositions =  new ArrayList<Position>();
-		for(int i = 1; i <= 4; i++)
+		for(int i = 0; i <= worldSize; i++)
 		{
-			for(int j = 1; j <= 4; j++)
+			for(int j = 0; j <= worldSize; j++)
 			{
 				//if(kb.Ask
 					possibleWumpusPositions.add(new Position(i, j));
@@ -344,7 +346,7 @@ public class WumpusHybridAgent implements Agent {
 			
 			// return to starting square
 			ArrayList<Position> goals = new ArrayList<Position>();
-			goals.add(new Position(1, 1));
+			goals.add(new Position(0, 0));
 			planRoute(goals, safe);
 			
 			// leave
@@ -367,7 +369,7 @@ public class WumpusHybridAgent implements Agent {
 			plan = new ArrayList<WumpusAction>();
 			planShot(possibleWumpus, safe);
 		}
-		if(plan.size() == 0) {
+		if(plan.size() == 0 && risky == true) {
 			// time to take a risk
 			// consider turning this on/off as experiment parameter
 			ArrayList<Position> notUnsafe = AskKBNotUnsafe(); // ask KB for all squares that aren't proven unsafe
@@ -386,7 +388,7 @@ public class WumpusHybridAgent implements Agent {
 		if(plan.size() == 0) {
 			// nothing left to try, time to leave
 			ArrayList<Position> goals = new ArrayList<Position>();
-			goals.add(new Position(1, 1));
+			goals.add(new Position(0, 0));
 			planRoute(goals, safe);
 			plan.add(new WumpusAction(ACTION.CLIMB));
 		}

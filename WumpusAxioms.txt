@@ -18,3 +18,13 @@ Pit([x,y]) & Adjacent([x,y],[u,v]) -> Breezy([u,v]).
 
 Breezy([x,y]) <-> 
 
+useful test case:
+	given:
+	Breezy([1,0]).
+	Breezy([0,1]).
+	-Pit([2,1]).
+	-Pit([1,1]).
+	-Pit([1,2]).
+
+	should be able to prove
+	Pit([0,0]).

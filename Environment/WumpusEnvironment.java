@@ -349,26 +349,19 @@ public class WumpusEnvironment implements Environment{
 	}
 
 	public static void main(String[] args) {
-		final int n = 5;
+		final int n = 5; // world is size nxn
 		
 		WumpusEnvironment we = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, System.currentTimeMillis());
 		WumpusSimpleAgent wa = new WumpusSimpleAgent();
 		
-		WumpusHybridAgent wha = new WumpusHybridAgent(n);
+		WumpusHybridAgent wha = new WumpusHybridAgent(n, false);
 		try {
 			wha.getAction(we.getPercept());
 		} catch (Exception e1) {
 			System.out.println(e1.getMessage());
 			e1.printStackTrace();
 		}
-				
-		// Test
-		KnowledgeBase kb = new KnowledgeBase();
-		// Assumption
-		kb.Tell("a11 -> b");
 		
-		// Goal (to prove)
-		Boolean bVal = kb.Ask("-a11 | b");
 		
 		while( true ) {
 			try {
