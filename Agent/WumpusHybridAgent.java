@@ -203,25 +203,27 @@ public class WumpusHybridAgent implements Agent {
 	
 	// do we want to associate percepts with location??
 	// No. We can infer from percept and agent location at that time
-	private void Make_Percept_Sentence(Percept p, int time)
+	private void Make_Percept_Sentence(Percept p, int t)
 	{
 		if( p instanceof WumpusPercept ) 
 		{
 			WumpusPercept wp = (WumpusPercept)p;
 			if(wp.isbBreezy())
-				kb.Tell(String.format("Breeze(%d)", time));
+				kb.Tell(String.format("Breeze(%d)", t));
+			else
+				kb.Tell(String.format("-Breeze(%d)", t));
 			if(wp.isbGlitter())
-				kb.Tell(String.format("Glitter(%d)", time));
+				kb.Tell(String.format("Glitter(%d)", t));
 			
 			// Bump percept missing
 			// Wumpus Dead is not a percept
-			if(wp.isbDead())
-				kb.Tell(String.format("WumpusDead(%d)", time));
+			//if(wp.isbDead())
+			//	kb.Tell(String.format("WumpusDead(%d)", time));
 			
 			if(wp.isbScream())
-				kb.Tell(String.format("WumpusScream(%d)", time));
+				kb.Tell(String.format("Scream(%d)", t));
 			if(wp.isbSmelly())
-				kb.Tell(String.format("Smell(%d)", time));
+				kb.Tell(String.format("Stench(%d)", t));
 		}
 	}
 	
@@ -302,7 +304,7 @@ public class WumpusHybridAgent implements Agent {
 		{
 			for(int j = 0; j <= worldSize; j++)
 			{
-				if(kb.Ask(String.format("Visited([%d,%d]", i, j)))
+				if(!kb.Ask(String.format("Visited([%d,%d]", i, j)))
 					visitedPositions.add(new Position(i, j));
 			}
 		}	

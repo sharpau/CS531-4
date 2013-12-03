@@ -7,6 +7,10 @@ Adjacent([x,y],[u,v]) <-> x=u & (succ(v,y) | succ(y,v)) | y=v & (succ(u,x) | suc
 At(Agent, [x,y], u) & Breeze(u) -> Breezy([x,y]).
 At(Agent, [x,y], u) <-> Visited([x,y]).
 -Breezy([x,y]) & Adjacent([x,y],[u,v]) -> -Pit([u,v]).
+-Stench([x,y]) & Adjacent([x,y],[u,v]) -> -At(Wumpus, [u,v], t).
+
+Safe([x,y]) <-> (-At(Wumpus, [x,y], t) & -Pit([x,y])) | Visited([x,y]).
+
 
 
 
