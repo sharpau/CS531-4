@@ -8,19 +8,14 @@ At(Agent, [x,y], u) & Breeze(u) -> Breezy([x,y]).
 At(Agent, [x,y], u) <-> Visited([x,y]).
 -Breezy([x,y]) & Adjacent([x,y],[u,v]) -> -Pit([u,v]).
 -Stench([x,y]) & Adjacent([x,y],[u,v]) -> -At(Wumpus, [u,v], t).
-
 Safe([x,y]) <-> (-At(Wumpus, [x,y], t) & -Pit([x,y])) | Visited([x,y]).
 
 
-
-
+// Not strong assertions
 Breezy([x,y]) <-> exists u exists v Adjacent([x,y],[u,v]) & Pit([u,v]).
 Safe([x,y])<-> -At(Wumpus,[x,y],t) & -Pit([x,y]).
 Pit([x,y]) & Adjacent([x,y],[u,v]) -> Breezy([u,v]).
 
-
-
-Breezy([x,y]) <-> 
 
 useful test case:
 	given:
@@ -32,3 +27,28 @@ useful test case:
 
 	should be able to prove
 	Pit([0,0]).
+
+	
+// Test
+succ(1,0).
+succ(2,1).
+succ(3,2).
+Adjacent([x,y],[u,v]) <-> x=u & (succ(v,y) | succ(y,v)) | y=v & (succ(u,x) | succ(x,u)).
+
+At(Agent, [x,y], u) & Breeze(u) -> Breezy([x,y]).
+Pit([x,y]) & Adjacent([x,y],[u,v]) -> Breezy([u,v]).
+-Breezy([x,y]) & Adjacent([x,y],[u,v]) -> -Pit([u,v]).
+-Stench([x,y]) & Adjacent([x,y],[u,v]) -> -At(Wumpus, [u,v], t).
+Safe([x,y]) <-> (-At(Wumpus, [x,y], t) & -Pit([x,y])) | Visited([x,y]).
+
+Safe([0,0]).
+-Breezy([0,0]).
+-Stench([0,0]).
+At(Agent, [0,0], 0).
+At(Agent, [1,0], 0).
+-Breezy([1,0]).
+Stench([1,0]).
+
+-Stench([3,0]).
+
+Goal: Safe([2,0]).

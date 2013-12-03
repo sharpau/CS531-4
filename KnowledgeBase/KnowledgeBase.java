@@ -22,7 +22,8 @@ public class KnowledgeBase
 	public KnowledgeBase()
 	{
 		SetPaths();
-		AddWumpusWorldAxioms();
+		AddWumpusWorldFacts();
+		AddWumpusWorldRules();
 	}
 	
 	public KnowledgeBase(String prover9Path)
@@ -99,15 +100,21 @@ public class KnowledgeBase
 		return result;
 	}
 	
-	void AddWumpusWorldAxioms()
+	// Add facts to KB
+	private void AddWumpusWorldFacts()
 	{
 		// Adjacency axioms
+		// Facts
+		Tell("succ(1,0)");
 		Tell("succ(2,1)");
 		Tell("succ(3,2)");
-		Tell("succ(4,3)");
-		Tell("pred(1,2)");
-		Tell("pred(2,3)");
-		Tell("pred(3,4)");
+		Tell("At(Agent, [0,0], 0)");
+	}
+	
+	// Add rules to KB
+	private void AddWumpusWorldRules()
+	{		
+		// Adjacency 
 		Tell("Adjacent([x,y],[u,v]) <-> x=u & (succ(v,y) | pred(v,y)) | y=v & (succ(u,x) | pred(u,x))");
 		
 		// Breezy Square
@@ -116,9 +123,14 @@ public class KnowledgeBase
 		// Visited Square
 		Tell("At(Agent, [x,y], u) <-> Visited([x,y])");
 		
-		// Wumpus might be at any adjacent square if the square is smelly
-		// Uncertain assertion (Incorrect)
-		Tell("Smelly([x,y]) -> Adjacent([x,y],[u,v]) & At(Wumpus, [u,v])");
+		// Pit-less Square
+		Tell("-Breezy([x,y]) & Adjacent([x,y],[u,v]) -> -Pit([u,v])");
+		
+		// Wumpus-free Square
+		Tell("-Stench([x,y]) & Adjacent([x,y],[u,v]) -> -At(Wumpus, [u,v], t)");
+		
+		// Safe Square
+		Tell("Safe([x,y]) <-> (-At(Wumpus, [x,y], t) & -Pit([x,y])) | Visited([x,y])");	
 	}
 	
 	// Public Methods

@@ -214,6 +214,8 @@ public class WumpusHybridAgent implements Agent {
 				kb.Tell(String.format("-Breeze(%d)", t));
 			if(wp.isbGlitter())
 				kb.Tell(String.format("Glitter(%d)", t));
+			else
+				kb.Tell(String.format("-Glitter(%d)", t));
 			
 			// Bump percept missing
 			// Wumpus Dead is not a percept
@@ -222,8 +224,12 @@ public class WumpusHybridAgent implements Agent {
 			
 			if(wp.isbScream())
 				kb.Tell(String.format("Scream(%d)", t));
+			else
+				kb.Tell(String.format("-Scream(%d)", t));
 			if(wp.isbSmelly())
 				kb.Tell(String.format("Stench(%d)", t));
+			else
+				kb.Tell(String.format("-Stench(%d)", t));
 		}
 	}
 	
@@ -281,7 +287,7 @@ public class WumpusHybridAgent implements Agent {
 		{
 			for(int j = 0; j <= worldSize; j++)
 			{
-				if(!kb.Ask(String.format("Safe([%d,%d]", i, j)))
+				if(!kb.Ask(String.format("Safe([%d,%d])", i, j)) && !kb.Ask(String.format("-Safe([%d, %d])", i, j)))
 					unProvenSafePositions.add(new Position(i, j));
 			}
 		}	
@@ -292,24 +298,26 @@ public class WumpusHybridAgent implements Agent {
 	// Returns whether Agent has arrows or not
 	private Boolean AskKBHaveArrow(int time)
 	{
-		// Tricky to write the assertion as a successor predicate is required
-		return kb.Ask(String.format("HaveArrow(%d)", time));
+		// exists x Action(Shoot,x).
+		if(kb.Ask(String.format("exists x Action(Shoot, x)")))
+			return false;
+		return true;
 	}
 	
 	// Returns list of locations visited by agent
 	private ArrayList<Position> AskKBUnvisited()
 	{
-		ArrayList<Position> visitedPositions = new ArrayList<Position>();
+		ArrayList<Position> unVisitedPositions = new ArrayList<Position>();
 		for(int i = 0; i <= worldSize; i++)
 		{
 			for(int j = 0; j <= worldSize; j++)
 			{
 				if(!kb.Ask(String.format("Visited([%d,%d]", i, j)))
-					visitedPositions.add(new Position(i, j));
+					unVisitedPositions.add(new Position(i, j));
 			}
 		}	
 		
-		return visitedPositions;
+		return unVisitedPositions;
 	}
 	
 	// Returns all squares for which there might be a Wumpus
@@ -320,7 +328,7 @@ public class WumpusHybridAgent implements Agent {
 		{
 			for(int j = 0; j <= worldSize; j++)
 			{
-				//if(kb.Ask
+				if(!kb.Ask(String.format("-At(Wumpus, [%d,%d], t)", i,j)))
 					possibleWumpusPositions.add(new Position(i, j));
 			}
 		}
