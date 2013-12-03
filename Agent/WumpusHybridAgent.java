@@ -295,7 +295,7 @@ public class WumpusHybridAgent implements Agent {
 	}
 	
 	// Returns list of locations visited by agent
-	private ArrayList<Position> AskKBVisited()
+	private ArrayList<Position> AskKBUnvisited()
 	{
 		ArrayList<Position> visitedPositions = new ArrayList<Position>();
 		for(int i = 1; i <= 4; i++)
@@ -337,7 +337,7 @@ public class WumpusHybridAgent implements Agent {
 		Make_Percept_Sentence(p, time);
 		
 		ArrayList<Position> safe = AskKBSafe(); // this method should ask the KB whether each square is safe
-		ArrayList<Position> unvisited = AskKBVisited(); // this method returns all squares for which the KB knows we were located there once
+		ArrayList<Position> unvisited = AskKBUnvisited(); // this method returns all squares for which the KB knows we were located there once
 		
 		if(AskKBGlitter(time) == true) {
 			plan = new ArrayList<WumpusAction>();
