@@ -56,44 +56,41 @@ public class WumpusHybridAgent implements Agent {
 	
 	// given the agent's direction and the direction of the neighboring square to move to,
 	// returns the actions necessary
-	private ArrayList<WumpusAction> getMoves(DIRECTION facing, DIRECTION tomove) {
+	private ArrayList<WumpusAction> getMoves(DIRECTION facing, DIRECTION tomove) throws Exception {
 		ArrayList<WumpusAction> moves = new ArrayList<WumpusAction>();
-		try {
-			int turns = tomove.ordinal() - facing.ordinal();
-			switch(turns) {
-			case 0:
-				break;
-			case 1: 
-				moves.add(new WumpusAction(ACTION.TURNRIGHT));
-				break;
-			case 2: 
-				moves.add(new WumpusAction(ACTION.TURNRIGHT));
-				moves.add(new WumpusAction(ACTION.TURNRIGHT));
-				break;
-			case 3: 
-				moves.add(new WumpusAction(ACTION.TURNLEFT));
-				break;
-			case -1: 
-				moves.add(new WumpusAction(ACTION.TURNLEFT));
-				break;
-			case -2: 
-				moves.add(new WumpusAction(ACTION.TURNLEFT));
-				moves.add(new WumpusAction(ACTION.TURNLEFT));
-				break;
-			case -3: 
-				moves.add(new WumpusAction(ACTION.TURNRIGHT));
-				break;
-			}
-			moves.add(new WumpusAction(ACTION.MOVE));
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
+		
+		int turns = tomove.ordinal() - facing.ordinal();
+		switch(turns) {
+		case 0:
+			break;
+		case 1: 
+			moves.add(new WumpusAction(ACTION.TURNRIGHT));
+			break;
+		case 2: 
+			moves.add(new WumpusAction(ACTION.TURNRIGHT));
+			moves.add(new WumpusAction(ACTION.TURNRIGHT));
+			break;
+		case 3: 
+			moves.add(new WumpusAction(ACTION.TURNLEFT));
+			break;
+		case -1: 
+			moves.add(new WumpusAction(ACTION.TURNLEFT));
+			break;
+		case -2: 
+			moves.add(new WumpusAction(ACTION.TURNLEFT));
+			moves.add(new WumpusAction(ACTION.TURNLEFT));
+			break;
+		case -3: 
+			moves.add(new WumpusAction(ACTION.TURNRIGHT));
+			break;
 		}
+		moves.add(new WumpusAction(ACTION.MOVE));
+
 		return moves;
 	}
 	
 	// use A* search to plan a route to any of the goals using any of the allowed squares
-	private void planRoute(ArrayList<Position> goals, ArrayList<Position> allowed) {
+	private void planRoute(ArrayList<Position> goals, ArrayList<Position> allowed) throws Exception {
 		ArrayList<Node> frontier = new ArrayList<Node>();
 		ArrayList<Position> explored = new ArrayList<Position>();
 		Node cur = new Node(agentpos, agentdir, 0, plan);
@@ -149,21 +146,87 @@ public class WumpusHybridAgent implements Agent {
 	}
 
 	@Override
-	public Action getAction(Percept p) {
+	public Action getAction(Percept p) throws Exception {
 		// test pathfinding
-		ArrayList<Position> goals = new ArrayList<Position>();
-		goals.add(new Position(10, 10));
-		goals.add(new Position(2, 3));
-		ArrayList<Position> allowed = new ArrayList<Position>();
-		allowed.add(new Position(1, 1));
-		allowed.add(new Position(2, 1));
-		allowed.add(new Position(2, 2));
-		allowed.add(new Position(2, 3));
-		
-		planRoute(goals, allowed);
+//		agentpos = new Position(5, 5);
+//		ArrayList<Position> goals = new ArrayList<Position>();
+//		goals.add(new Position(1, 6));
+//		goals.add(new Position(2, 3));
+//		ArrayList<Position> allowed = new ArrayList<Position>();
+//		allowed.add(new Position(4, 5));
+//		allowed.add(new Position(4, 4));
+//		allowed.add(new Position(3, 5));
+//		allowed.add(new Position(2, 5));
+//		allowed.add(new Position(2, 6));
+//		allowed.add(new Position(1, 6));
+//		
+//		planRoute(goals, allowed);
 		
 		// TODO pg 270 algorithm
-		return null;
+		// Tell(KB, Make-Percept-Sentence(Percept p, time t); // do we want to associate percepts with location??
+		
+		ArrayList<Position> safe = null; // = AskKBSafe(); // this method should ask the KB whether each square is safe
+		ArrayList<Position> unvisited = null; // = AskKBVisited(); // this method returns all squares for which the KB knows we were located there once
+		
+		if(/*AskKB(Glitter, t) ==*/ true) {
+			plan = new ArrayList<WumpusAction>();
+			// get gold
+			plan.add(new WumpusAction(ACTION.GRAB));
+			
+			// return to starting square
+			ArrayList<Position> goals = new ArrayList<Position>();
+			goals.add(new Position(1, 1));
+			planRoute(goals, safe);
+			
+			// leave
+			plan.add(new WumpusAction(ACTION.CLIMB));
+		}
+		if(plan.size() == 0) {
+			ArrayList<Position> unvisitedSafe = new ArrayList<Position>();
+			
+			for(Position pos : unvisited) {
+				if(safe.contains(pos)) {
+					unvisitedSafe.add(pos);
+				}
+			}
+			
+			plan = new ArrayList<WumpusAction>();
+			planRoute(unvisitedSafe, safe);
+		}
+		if(plan.size() == 0 && /*AskKB(HaveArrow, t) = */ true) {
+			ArrayList<Position> possibleWumpus = null; //  = AskKBWumpus(); // this method returns all squares for which there might be a wumpus
+			plan = new ArrayList<WumpusAction>();
+			// planRoute(possibleWumpus, safe); // TODO replace with planShot!!!
+			// TODO: figure out which way to face!!!
+			plan.add(new WumpusAction(ACTION.SHOOT));
+		}
+		if(plan.size() == 0) {
+			// time to take a risk
+			// consider turning this on/off as experiment parameter
+			ArrayList<Position> notUnsafe = null; // = AskKBNotUnsafe(); // ask KB for all squares that aren't proven unsafe
+
+			ArrayList<Position> unvisitedNotUnsafe = new ArrayList<Position>();
+			
+			for(Position pos : unvisited) {
+				if(notUnsafe.contains(pos)) {
+					unvisitedNotUnsafe.add(pos);
+				}
+			}
+			
+			plan = new ArrayList<WumpusAction>();
+			planRoute(unvisitedNotUnsafe, safe);
+		}
+		if(plan.size() == 0) {
+			// nothing left to try, time to leave
+			ArrayList<Position> goals = new ArrayList<Position>();
+			goals.add(new Position(1, 1));
+			planRoute(goals, safe);
+			plan.add(new WumpusAction(ACTION.CLIMB));
+		}
+		
+		WumpusAction act = plan.remove(0);
+		
+		return act;
 	}
 
 }

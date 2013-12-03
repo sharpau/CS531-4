@@ -11,5 +11,5 @@ import Environment.Percept;
  * TODO
  */
 public interface Agent {
-	public Action getAction(Percept p);
+	public Action getAction(Percept p) throws Exception;
 }

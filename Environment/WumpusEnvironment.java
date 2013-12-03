@@ -356,7 +356,7 @@ public class WumpusEnvironment implements Environment{
 		try {
 			wha.getAction(we.getPercept());
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			System.out.println(e1.getMessage());
 			e1.printStackTrace();
 		}
 				
@@ -385,6 +385,7 @@ public class WumpusEnvironment implements Environment{
 				
 				
 			}catch( Exception e ) {
+				System.out.println(e.getMessage());
 				e.printStackTrace();
 				break;
 			}
