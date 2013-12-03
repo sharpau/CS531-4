@@ -333,28 +333,13 @@ public class WumpusHybridAgent implements Agent {
 	
 	@Override
 	public Action getAction(Percept p) throws Exception {
-		// test pathfinding
-//		agentpos = new Position(5, 5);
-//		ArrayList<Position> goals = new ArrayList<Position>();
-//		goals.add(new Position(1, 6));
-//		goals.add(new Position(2, 3));
-//		ArrayList<Position> allowed = new ArrayList<Position>();
-//		allowed.add(new Position(4, 5));
-//		allowed.add(new Position(4, 4));
-//		allowed.add(new Position(3, 5));
-//		allowed.add(new Position(2, 5));
-//		allowed.add(new Position(2, 6));
-//		allowed.add(new Position(1, 6));
-//		
-//		planRoute(goals, allowed);
+		// using textbook's algorithm, pg 270
+		Make_Percept_Sentence(p, time);
 		
-		// TODO pg 270 algorithm
-		// Tell(KB, Make-Percept-Sentence(Percept p, time t); // do we want to associate percepts with location??
+		ArrayList<Position> safe = AskKBSafe(); // this method should ask the KB whether each square is safe
+		ArrayList<Position> unvisited = AskKBVisited(); // this method returns all squares for which the KB knows we were located there once
 		
-		ArrayList<Position> safe = null; // = AskKBSafe(); // this method should ask the KB whether each square is safe
-		ArrayList<Position> unvisited = null; // = AskKBVisited(); // this method returns all squares for which the KB knows we were located there once
-		
-		if(/*AskKB(Glitter, t) ==*/ true) {
+		if(AskKBGlitter(time) == true) {
 			plan = new ArrayList<WumpusAction>();
 			// get gold
 			plan.add(new WumpusAction(ACTION.GRAB));
@@ -379,15 +364,15 @@ public class WumpusHybridAgent implements Agent {
 			plan = new ArrayList<WumpusAction>();
 			planRoute(unvisitedSafe, safe);
 		}
-		if(plan.size() == 0 && /*AskKB(HaveArrow, t) = */ true) {
-			ArrayList<Position> possibleWumpus = null; //  = AskKBWumpus(); // this method returns all squares for which there might be a wumpus
+		if(plan.size() == 0 && AskKBHaveArrow(time) == true) {
+			ArrayList<Position> possibleWumpus = AskKBWumpus(); // this method returns all squares for which there might be a wumpus
 			plan = new ArrayList<WumpusAction>();
 			planShot(possibleWumpus, safe);
 		}
 		if(plan.size() == 0) {
 			// time to take a risk
 			// consider turning this on/off as experiment parameter
-			ArrayList<Position> notUnsafe = null; // = AskKBNotUnsafe(); // ask KB for all squares that aren't proven unsafe
+			ArrayList<Position> notUnsafe = AskKBNotUnsafe(); // ask KB for all squares that aren't proven unsafe
 
 			ArrayList<Position> unvisitedNotUnsafe = new ArrayList<Position>();
 			
@@ -469,8 +454,8 @@ public class WumpusHybridAgent implements Agent {
 		
 		time++;
 		
-		// Tell(KB, Make-Action-Sentence(Action act, time t)
-		// Tell(KB, CurrentAgentLocation)??
+		Make_Action_Sentence(act, time);
+		Tell_Agent_Location(time);
 		return act;
 	}
 
