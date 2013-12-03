@@ -197,6 +197,136 @@ public class WumpusHybridAgent implements Agent {
 		}
 	}
 	
+	// do we want to associate percepts with location??
+	// No. We can infer from percept and agent location at that time
+	private void Make_Percept_Sentence(Percept p, int time)
+	{
+		if( p instanceof WumpusPercept ) 
+		{
+			WumpusPercept wp = (WumpusPercept)p;
+			if(wp.isbBreezy())
+				kb.Tell(String.format("Breeze(%d)", time));
+			if(wp.isbGlitter())
+				kb.Tell(String.format("Glitter(%d)", time));
+			
+			// Bump percept missing
+			// Wumpus Dead is not a percept
+			if(wp.isbDead())
+				kb.Tell(String.format("WumpusDead(%d)", time));
+			
+			if(wp.isbScream())
+				kb.Tell(String.format("WumpusScream(%d)", time));
+			if(wp.isbSmelly())
+				kb.Tell(String.format("Smell(%d)", time));
+		}
+	}
+	
+	// Make Action Sentence
+	private void Make_Action_Sentence(Action act, int time)
+	{
+		if( act instanceof WumpusAction ) 
+		{
+			WumpusAction wAct = (WumpusAction)act;
+			if(wAct.isClimb())
+				kb.Tell(String.format("Action(Climb, %d)", time));
+			if(wAct.isGrab())
+				kb.Tell(String.format("Action(Grab, %d)", time));
+			if(wAct.IsMove())
+				kb.Tell(String.format("Action(Move, %d)", time));
+			if(wAct.IsShoot())
+				kb.Tell(String.format("Action(Shoot, %d)", time));
+			if(wAct.IsTurnLeft())
+				kb.Tell(String.format("Action(TurnLeft, %d)", time));
+			if(wAct.IsTurnRight())
+				kb.Tell(String.format("Action(TurnRight, %d)", time));
+		}
+	}
+	
+	// Tell KB the location of Agent?? Not sure
+	private void Tell_Agent_Location(int time)
+	{
+		kb.Tell(String.format("At(Agent, [%d,%d], %d", agentpos.x, agentpos.y, time));
+	}
+	
+	// Return list of Safe locations
+	private ArrayList<Position> AskKBSafe()
+	{
+		ArrayList<Position> safePositions = new ArrayList<Position>();
+	
+		for(int i = 1; i <= 4; i++)
+		{
+			for(int j = 1; j <= 4; j++)
+			{
+				if(kb.Ask(String.format("Safe([%d,%d]", i, j)))
+					safePositions.add(new Position(i, j));
+			}
+		}
+	
+		return safePositions;
+	}
+	
+	// Returns list of locations that are not proven to be unsafe
+	// Not sure about the Query
+	private ArrayList<Position> AskKBNotUnsafe()
+	{
+		ArrayList<Position> unProvenSafePositions = new ArrayList<Position>();
+		
+		for(int i = 1; i <= 4; i++)
+		{
+			for(int j = 1; j <= 4; j++)
+			{
+				if(!kb.Ask(String.format("Safe([%d,%d]", i, j)))
+					unProvenSafePositions.add(new Position(i, j));
+			}
+		}	
+		
+		return unProvenSafePositions;
+	}
+	
+	// Returns whether Agent has arrows or not
+	private Boolean AskKBHaveArrow(int time)
+	{
+		// Tricky to write the assertion as a successor predicate is required
+		return kb.Ask(String.format("HaveArrow(%d)", time));
+	}
+	
+	// Returns list of locations visited by agent
+	private ArrayList<Position> AskKBVisited()
+	{
+		ArrayList<Position> visitedPositions = new ArrayList<Position>();
+		for(int i = 1; i <= 4; i++)
+		{
+			for(int j = 1; j <= 4; j++)
+			{
+				if(kb.Ask(String.format("Visited([%d,%d]", i, j)))
+					visitedPositions.add(new Position(i, j));
+			}
+		}	
+		
+		return visitedPositions;
+	}
+	
+	// Returns all squares for which there might be a Wumpus
+	private ArrayList<Position> AskKBWumpus()
+	{
+		ArrayList<Position> possibleWumpusPositions =  new ArrayList<Position>();
+		for(int i = 1; i <= 4; i++)
+		{
+			for(int j = 1; j <= 4; j++)
+			{
+				//if(kb.Ask
+					possibleWumpusPositions.add(new Position(i, j));
+			}
+		}
+		return possibleWumpusPositions;
+	}
+	
+	// Returns whether there is Glitter or not
+	private Boolean AskKBGlitter(int time)
+	{
+		return kb.Ask(String.format("Glitter(%d)", time));
+	}
+	
 	@Override
 	public Action getAction(Percept p) throws Exception {
 		// test pathfinding
@@ -275,7 +405,8 @@ public class WumpusHybridAgent implements Agent {
 		}
 		
 		WumpusAction act = plan.remove(0);
-		
+		// Tell(KB, Make-Action-Sentence(Action act, time t)
+		// Tell(KB, CurrentAgentLocation)??
 		return act;
 	}
 

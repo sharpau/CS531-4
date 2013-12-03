@@ -22,6 +22,7 @@ public class KnowledgeBase
 	public KnowledgeBase()
 	{
 		SetPaths();
+		AddWumpusWorldAxioms();
 	}
 	
 	public KnowledgeBase(String prover9Path)
@@ -96,7 +97,29 @@ public class KnowledgeBase
 			System.out.println("\nError in calling Prover9: " + t.getMessage());
 		}
 		return result;
-	}		
+	}
+	
+	void AddWumpusWorldAxioms()
+	{
+		// Adjacency axioms
+		Tell("succ(2,1)");
+		Tell("succ(3,2)");
+		Tell("succ(4,3)");
+		Tell("pred(1,2)");
+		Tell("pred(2,3)");
+		Tell("pred(3,4)");
+		Tell("Adjacent([x,y],[u,v]) <-> x=u & (succ(v,y) | pred(v,y)) | y=v & (succ(u,x) | pred(u,x))");
+		
+		// Breezy Square
+		Tell("At(Agent, [x,y], u) & Breeze(u) -> Breezy([x,y])");
+		
+		// Visited Square
+		Tell("At(Agent, [x,y], u) <-> Visited([x,y])");
+		
+		// Wumpus might be at any adjacent square if the square is smelly
+		// Uncertain assertion (Incorrect)
+		Tell("Smelly([x,y]) -> Adjacent([x,y],[u,v]) & At(Wumpus, [u,v])");
+	}
 	
 	// Public Methods
 	public Boolean Ask(String query)
