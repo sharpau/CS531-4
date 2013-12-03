@@ -45,9 +45,14 @@ public class WumpusHybridAgent implements Agent {
 		}
 	}
 	
+	public WumpusHybridAgent(int size) {
+		worldSize = size;
+	}
+	
 	// members
 	KnowledgeBase 				kb = new KnowledgeBase();
 	int 						time = 0;
+	int							worldSize;
 	ArrayList<WumpusAction> 	plan = new ArrayList<WumpusAction>();
 	Position 					agentpos = new Position(1, 1);
 	public DIRECTION 			agentdir = DIRECTION.DIRUP;
@@ -159,9 +164,8 @@ public class WumpusHybridAgent implements Agent {
 		ArrayList<Position> goals = new ArrayList<Position>();
 		ArrayList<DIRECTION> dirs = new ArrayList<DIRECTION>();
 		
-		int maxSize = 4;
 		for(Position t : targets) {
-			for(int i = 0; i < maxSize; i++) {
+			for(int i = 0; i < worldSize; i++) {
 				if(i != t.x && allowed.contains(new Position(i, t.y))) {
 					goals.add(new Position(i, t.y));
 					if(i < t.x) {
@@ -172,7 +176,7 @@ public class WumpusHybridAgent implements Agent {
 					}
 				}
 			}
-			for(int j = 0; j < maxSize; j++) {
+			for(int j = 0; j < worldSize; j++) {
 				if(j != t.y && allowed.contains(new Position(t.x, j))) {
 					goals.add(new Position(t.x, j));
 					if(j < t.y) {
@@ -405,6 +409,66 @@ public class WumpusHybridAgent implements Agent {
 		}
 		
 		WumpusAction act = plan.remove(0);
+		// update agentpos and agentdir
+		if(act.IsTurnLeft()) {
+			switch(agentdir) {
+			case DIRUP:
+				agentdir = DIRECTION.DIRLEFT;
+				break;
+			case DIRRIGHT:
+				agentdir = DIRECTION.DIRUP;
+				break;
+			case DIRDOWN:
+				agentdir = DIRECTION.DIRRIGHT;
+				break;
+			case DIRLEFT:
+				agentdir = DIRECTION.DIRDOWN;
+				break;
+			}
+		}
+		else if(act.IsTurnRight()) {
+			switch(agentdir) {
+			case DIRUP:
+				agentdir = DIRECTION.DIRRIGHT;
+				break;
+			case DIRRIGHT:
+				agentdir = DIRECTION.DIRDOWN;
+				break;
+			case DIRDOWN:
+				agentdir = DIRECTION.DIRLEFT;
+				break;
+			case DIRLEFT:
+				agentdir = DIRECTION.DIRUP;
+				break;
+			}
+		}
+		else if(act.IsMove()) {
+			switch(agentdir) {
+			case DIRUP:
+				if(agentpos.y < worldSize - 1) {
+					agentpos.y++;
+				}
+				break;
+			case DIRRIGHT:
+				if(agentpos.x < worldSize - 1) {
+					agentpos.x++;
+				}
+				break;
+			case DIRDOWN:
+				if(agentpos.y > 0) {
+					agentpos.y--;
+				}
+				break;
+			case DIRLEFT:
+				if(agentpos.x > 0) {
+					agentpos.x--;
+				}
+				break;
+			}
+		}
+		
+		time++;
+		
 		// Tell(KB, Make-Action-Sentence(Action act, time t)
 		// Tell(KB, CurrentAgentLocation)??
 		return act;
