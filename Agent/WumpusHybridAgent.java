@@ -230,9 +230,9 @@ public class WumpusHybridAgent implements Agent {
 			else
 				kb.Tell(String.format("-Scream(%d)", t));
 			if(wp.isbSmelly())
-				kb.Tell(String.format("Stench(%d)", t));
+				kb.Tell(String.format("Smelly(%d)", t));
 			else
-				kb.Tell(String.format("-Stench(%d)", t));
+				kb.Tell(String.format("-Smelly(%d)", t));
 		}
 	}
 	

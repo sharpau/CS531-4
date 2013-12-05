@@ -394,16 +394,15 @@ public class WumpusEnvironment implements Environment{
 	public static void main(String[] args) {
 		final int n = 4; // world is size nxn
 		
-		WumpusSimpleAgent wa = new WumpusSimpleAgent(); // random movements
-		WumpusHybridAgent wha = new WumpusHybridAgent(n, false);
-		WumpusHybridAgent wha_risky = new WumpusHybridAgent(n, true);
-		
 		String simple_results = new String();
 		String hybrid_results = new String();
 		String risky_results = new String();
 
 		
-		for(int i = 1; i < 3; i++) {
+		for(int i = 1; i < 3; i++) {		
+			WumpusSimpleAgent wa = new WumpusSimpleAgent(); // random movements
+			WumpusHybridAgent wha = new WumpusHybridAgent(n, false);
+			WumpusHybridAgent wha_risky = new WumpusHybridAgent(n, true);
 			WumpusEnvironment we1 = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, i);
 			WumpusEnvironment we2 = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, i);
 			WumpusEnvironment we3 = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, i);

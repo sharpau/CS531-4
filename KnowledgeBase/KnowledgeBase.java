@@ -127,6 +127,9 @@ public class KnowledgeBase
 		// Breezy Square
 		Tell("At(Agent, [x,y], u) & -Breeze(u) -> -Breezy([x,y])");
 		
+		// Smelly Square
+		Tell("At(Agent, [x,y], u) & -Smelly(u) -> -Stench([x,y])");
+		
 		// Visited Square
 		Tell("At(Agent, [x,y], u) -> Visited([x,y])");
 		
@@ -134,13 +137,16 @@ public class KnowledgeBase
 		Tell("-Breezy([x,y]) & Adjacent([x,y],[u,v]) -> -Pit([u,v])");
 		
 		// Wumpus-free Square
-		Tell("-Stench([x,y]) & Adjacent([x,y],[u,v]) -> -At(Wumpus, [u,v], t)");
+		Tell("-Stench([x,y]) & Adjacent([x,y],[u,v]) -> -Wumpus([u,v])");
 		
 		// Safe Square
-		Tell("Safe([x,y]) <-> ((-At(Wumpus, [x,y], t) | Scream(u)) & -Pit([x,y])) | Visited([x,y])");
+		Tell("Safe([x,y]) <-> ((-Wumpus([x,y]) | Scream(u)) & -Pit([x,y])) | Visited([x,y])");
 		
 		// Visited Square has no wumpus
-		Tell("Visited([x,y]) -> -At(Wumpus, [x,y], t)");
+		Tell("Visited([x,y]) -> -Wumpus([x,y])");
+
+		// Visited Square has no pit
+		Tell("Visited([x,y]) -> -Pit([x,y])");
 	}
 	
 	// Public Methods
