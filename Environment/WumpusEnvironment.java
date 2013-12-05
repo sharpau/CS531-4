@@ -399,7 +399,9 @@ public class WumpusEnvironment implements Environment{
 		String risky_results = new String();
 
 		
-		for(int i = 1; i < 3; i++) {		
+		for(int i = 1; i <= 40; i++) {
+			System.out.println("World " + i + " being solved");
+			
 			WumpusSimpleAgent wa = new WumpusSimpleAgent(); // random movements
 			WumpusHybridAgent wha = new WumpusHybridAgent(n, false);
 			WumpusHybridAgent wha_risky = new WumpusHybridAgent(n, true);
