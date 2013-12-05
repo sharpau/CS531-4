@@ -331,7 +331,7 @@ public class WumpusHybridAgent implements Agent {
 		{
 			for(int j = 0; j < worldSize; j++)
 			{
-				if(!kb.Ask(String.format("-At(Wumpus, [%d,%d], t)", i,j)))
+				if(!kb.Ask(String.format("-Wumpus([%d,%d])", i,j)))
 					possibleWumpusPositions.add(new Position(i, j));
 			}
 		}
