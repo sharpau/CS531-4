@@ -257,7 +257,7 @@ public class WumpusHybridAgent implements Agent {
 	// Tell KB the location of Agent?? Not sure
 	private void Tell_Agent_Location(int time)
 	{
-		kb.Tell(String.format("At(Agent, [%d,%d], %d", agentpos.x, agentpos.y, time));
+		kb.Tell(String.format("At(Agent, [%d,%d], %d)", agentpos.x, agentpos.y, time));
 	}
 	
 	// Return list of Safe locations
@@ -269,7 +269,7 @@ public class WumpusHybridAgent implements Agent {
 		{
 			for(int j = 0; j <= worldSize; j++)
 			{
-				if(kb.Ask(String.format("Safe([%d,%d]", i, j)))
+				if(kb.Ask(String.format("Safe([%d,%d])", i, j)))
 					safePositions.add(new Position(i, j));
 			}
 		}
@@ -312,7 +312,7 @@ public class WumpusHybridAgent implements Agent {
 		{
 			for(int j = 0; j <= worldSize; j++)
 			{
-				if(!kb.Ask(String.format("Visited([%d,%d]", i, j)))
+				if(!kb.Ask(String.format("Visited([%d,%d])", i, j)))
 					unVisitedPositions.add(new Position(i, j));
 			}
 		}	
