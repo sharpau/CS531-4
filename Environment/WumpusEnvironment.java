@@ -402,7 +402,7 @@ public class WumpusEnvironment implements Environment{
 					break;
 				}
 				//WumpusAction wa = WumpusAction.getRandomAction();
-				Action act = wha.getAction(we.getPercept());//WumpusAction.getRandomMoveAction(); 
+				Action act = wha.getAction(p);//WumpusAction.getRandomMoveAction(); 
 				System.out.println("Action : " + act );
 				we.takeAction((Action)act);
 				System.out.println("-------");
