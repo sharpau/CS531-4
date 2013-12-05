@@ -268,9 +268,9 @@ public class WumpusHybridAgent implements Agent {
 	{
 		ArrayList<Position> safePositions = new ArrayList<Position>();
 	
-		for(int i = 0; i <= worldSize; i++)
+		for(int i = 0; i < worldSize; i++)
 		{
-			for(int j = 0; j <= worldSize; j++)
+			for(int j = 0; j < worldSize; j++)
 			{
 				if(kb.Ask(String.format("Safe([%d,%d])", i, j)))
 					safePositions.add(new Position(i, j));
@@ -286,9 +286,9 @@ public class WumpusHybridAgent implements Agent {
 	{
 		ArrayList<Position> unProvenSafePositions = new ArrayList<Position>();
 		
-		for(int i = 0; i <= worldSize; i++)
+		for(int i = 0; i < worldSize; i++)
 		{
-			for(int j = 0; j <= worldSize; j++)
+			for(int j = 0; j < worldSize; j++)
 			{
 				if(!kb.Ask(String.format("Safe([%d,%d])", i, j)) && !kb.Ask(String.format("-Safe([%d, %d])", i, j)))
 					unProvenSafePositions.add(new Position(i, j));
@@ -311,9 +311,9 @@ public class WumpusHybridAgent implements Agent {
 	private ArrayList<Position> AskKBUnvisited()
 	{
 		ArrayList<Position> unVisitedPositions = new ArrayList<Position>();
-		for(int i = 0; i <= worldSize; i++)
+		for(int i = 0; i < worldSize; i++)
 		{
-			for(int j = 0; j <= worldSize; j++)
+			for(int j = 0; j < worldSize; j++)
 			{
 				if(!kb.Ask(String.format("Visited([%d,%d])", i, j)))
 					unVisitedPositions.add(new Position(i, j));
@@ -327,9 +327,9 @@ public class WumpusHybridAgent implements Agent {
 	private ArrayList<Position> AskKBWumpus()
 	{
 		ArrayList<Position> possibleWumpusPositions =  new ArrayList<Position>();
-		for(int i = 0; i <= worldSize; i++)
+		for(int i = 0; i < worldSize; i++)
 		{
-			for(int j = 0; j <= worldSize; j++)
+			for(int j = 0; j < worldSize; j++)
 			{
 				if(!kb.Ask(String.format("-At(Wumpus, [%d,%d], t)", i,j)))
 					possibleWumpusPositions.add(new Position(i, j));

@@ -299,6 +299,36 @@ public class WumpusEnvironment implements Environment{
 				_tsGoldMap.remove(currentLoc);
 				++_nHasGold;
 			}
+		}else if( wa.IsTurnLeft() ) {
+			switch(_nFacing) {
+				case DIRUP:
+					_nFacing = DIRECTION.DIRLEFT;
+					break;
+				case DIRRIGHT:
+					_nFacing = DIRECTION.DIRUP;
+					break;
+				case DIRDOWN:
+					_nFacing = DIRECTION.DIRRIGHT;
+					break;
+				case DIRLEFT:
+					_nFacing = DIRECTION.DIRDOWN;
+					break;
+			}
+		}else if( wa.IsTurnRight() ) {
+			switch(_nFacing) {
+			case DIRUP:
+				_nFacing = DIRECTION.DIRRIGHT;
+				break;
+			case DIRRIGHT:
+				_nFacing = DIRECTION.DIRDOWN;
+				break;
+			case DIRDOWN:
+				_nFacing = DIRECTION.DIRLEFT;
+				break;
+			case DIRLEFT:
+				_nFacing = DIRECTION.DIRUP;
+				break;
+			}
 		}
 	}
 
