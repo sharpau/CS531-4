@@ -11,7 +11,7 @@ import util.InputCreator;
 public class KnowledgeBase 
 {
 	private static final int TIMEOUT_SECONDS = 10;
-	private static final String PROVER9_EXE = "\\src\\LADR\\bin\\Prover9.exe";
+	private static final String PROVER9_EXE = "\\LADR\\bin\\Prover9.exe";
 	private static final String QUERY_DIR = "\\QFolder\\"; 
 	private String sProver9FullPath;
 	private String sQueryDirectory;
@@ -45,7 +45,8 @@ public class KnowledgeBase
 		try 
 		{
 			File file = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-			String sParentFullPath = file.getParent();
+			//String sParentFullPath = file.getParent();
+			String sParentFullPath = file.getAbsolutePath();
 			
 			file = new File(sParentFullPath + PROVER9_EXE);
 			if(file.exists() && file.isFile())
@@ -115,7 +116,7 @@ public class KnowledgeBase
 	private void AddWumpusWorldRules()
 	{		
 		// Adjacency 
-		Tell("Adjacent([x,y],[u,v]) <-> x=u & (succ(v,y) | pred(v,y)) | y=v & (succ(u,x) | pred(u,x))");
+		Tell("Adjacent([x,y],[u,v]) <-> x=u & (succ(v,y) | succ(y,v)) | y=v & (succ(u,x) | succ(x,u))");
 		
 		// Breezy Square
 		Tell("At(Agent, [x,y], u) & Breeze(u) -> Breezy([x,y])");
@@ -130,7 +131,7 @@ public class KnowledgeBase
 		Tell("-Stench([x,y]) & Adjacent([x,y],[u,v]) -> -At(Wumpus, [u,v], t)");
 		
 		// Safe Square
-		Tell("Safe([x,y]) <-> (-At(Wumpus, [x,y], t) & -Pit([x,y])) | Visited([x,y])");	
+		Tell("Safe([x,y]) <-> (-At(Wumpus, [x,y], t) & -Pit([x,y])) | Visited([x,y])");
 	}
 	
 	// Public Methods
