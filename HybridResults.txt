@@ -11,7 +11,7 @@ Actions Taken 2
 
 Agent Location: <0, 0>
 Agent Direction: DIRLEFT
-Wumpus Locations: [<3, 0>]
+Wumpus Locations: []
 Gold Locations: [<2, 1>]
 Pit Locations: [<1, 2>, <2, 1>, <3, 0>]
 Agent has 0 gold
@@ -66,7 +66,7 @@ Actions Taken 22
 
 Agent Location: <0, 0>
 Agent Direction: DIRLEFT
-Wumpus Locations: [<2, 0>]
+Wumpus Locations: []
 Gold Locations: [<2, 2>]
 Pit Locations: [<1, 1>, <1, 3>]
 Agent has 0 gold
@@ -205,7 +205,7 @@ Agent has 0 gold
 Agent has 0 arrows
 Alive? true
 Trial Over true
-Actions Taken 17
+Actions Taken 15
 
 Agent Location: <0, 0>
 Agent Direction: DIRLEFT
@@ -220,7 +220,7 @@ Actions Taken 23
 
 Agent Location: <0, 0>
 Agent Direction: DIRLEFT
-Wumpus Locations: []
+Wumpus Locations: [<1, 3>]
 Gold Locations: [<2, 3>]
 Pit Locations: [<1, 1>, <1, 3>, <3, 2>]
 Agent has 0 gold
@@ -263,7 +263,7 @@ Trial Over true
 Actions Taken 2
 
 Agent Location: <0, 0>
-Agent Direction: DIRLEFT
+Agent Direction: DIRDOWN
 Wumpus Locations: [<0, 3>]
 Gold Locations: [<2, 3>]
 Pit Locations: [<0, 2>, <0, 3>, <2, 3>]
@@ -271,7 +271,7 @@ Agent has 0 gold
 Agent has 0 arrows
 Alive? true
 Trial Over true
-Actions Taken 31
+Actions Taken 32
 
 Agent Location: <0, 0>
 Agent Direction: DIRLEFT
@@ -308,14 +308,14 @@ Actions Taken 11
 
 Agent Location: <0, 0>
 Agent Direction: DIRLEFT
-Wumpus Locations: []
-Gold Locations: []
+Wumpus Locations: [<2, 0>]
+Gold Locations: [<2, 0>]
 Pit Locations: [<1, 2>]
-Agent has 1 gold
+Agent has 0 gold
 Agent has 0 arrows
 Alive? true
 Trial Over true
-Actions Taken 18
+Actions Taken 13
 
 Agent Location: <0, 0>
 Agent Direction: DIRLEFT
@@ -341,14 +341,14 @@ Actions Taken 26
 
 Agent Location: <0, 0>
 Agent Direction: DIRLEFT
-Wumpus Locations: []
+Wumpus Locations: [<2, 0>]
 Gold Locations: [<2, 1>]
 Pit Locations: [<1, 3>, <2, 1>, <2, 2>]
 Agent has 0 gold
 Agent has 0 arrows
 Alive? true
 Trial Over true
-Actions Taken 19
+Actions Taken 15
 
 Agent Location: <0, 0>
 Agent Direction: DIRDOWN
@@ -428,7 +428,7 @@ Trial Over true
 Actions Taken 13
 
 Agent Location: <0, 0>
-Agent Direction: DIRDOWN
+Agent Direction: DIRLEFT
 Wumpus Locations: [<0, 2>]
 Gold Locations: [<2, 2>]
 Pit Locations: [<1, 2>, <2, 1>, <2, 3>]
@@ -436,5 +436,5 @@ Agent has 0 gold
 Agent has 0 arrows
 Alive? true
 Trial Over true
-Actions Taken 18
+Actions Taken 19
 
