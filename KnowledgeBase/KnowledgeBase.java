@@ -19,10 +19,10 @@ public class KnowledgeBase
 	private Boolean bUseTimer = false;
  
 	// Constructor
-	public KnowledgeBase()
+	public KnowledgeBase(int size)
 	{
 		SetPaths();
-		AddWumpusWorldFacts();
+		AddWumpusWorldFacts(size);
 		AddWumpusWorldRules();
 	}
 	
@@ -102,13 +102,19 @@ public class KnowledgeBase
 	}
 	
 	// Add facts to KB
-	private void AddWumpusWorldFacts()
+	private void AddWumpusWorldFacts(int size)
 	{
 		// Adjacency axioms
 		// Facts
-		Tell("succ(1,0)");
-		Tell("succ(2,1)");
-		Tell("succ(3,2)");
+		
+		for(int i = 0; i < size-1; i++)
+		{
+			Tell(String.format("succ(%d,%d)", i+1, i));
+		}
+		
+//		Tell("succ(1,0)");
+//		Tell("succ(2,1)");
+//		Tell("succ(3,2)");
 		Tell("At(Agent, [0,0], 0)");
 	}
 	
@@ -132,6 +138,9 @@ public class KnowledgeBase
 		
 		// Safe Square
 		Tell("Safe([x,y]) <-> (-At(Wumpus, [x,y], t) & -Pit([x,y])) | Visited([x,y])");
+		
+		// Visited Square has no wumpus
+		Tell("Visited([x,y]) -> -At(Wumpus, [x,y], t)");
 	}
 	
 	// Public Methods

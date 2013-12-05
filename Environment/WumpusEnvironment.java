@@ -349,19 +349,18 @@ public class WumpusEnvironment implements Environment{
 	}
 
 	public static void main(String[] args) {
-		final int n = 5; // world is size nxn
+		final int n = 3; // world is size nxn
 		
-		WumpusEnvironment we = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, System.currentTimeMillis());
+		WumpusEnvironment we = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, 7);//System.currentTimeMillis());
 		WumpusSimpleAgent wa = new WumpusSimpleAgent();
 		
-		WumpusHybridAgent wha = new WumpusHybridAgent(n, false);
-		try {
-			wha.getAction(we.getPercept());
-		} catch (Exception e1) {
-			System.out.println(e1.getMessage());
-			e1.printStackTrace();
-		}
-		
+		WumpusHybridAgent wha = new WumpusHybridAgent(n, true);
+		//try {
+		//	wha.getAction(we.getPercept());
+		//} catch (Exception e1) {
+		//	System.out.println(e1.getMessage());
+		//	e1.printStackTrace();
+		//}
 		
 		while( true ) {
 			try {
@@ -373,7 +372,7 @@ public class WumpusEnvironment implements Environment{
 					break;
 				}
 				//WumpusAction wa = WumpusAction.getRandomAction();
-				WumpusAction act = WumpusAction.getRandomMoveAction(); 
+				Action act = wha.getAction(we.getPercept());//WumpusAction.getRandomMoveAction(); 
 				System.out.println("Action : " + act );
 				we.takeAction((Action)act);
 				System.out.println("-------");

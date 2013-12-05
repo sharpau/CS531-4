@@ -46,10 +46,11 @@ public class WumpusHybridAgent implements Agent {
 	public WumpusHybridAgent(int size, Boolean risk) {
 		worldSize = size;
 		risky = risk;
+		kb = new KnowledgeBase(size);
 	}
 	
 	// members
-	KnowledgeBase 				kb = new KnowledgeBase();
+	KnowledgeBase 				kb;
 	int 						time = 0;
 	int							worldSize;
 	Boolean						risky;
@@ -104,6 +105,8 @@ public class WumpusHybridAgent implements Agent {
 	// use A* search to plan a route to any of the goals using any of the allowed squares
 	// returns int i where goals[i] is the square chosen to navigate to
 	private int planRoute(ArrayList<Position> goals, ArrayList<Position> allowed) throws Exception {
+		// assume that goals are safe
+		allowed.addAll(goals);
 		ArrayList<Node> frontier = new ArrayList<Node>();
 		ArrayList<Position> explored = new ArrayList<Position>();
 		Node cur = new Node(agentpos, agentdir, 0, plan);
@@ -156,7 +159,7 @@ public class WumpusHybridAgent implements Agent {
 		
 		// goal state found, update plan to match moves to get to that state
 		plan = cur.moves;
-		return goals.indexOf(cur);
+		return goals.indexOf(cur.pos);
 	}
 
 	private void planShot(ArrayList<Position> targets, ArrayList<Position> allowed) throws Exception {
