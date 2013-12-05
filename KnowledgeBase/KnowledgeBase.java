@@ -125,10 +125,10 @@ public class KnowledgeBase
 		Tell("Adjacent([x,y],[u,v]) <-> x=u & (succ(v,y) | succ(y,v)) | y=v & (succ(u,x) | succ(x,u))");
 		
 		// Breezy Square
-		Tell("At(Agent, [x,y], u) & Breeze(u) -> Breezy([x,y])");
+		Tell("At(Agent, [x,y], u) & -Breeze(u) -> -Breezy([x,y])");
 		
 		// Visited Square
-		Tell("At(Agent, [x,y], u) <-> Visited([x,y])");
+		Tell("At(Agent, [x,y], u) -> Visited([x,y])");
 		
 		// Pit-less Square
 		Tell("-Breezy([x,y]) & Adjacent([x,y],[u,v]) -> -Pit([u,v])");
@@ -137,7 +137,7 @@ public class KnowledgeBase
 		Tell("-Stench([x,y]) & Adjacent([x,y],[u,v]) -> -At(Wumpus, [u,v], t)");
 		
 		// Safe Square
-		Tell("Safe([x,y]) <-> (-At(Wumpus, [x,y], t) & -Pit([x,y])) | Visited([x,y])");
+		Tell("Safe([x,y]) <-> ((-At(Wumpus, [x,y], t) | Scream(u)) & -Pit([x,y])) | Visited([x,y])");
 		
 		// Visited Square has no wumpus
 		Tell("Visited([x,y]) -> -At(Wumpus, [x,y], t)");
