@@ -3,6 +3,10 @@
  */
 package Environment;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.TreeSet;
@@ -35,6 +39,7 @@ public class WumpusEnvironment implements Environment{
 	private boolean	_bWumpusDied;
 	private boolean	_bTrialOver;
 	private int	_nHasGold;
+	private int _nTime;
 	
 	public enum DIRECTION{
 		DIRUP, DIRRIGHT, DIRDOWN, DIRLEFT
@@ -58,6 +63,7 @@ public class WumpusEnvironment implements Environment{
 		we._bWumpusDied = false;
 		we._bTrialOver = false;
 		we._nHasGold = 0;
+		we._nTime = 0;
 		we._nFacing = DIRECTION.DIRUP;
 		
 		while( true ) {
@@ -117,6 +123,7 @@ public class WumpusEnvironment implements Environment{
 		
 		if( _tsWumpusMap.contains(currentLoc) || _tsPitMap.contains(currentLoc) ) {
 			p.setDead();
+			_bAlive = false;
 			_bTrialOver = true;
 			return p;
 		}
@@ -330,6 +337,8 @@ public class WumpusEnvironment implements Environment{
 				break;
 			}
 		}
+		
+		_nTime++;
 	}
 
 	/* (non-Javadoc)
@@ -370,49 +379,129 @@ public class WumpusEnvironment implements Environment{
 		sb.append("Alive? ");
 		sb.append(_bAlive);
 		sb.append("\n");
-		
+
 		sb.append("Trial Over ");
 		sb.append(_bTrialOver);
+		sb.append("\n");
+		
+		sb.append("Actions Taken ");
+		sb.append(_nTime);
 		sb.append("\n");
 		
 		return sb.toString();
 	}
 
 	public static void main(String[] args) {
-		final int n = 3; // world is size nxn
+		final int n = 4; // world is size nxn
 		
-		WumpusEnvironment we = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, 7);//System.currentTimeMillis());
-		WumpusSimpleAgent wa = new WumpusSimpleAgent();
+		WumpusSimpleAgent wa = new WumpusSimpleAgent(); // random movements
+		WumpusHybridAgent wha = new WumpusHybridAgent(n, false);
+		WumpusHybridAgent wha_risky = new WumpusHybridAgent(n, true);
 		
-		WumpusHybridAgent wha = new WumpusHybridAgent(n, true);
-		//try {
-		//	wha.getAction(we.getPercept());
-		//} catch (Exception e1) {
-		//	System.out.println(e1.getMessage());
-		//	e1.printStackTrace();
-		//}
+		String simple_results = new String();
+		String hybrid_results = new String();
+		String risky_results = new String();
+
 		
-		while( true ) {
-			try {
-				
-				System.out.println(we.show());
-				WumpusPercept p = (WumpusPercept)we.getPercept();
-				System.out.println(p);
-				if( p.isbDead() ) {
+		for(int i = 1; i < 3; i++) {
+			WumpusEnvironment we1 = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, i);
+			WumpusEnvironment we2 = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, i);
+			WumpusEnvironment we3 = WumpusEnvironment.getNewWumpusEnvironment(n, 1, 1, 1, 0.2, i);
+			
+			// random agent, we1
+			while( true ) {
+				try {
+					//System.out.println(we1.show());
+					WumpusPercept p = (WumpusPercept)we1.getPercept();
+					//System.out.println(p);
+					if( p.isbDead()) {
+						simple_results += we1.show();	
+						break;
+					}
+					Action act = wa.getAction(p);
+					we1.takeAction((Action)act);
+					
+					
+				}catch( Exception e ) {
+					System.out.println(e.getMessage());
+					e.printStackTrace();
+					// if trial is over, exception here
+					simple_results += we1.show();
 					break;
 				}
-				//WumpusAction wa = WumpusAction.getRandomAction();
-				Action act = wha.getAction(p);//WumpusAction.getRandomMoveAction(); 
-				System.out.println("Action : " + act );
-				we.takeAction((Action)act);
-				System.out.println("-------");
-				
-				
-			}catch( Exception e ) {
-				System.out.println(e.getMessage());
-				e.printStackTrace();
-				break;
 			}
+			
+			// hybrid agent, we2
+			while( true ) {
+				try {
+					//System.out.println(we1.show());
+					WumpusPercept p = (WumpusPercept)we2.getPercept();
+					//System.out.println(p);
+					if( p.isbDead()) {
+						hybrid_results += we2.show();	
+						break;
+					}
+					Action act = wha.getAction(p);
+					we2.takeAction((Action)act);
+					
+					
+				}catch( Exception e ) {
+					System.out.println(e.getMessage());
+					e.printStackTrace();
+					// if trial is over, exception here
+					hybrid_results += we2.show();
+					break;
+				}
+			}
+			
+			// risky agent, we3
+			while( true ) {
+				try {
+					//System.out.println(we1.show());
+					WumpusPercept p = (WumpusPercept)we3.getPercept();
+					//System.out.println(p);
+					if( p.isbDead()) {
+						risky_results += we3.show();	
+						break;
+					}
+					Action act = wha_risky.getAction(p);
+					we3.takeAction((Action)act);
+					
+					
+				}catch( Exception e ) {
+					System.out.println(e.getMessage());
+					e.printStackTrace();
+					// if trial is over, exception here
+					risky_results += we3.show();
+					break;
+				}
+			}
+			simple_results += '\n';
+			hybrid_results += '\n';
+			risky_results += '\n';
+			
+		}
+		
+		try {
+			// write each string to a separate output file
+			FileWriter simple_file = new FileWriter("SimpleResults.txt");
+			FileWriter hybrid_file = new FileWriter("HybridResults.txt");
+			FileWriter risky_file = new FileWriter("RiskyResults.txt");
+
+			BufferedWriter out1 = new BufferedWriter(simple_file);
+			out1.write(simple_results);
+			out1.close();
+			
+			BufferedWriter out2 = new BufferedWriter(hybrid_file);
+			out2.write(hybrid_results);
+			out2.close();
+			
+			BufferedWriter out3 = new BufferedWriter(risky_file);
+			out3.write(risky_results);
+			out3.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}

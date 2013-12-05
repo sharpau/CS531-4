@@ -1,0 +1,18 @@
+Agent Location: <1, 0>
+Agent Direction: DIRRIGHT
+Wumpus Locations: [<1, 1>]
+Gold Locations: [<2, 0>]
+Pit Locations: [<1, 0>, <3, 1>]
+Agent has 0 gold
+Agent has 1 arrows
+Alive? false
+Trial Over true
+Agent Location: <1, 2>
+Agent Direction: DIRUP
+Wumpus Locations: [<3, 0>]
+Gold Locations: [<2, 1>]
+Pit Locations: [<1, 2>, <2, 1>, <3, 0>]
+Agent has 0 gold
+Agent has 1 arrows
+Alive? false
+Trial Over true

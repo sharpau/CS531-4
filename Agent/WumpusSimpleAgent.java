@@ -57,7 +57,7 @@ public class WumpusSimpleAgent implements Agent{
 			}else {
 				try
 				{
-					return new WumpusAction(ACTION.MOVE);
+					return WumpusAction.getRandomMoveAction();
 				} catch (Exception e)
 				{
 					// TODO Auto-generated catch block
